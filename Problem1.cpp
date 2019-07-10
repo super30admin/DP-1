@@ -1,6 +1,10 @@
 //
 // Created by shazmaan on 7/10/2019.
 //
+// Time Complexity : O(a^n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : No
+// Any problem you faced while coding this : Why is DP so confusing..
 
 #include <iostream>
 #include <algorithm>
@@ -21,19 +25,19 @@ private:
         }
         if(index<coins.size() && amount>0){
             int max = amount/coins[index];
-            int min = INT_MAX;
-            for(int x =0; x<=maxVal;x++){
+            int minVal = INT_MAX;
+            for(int x =0; x<=max;x++){
                 if(amount>= x*coins.at(index)){
                     int res = reccur(index+1,coins,amount - x*coins[index]);
                     if(res!=-1){
-                        min = min(min,res+x);
+                        minVal = min(minVal,res+x);
                     }
                 }
             }
-            if(min==INT_MAX){
-                min = -1;
+            if(minVal==INT_MAX){
+                minVal = -1;
             }
-            return min;
+            return minVal;
         }
         return -1;
     }
