@@ -1,3 +1,12 @@
+// Time Complexity : O(n*n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : No
+// Any problem you faced while coding this :
+// Unable to grasp dynamic intuition
+
+// Your code here along with comments explaining your approach
+
+
 class MinCoinChange {
     
     public int coinChange(int[] coins, int amount) {
