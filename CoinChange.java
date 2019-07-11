@@ -1,7 +1,7 @@
-// Time Complexity :O(n*n) --> beacuse of for loop
-// Space Complexity :O(n)  ---> because of Hashmap
-// Did this code successfully run on Leetcode : No
-// Any problem you faced while coding this : Didn'' understand how to approach for different test cases
+// Time Complexity :O(M*N) --> M is number of coins and N is amount
+// Space Complexity :O(M*N)  ---> because of 2d array
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No.
 
 
 // Your code here along with comments explaining your approach
