@@ -1,9 +1,9 @@
 package day7;
 
 
-//Time Complexity :
-//Space Complexity :
-//Did this code successfully run on Leetcode :
+//Time Complexity : O(n*n) nums.length+1 * amount+1 dimension array travesal time is used.  
+//Space Complexity : O(n)  nums.length+1 * amount+1 dimension array size is used.
+//Did this code successfully run on Leetcode 
 //Any problem you faced while coding this :
 
 
