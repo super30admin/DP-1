@@ -1,11 +1,14 @@
 class Solution {
     public int rob(int[] nums) {
-        int length=nums.length-1;
-        int count1=0,count2=0;
-        for(int i=0;i<=length;i+=2){count1+=nums[i];}
-        for(int i=1;i<=length;i+=2){count2+=nums[i];}
-        if(count1>count2){return count1;}
-        return count2;
+        if (nums.length==0){return 0;}
+        if (nums.length==1){return nums[0];}
+        if (nums.length==2){return Math.max(nums[0],nums[1]);}
+        
+        for(int i=2;i<nums.length;i++)
+        {
+            nums[i]+=((i>2)?(Math.max(nums[i-2],nums[i-3])):nums[i-2]);
+        }
+        return Math.max(nums[nums.length-1],nums[nums.length-2]);
         
     }
 }
