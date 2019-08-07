@@ -1,0 +1,10 @@
+I currently have difficulty in coding out dp problems. Will update the code after the class
+Howvever for the coin change problem , I have an approach in mind that I think should work.
+
+There are 2 cases for each coin. Either that coin will be included in the sum that we have to achieve or that coin will not be included.
+
+coin(amount , n) -> let this denote the amount that can be achieved using  n coins.
+                = coin(amount- j, n) + 1 if ith coin with value j is included
+                or coin(amount, n-1) if ith coin is not included 
+                
+ 
