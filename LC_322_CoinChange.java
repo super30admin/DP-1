@@ -1,4 +1,4 @@
-// Time Complexity : O(n^2) - Since it has nested for loops
+// Time Complexity : O(A*n) - Since it has nested for loops(coins & amount)
 // Space Complexity :O(n+1) - Made use of dummy array 
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Array out of bound of exception because of dp[i-coins[j]] condition
