@@ -27,8 +27,8 @@ public class CoinChange {
 		int[][] arr = new int[coins.length+1][amount+1];
 		for(int i=0; i<arr.length; i++) {
 			for(int j=0; j<arr[0].length; j++) {
-				if(i==0) arr[0][j] = 9999;
-				else if(j==0) arr[i][0] = 0;
+				if(i==0) arr[i][j] = 9999;
+				else if(j==0) arr[i][j] = 0;
 				//For those denominations greater than the amount, the number of coins that make up the amount will be equal to that of the previous denomination 
 				else if(coins[i-1]>j) {
 					arr[i][j] = arr[i-1][j];
