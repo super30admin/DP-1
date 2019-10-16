@@ -1,0 +1,24 @@
+/*
+Time Complexity: O(n)
+Did not run in leetcode: 39 / 69 test cases passed.
+Approach: The only solution i could think of was that once check odd positions and once check even positions.
+I understand that this is totaly incorrect, but i could not come up with an algorithm to accomodate best houses.
+
+*/
+
+class Solution {
+    public int rob(int[] nums) {
+        int sum=0;
+        int sum1=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            if(i%2==0)
+                sum+=nums[i];
+            else sum1+=nums[i];
+        }
+        
+        if(sum1>sum)
+            return sum1;
+        else return sum;
+    }
+}
