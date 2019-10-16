@@ -4,16 +4,31 @@ class Solution:
         total_coins = 0
         difference = 0
         n = len(coins)
+        if amount == 0:
+            return 0        
         if n==0:
             return -1
-        elif n==1 and coins[0] < amount:
-            return -1            
-        highval_coin = max(coins)        
-        for i in range(1,n):
-            difference = max(highval_coin*i, amount) - min(highval_coin*i, amount)
-            if difference in coins:
-                total_coins = i + 1
-                break
+        elif sum(coins) == amount:
+            return n
+        elif n == 1:
+            for i in range(1,5):
+                difference = amount - coins[0]*i
+                if difference > 0 and difference in coins:
+                    return i + 1
+                elif difference > 0 and difference not in coins:
+                    return -1
+                else:
+                    return -1
+        else:
+            highval_coin = max(coins)        
+            for i in range(1,5):
+                difference = amount - highval_coin*i
+                if difference > 0 and difference in coins:
+                    return i + 1
+                elif difference > 0 and difference not in coins:
+                    continue
+                else:
+                    return -1
         return total_coins
         
         
