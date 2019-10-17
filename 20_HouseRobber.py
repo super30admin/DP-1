@@ -23,3 +23,14 @@ def robbing(nums):
     return max(sum_even, sum_odd)
 
 print(robbing([1,2,3,1]))
+
+# optimal solution
+# saving only previous row values
+# time O(N), space- O(1)
+def robber(nums):
+    notchosen = chosen = 0
+    for num in nums:
+        temp = chosen # This represents the nums[i-2]th value
+        chosen = notchosen+num # This represents the nums[i-1]th value
+        notchosen = max(temp, notchosen) # Here we just plug into the formula
+    return max(notchosen,chosen)
