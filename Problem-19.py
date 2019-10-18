@@ -51,7 +51,7 @@ class Solution(object):
         return self.helper(coins,amount,0,0)
     
     def helper(self,coins,amount,i,min_num):
-        for i in range(len(coins)):
+        
         
         #base cases
             if (amount<0 or i> len(coins)):
