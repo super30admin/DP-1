@@ -10,7 +10,7 @@ class Solution(object):
         return self.helper(nums,0,0)
         
     def helper(self,nums,i,max_amt):
-        for i in range(len(nums)):
+        
             
             #edge case
             if (i>=len(nums)) :
