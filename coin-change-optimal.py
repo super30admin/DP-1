@@ -1,5 +1,7 @@
-#I am getting index out of range error while running the dp solution on Github. 
-#Also,I would like to know best way to initialize 2d array in python. 
+#This solution gives wrong answer
+#Input- [1,2,5] 11
+#Output- 4
+#Expected- 3
 
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
