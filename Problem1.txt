@@ -1,0 +1,17 @@
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int min =0;
+        return(helper(coins,0,min,amount));
+    }
+    private int helper(int[] coins,int i,int min,int amount){
+        if(amount==0)   return min;
+        if(amount <0 || i>=coins.length || min>99999)    return -1;   
+        //recursion Logic  
+        int Case1 = helper(coins,i,min+1,amount-coins[i]);
+        int Case2 = helper(coins,i+1,min,amount);
+        if(Case1 ==-1)  return Case2;
+        else if(Case2 ==-1) return Case1;
+        else return Math.min(Case1,Case2);
+        //return min;
+    }
+}
