@@ -24,3 +24,28 @@ class Solution {
 }
 
 // Dynamic Programming
+// Time Complexity - O(m*n) where m is the amount and n is the number of denominations; time used for creating the dp array of size n*m
+// Space Complexity - O(m*n) where m is the amount and n is the number of denominations;  this space is the dp array space that we created.
+  // Leet Code shows space complexity of  O(m) -- what is the correct one?
+// This solution worked on Leetcode
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int[][] dp = new int[coins.length+1][amount+1];
+        int n = dp.length;
+        int m = dp[0].length;
+        for(int i=0;i<n;i++)
+            dp[i][0] =0;
+        for(int i=0;i<m;i++)
+            dp[0][i] = 99999;
+        for(int i=1;i<n;i++){
+            for(int j=1;j<m;j++){
+                if(j<coins[i-1])
+                    dp[i][j] = dp[i-1][j];
+                else
+                    dp[i][j] = Math.min(dp[i][j-coins[i-1]]+1,dp[i-1][j]);
+            }
+        }
+        if(dp[n-1][m-1] >=99999)    return -1;
+        return dp[n-1][m-1];
+    }
+}
