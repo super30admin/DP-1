@@ -1,7 +1,7 @@
-# Time Complexity : O(2^k) k:target
-# Space Complexity : O(2^k) k:target
-# Did this code successfully run on Leetcode : No
-# Any problem you faced while coding this : Not able to come up with optimized solution
+# Time Complexity : Brute Force: O(S^n) S:target, DP: O(n*S)
+# Space Complexity : Brute Force: O(S^n) S:target, DP: O(n*S)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : -
 
 class Solution(object):
     def __helper(self, coins, numberOfCoins, remainingAmount, index):
@@ -33,7 +33,35 @@ class Solution(object):
         return self.__helper(sortedCoins, 0, amount, 0)
         
 
+class Solution2(object):
+    def coinChange(self, coins, amount):
+        """
+        :type coins: List[int]
+        :type amount: int
+        :rtype: int
+        """
+        dp = [[None for i in range(amount + 1)] for j in range(len(coins) + 1)]
+        rows = len(dp)
+        cols = len(dp[0])
+        for i in range(rows):
+            dp[i][0] = 0
+        for i in range(1,cols):
+            dp[0][i] = float('inf')
+        
+        for i in range(1, rows):
+            for j in range(1, cols):
+                if j < coins[i-1]:
+                    dp[i][j] = dp[i-1][j]
+                else:
+                    dp[i][j] = min(dp[i][j-coins[i-1]]+1, dp[i-1][j])
+        result = dp[rows-1][cols-1]
+        if result == float('inf'):
+            result = -1
+        return result
+
 coins = [1,2,5]
 amount = 11
 obj = Solution()
+obj2 = Solution2()
 print(obj.coinChange(coins, amount))
+print(obj2.coinChange(coins, amount))
