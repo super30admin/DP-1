@@ -22,7 +22,7 @@ class Solution {
 // Dynamic Programing using array
 // Time Complexity  - O(n)
 //Space Complexity - O(n)
-// This solution worked on Leecode
+// This solution worked on Leetcode
 
 class Solution {
     public int rob(int[] nums) {
