@@ -1,3 +1,7 @@
+// Time Complexity : o(2^n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Description: This is solved using recursive approach
 class RobRecursive {
     public int rob(int[] nums) {
         return helper (nums,0,0);

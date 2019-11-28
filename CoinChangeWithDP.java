@@ -1,3 +1,8 @@
+// Time Complexity : o(S^n), where S is the amount
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Description: This is solved using Dynamic programming approach
+
 class CoinChangeWithDP {
     public int coinChange(int[] coins, int amount) {
            int[][] dp = new int[coins.length+1][amount+1];

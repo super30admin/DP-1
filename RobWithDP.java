@@ -1,3 +1,7 @@
+// Time complexity: O(3*n)
+// Space Complexity: O(n)
+// Solved on LeetCode: Yes
+// Description: This is solved using DP appraoch
 class RobWithDP {
     public int rob(int[] nums) {
         if (nums.length ==0 || nums == null) return 0;
