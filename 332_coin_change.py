@@ -73,6 +73,10 @@ class Solution:
         # return OPT[-1][-1]
 
     def coin_change_brute_force(self, coins: List[int], amount: int) -> int:
+        """
+            // Time Complexity : Exponential
+            // Space Complexity : Height of tree
+        """
         return self.helper(coins, amount, 0, 0)
 
     def helper(self, coins: List[int], amount: int, index: int, noOfCoins: int):
