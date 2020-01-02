@@ -2,6 +2,17 @@ package com.exmaple.problems;
 
 import java.util.Arrays;
 
+//Time Complexity : O(2^N) for Recursive Approach O(N) for DP 
+//Space Complexity : Size of Recursive Stack  O(N) for DP
+//Did this code successfully run on Leetcode : Yes
+//Any problem you faced while coding this : No
+
+//Your code here along with comments explaining your approach
+
+/*
+We have used DP to cache the result of recursive apporach to avoid re-computation 
+*/
+
 public class CoinChange {
 	public static boolean isDP = false;
 
