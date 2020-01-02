@@ -72,9 +72,39 @@ class Solution:
         #     return -1
         # return OPT[-1][-1]
 
+    def coin_change_brute_force(self, coins: List[int], amount: int) -> int:
+        return self.helper(coins, amount, 0, 0)
+
+    def helper(self, coins: List[int], amount: int, index: int, noOfCoins: int):
+
+        # Base case
+        # Not possible to make the change
+        if amount < 0 or index >= len(coins):
+            return -1
+        print(f'{(amount, coins[index:])}')
+        # Possible to make change with this coins
+        # This might or might not be the global minimum
+        # This is just the no of coins required to make change
+        # with these coins
+        if amount == 0:
+            return noOfCoins
+        # Case 1
+        # Choose a coin
+        case_1 = self.helper(coins, amount - coins[index], index, noOfCoins + 1)
+
+        # Case 2
+        # Dont choose a coin
+        case_2 = self.helper(coins, amount, index + 1, noOfCoins)
+        if case_1 == -1:
+            return case_2
+        if case_2 == -1:
+            return case_1
+        return min(case_1, case_2)
+
 
 if __name__ == '__main__':
     h = Solution()
     print(h.coinChange([2, 7], 10))
     print(h.coinChange([2], 3))
-    print(h.coinChange([2147483647], 2))
+    print(h.coinChange([200], 2))
+    # print(h.coin_change_brute_force([1, 2, 5], 11))
