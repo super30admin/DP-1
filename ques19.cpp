@@ -1,4 +1,4 @@
-Time Complexity-O(n)
+Time Complexity-O(n*m) where 'm' is the size of the input vector and 'n' is the amount
 Space Complexity-O(n) where 'n' is the amount
 Did the code run on Leetcode? Yes
 
