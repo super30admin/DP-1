@@ -1,4 +1,4 @@
-// Time complexity O(coins*amount)
+// Time complexity O(coins*amount))
 // Space complexity O(coins*amount)
 class Solution {
     public int coinChange(int[] coins, int amount) {
