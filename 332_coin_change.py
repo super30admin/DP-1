@@ -75,7 +75,8 @@ class Solution:
     def coin_change_brute_force(self, coins: List[int], amount: int) -> int:
         """
             // Time Complexity : Exponential
-            // Space Complexity : Height of tree
+            // Space Complexity : O(n) 'n' is the maximum number of levels in
+                                the recursive tree
         """
         return self.helper(coins, amount, 0, 0)
 
