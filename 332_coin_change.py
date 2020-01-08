@@ -74,9 +74,9 @@ class Solution:
 
     def coin_change_brute_force(self, coins: List[int], amount: int) -> int:
         """
-            // Time Complexity : Exponential
-            // Space Complexity : O(n) 'n' is the maximum number of levels in
-                                the recursive tree
+            // Time Complexity : O(2^n) For each coin we have two choices
+            // Space Complexity : O(m/n)
+                    'm' is the amount and 'n' is the value of the least coin
         """
         return self.helper(coins, amount, 0, 0)
 
@@ -86,25 +86,31 @@ class Solution:
         # Not possible to make the change
         if amount < 0 or index >= len(coins):
             return -1
-        print(f'{(amount, coins[index:])}')
+        # print(f'{(amount, coins[index:])}')
         # Possible to make change with this coins
         # This might or might not be the global minimum
         # This is just the no of coins required to make change
         # with these coins
         if amount == 0:
             return noOfCoins
-        # Case 1
-        # Choose a coin
-        case_1 = self.helper(coins, amount - coins[index], index, noOfCoins + 1)
+        # if the value of the current coin is greater than the
+        # amount, we cannot choose this coin
+        # we skip and move ahead with the next coin
+        if coins[index] > amount:
+            return self.helper(coins, amount, index + 1, noOfCoins)
+        else:
+            # Case 1
+            # Choose a coin
+            case_1 = self.helper(coins, amount - coins[index], index, noOfCoins + 1)
 
-        # Case 2
-        # Dont choose a coin
-        case_2 = self.helper(coins, amount, index + 1, noOfCoins)
-        if case_1 == -1:
-            return case_2
-        if case_2 == -1:
-            return case_1
-        return min(case_1, case_2)
+            # Case 2
+            # Dont choose a coin
+            case_2 = self.helper(coins, amount, index + 1, noOfCoins)
+            if case_1 == -1:
+                return case_2
+            if case_2 == -1:
+                return case_1
+            return min(case_1, case_2)
 
 
 if __name__ == '__main__':
@@ -112,4 +118,6 @@ if __name__ == '__main__':
     print(h.coinChange([2, 7], 10))
     print(h.coinChange([2], 3))
     print(h.coinChange([200], 2))
-    # print(h.coin_change_brute_force([1, 2, 5], 11))
+    print(h.coin_change_brute_force([1, 5, 2], 11))
+    print(h.coin_change_brute_force([5, 1, 2], 7))
+    print(h.coin_change_brute_force([200, 100, 400], 249))
