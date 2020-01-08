@@ -1,7 +1,8 @@
 //Recursive Approach
 
-// Time Complexity : O(2^n) n- number of coin denominations
-// Space Complexity :
+// Time Complexity : O(2^(m*n)) n- number of coin denominations and m is the amount
+// Space Complexity : O(1) - if recursive stack is not considered.
+//If stack is considered, it is O(nm).
 // Did this code successfully run on Leetcode : TIME LIMIT EXCEEDED
 // Any problem you faced while coding this : NO
 
