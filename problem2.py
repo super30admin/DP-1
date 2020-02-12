@@ -10,16 +10,22 @@ all subproblems.
 class Solution:
 
     def coinChange(self, coins: List[int], amount: int) -> int:
-        return self.change(coins, len(coins), amount)
+        return self.change(coins, 0, amount, 0)
 
-    def change(self, coins: List[int], m: int, amount: int) -> int:
+    def change(self, coins: List[int], i: int, amount: int, count: int) -> int:
+        if amount < 0 or i > len(coins) - 1:
+            return -1
+
         if amount == 0:
-            return 1
+            return count
 
-        if amount < 0:
-            return 0;
+        case2 = self.change(coins, i + 1, amount, count)
+        case1 = self.change(coins, i, amount - coins[i], count + 1)
 
-        if amount <= 0 and amount >= 1:
-            return 0
+        if case1 == -1:
+            return case2
 
-        return self.change(coins, m - 1, amount) + self.change(coins, m, amount - coins[m - 1]);
+        elif case2 == -1:
+            return case1
+
+        return min(case1, case2)
