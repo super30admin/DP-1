@@ -1,33 +1,43 @@
-// Time Complexity : O(n)
-// Space Complexity : O(n)
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this :
-    # Was not able to solve this problem directly. I have to take hints from discussion. 
-
-
-// Your code here along with comments explaining your approach
-
+# Time Complexity: O (n)(Where n is length of list) 
+# Space Complexity: O(n)
+# Did this code successfully run on Leetcode : Yes
+# Three line explanation of solution in plain english:
+# - This can be solved in two ways recursivly or dynamicly.
+# - In dynamic solution take dp array of input size. At every house take max from either previous house or current house plus second previous house.
+# - In recursive solution make function to take index of current house and total value. We will call this function recursively for next house or current house plus second next house. Take max of it and return it.
+    
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        # Dynamic Solution
         l = len(nums)
-        # Checking two cases here first if input nums is empty than return 0 and if there is only one value return that value.
+#       Cover edge cases
         if not l:
             return 0
         if l == 1:
             return nums[0]
-        
-        # Initialize another array of same size as input but with zero value
+#       initialize arr for storign dp values.
         arr = [0] * l
         
-        # For 0th index we have only one option value at 0th index itself. 
+#       Setup value of first two element manually.
         arr[0] = nums[0]
-        # For 1st index we have to choose max value from first two values.
         arr[1] = max(nums[0], nums[1])
         
-        # From second index we have to choose between sum of current number and 2 index past possible max value or one index behind possible max value. We have to choose max value from this two. we can dynamically choose max value this way.
-        # If we choose current house than we have to skip last house and combine it with robbery till last to last house or we can choose best robbery value till last house. we choose max from it.
+#       Run for loop from third element. Compare the previous sum with current sum plus previous previous sum and chose max from it.
         for i in range(2, l):
             arr[i] = max(nums[i] + arr[i-2], arr[i-1])
             
-        # Returning last value of array which is max possible robbery
         return arr[-1]
+
+# Recursive
+#         data = [-1] * len(nums)
+#         return self.helper(nums, 0, data)
+        
+#     def helper(self, nums, ind, data):
+#         if ind >= len(nums):
+#             return 0
+#         if data[ind] != -1:
+#             return data[ind]
+        
+#         result = max(nums[ind] + self.helper(nums, ind + 2, data), self.helper(nums, ind +1, data))
+#         data[ind] = result
+#         return result
