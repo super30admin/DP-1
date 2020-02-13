@@ -9,23 +9,29 @@ all subproblems.
 
 class Solution:
 
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        return self.change(coins, 0, amount, 0)
-
-    def change(self, coins: List[int], i: int, amount: int, count: int) -> int:
-        if amount < 0 or i > len(coins) - 1:
+    def coinChange(self, coins: List[int],  amount: int) -> int:
+        if coins == None or len(coins) == 0:
             return -1
 
-        if amount == 0:
-            return count
+        m = len(coins)
+        n = amount
 
-        case2 = self.change(coins, i + 1, amount, count)
-        case1 = self.change(coins, i, amount - coins[i], count + 1)
+        dp = [[None] * (n + 1) for i in range(0, m + 1)]
 
-        if case1 == -1:
-            return case2
+        for i in range(1, n + 1):
+            dp[0][i] = 9999
 
-        elif case2 == -1:
-            return case1
+        for i in range(0, m + 1):
+            dp[i][0] = 0
 
-        return min(case1, case2)
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                if j < coins[i - 1]:
+                    dp[i][j] = dp[i - 1][j]
+                else:
+                    dp[i][j] = min(dp[i - 1][j], dp[i][j - coins[i - 1]] + 1)
+
+        if dp[m][n] == 9999:
+            return -1
+        else:
+            return dp[m][n]
