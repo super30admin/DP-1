@@ -34,6 +34,32 @@ Did this code successfully run on Leetcode : Yes
 Any problem you faced while coding this : initially felt a little difficult to deal with 2D array, need to practice more.
 
 
+==================================================================================================
+  
+Problem 2: House Robber
 
+
+BruteForce :: Recursive
+
+Only two cases we have either choose a house or not choose a house
+//        int choosen =  helper(nums, i+2, sum + nums[i]);
+       
+//        int notChossen =  helper(nums, i+1, sum); 
+  
+//        return Math.max(choosen, notChossen);
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+Did this code successfully run on Leetcode : Yes
+
+
+Optimal DP solution:
+            dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1]);   --not chosen
+            dp[i][1] = dp[i-1][0] + nums[i];               -- chosen
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : No
 
 
