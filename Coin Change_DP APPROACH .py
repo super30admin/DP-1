@@ -2,7 +2,7 @@
 # DYNAMIC PROGRAMMING SOLUTION
 # Did problem run on Leetcode: yes 
 # Time Complexity: O(m * n), where m: no of rows in dp matrix and n: no of columns in dp matrix
-# Space Complexity: O(m * n), is the size of DP martix
+# Space Complexity: O(m * n), is the size of DP martix created
 
 class Solution:
     def coinChange(self, coins, amount):
