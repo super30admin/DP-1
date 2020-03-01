@@ -1,7 +1,7 @@
 
 # DYNAMIC PROGRAMMING SOLUTION
 
-# Time Complexity: O(m * n), => O(m) but n is small, where m: no of rows in dp matrix and n: no of columns in dp matrix
+# Time Complexity: O(m * n), => O(m) as n is small, where m: no of rows in dp matrix and n: no of columns in dp matrix
 # Space Complexity: O(m * n), is the size of DP martix
 # Did problem run on Leetcode: yes 
 
