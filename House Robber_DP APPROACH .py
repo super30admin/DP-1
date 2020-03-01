@@ -4,6 +4,7 @@
 # Time Complexity: O(m * n), => O(m) as n is small, where m: no of rows in dp matrix and n: no of columns in dp matrix
 # Space Complexity: O(m * n), is the size of DP martix
 # Did problem run on Leetcode: yes 
+# we can optimize the space to O(1) if we use two variables to track the amount instead of DP matrix
 
 class Solution:
     def rob(self, nums):
