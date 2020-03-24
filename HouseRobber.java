@@ -1,6 +1,6 @@
-// Time Complexity :(2^n) where is the array length
+// Time Complexity :O(n)
 // Space Complexity : O(n)
-// Did this code successfully run on Leetcode : Yes but time limit exceeded for extreme cases
+// Did this code successfully run on Leetcode : Yes 
 // Any problem you faced while coding this : No
 
 
@@ -9,25 +9,16 @@
 class HouseRobber
 {
     public int rob(int[] nums) {
-        return helper(nums,0,0);
-    }
-    private int helper(int[] nums,int index,int totalAmount)
-    {
-        //base
-        if(index>=nums.length)
-            return totalAmount;
-        
-        //case1
-        int chooseZero = helper(nums,index+1,totalAmount);
-        
-        //case2
-        int chooseOne = helper(nums,index+2,totalAmount+nums[index]);
-        
-        if(chooseZero==0) return chooseOne;
-        if(chooseOne==0) return chooseZero;
-        
-        return Math.max(chooseZero,chooseOne);
-        
+        //base case
+        if(nums.length==0)
+            return 0;
+       int [] dp = new int[nums.length+1];
+        dp[1]= nums[0];
+       for(int i = 2;i<dp.length;i++)
+       {
+           dp[i] = Math.max(dp[i-1],dp[i-2]+nums[i-1]);
+       }
+       return dp[nums.length];
     }
 
 }
