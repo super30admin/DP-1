@@ -1,0 +1,38 @@
+// Time Complexity :O(coins * (amount - each coin)) = O( coins* amount)
+// Space Complexity :O(amount)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        
+        //edge case if amount is less than 1 , then return 0
+        if (amount < 1) return 0;
+        
+        // dyanmic array intiliaze of amount + 1 size
+        int[] dp = new int[amount + 1]; 
+        
+        // fill the array with Integer.Max_value
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        
+        // intial as zero
+        dp[0] = 0;
+        
+        // iterating over all denominations
+        for (int coin : coins) {
+            //iterating from coin value to amount value 
+            // for the dp array the values at index < coin will remain same 
+            for (int i = coin; i <= amount; i++) {
+                
+                // update the array with min value of required coin,
+                // min of the  i - coin + 1 or dp[i] whichever is min
+                if (dp[i - coin] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+                }
+            }
+        }
+        
+        // if dp[amount] is integer.max_value then that amount change is not possible so return -1 else dp[amount]
+        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
+    }
+}
