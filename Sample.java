@@ -7,37 +7,22 @@
 // Your code here along with comments explaining your approach
 
 //Coin Change (donr on leetcode)
-class Solution {
-    
+class Solution {class Solution {
     public int coinChange(int[] coins, int amount) {
-     int count = 0;
-    IF(coins == null || coins.length==0)
-        return -1;
-        return helper(coins, amount, 0, count);
-    }
-    private int helper(coins, amount, index){
-        if(amount == 0){
-            
+        int[] dp = new int[amount+1];
+        Arrays.fill(dp, 99999);
+        dp[0] = 0;
+        
+        for(int i=1; i<=amount; i++){
+            for(int j=0; j<coins.length; j++){
+                if(coins[j]<=i){
+                    dp[i] = Math.min(dp[i], 1 + dp[i-coins[j]]);
+                }
+            }
         }
-        else if (anount < 0){
-            
-        }
-    //case 1 choose the coin
-        int choose = helper(coins,amopunt - coins[index], index, count+1);
-        
-    //case 2  dont choose the coin
-        int notchoose = helper(coins, amount, index+1,count);
-        
-        if(choose == -1) return notchoose;
-        else if (notchoose == -1) return choose;
-        return Math.min(choose,notchoose);
-        
-        
-        
-        
-        
-}
-}    
+        return dp[amount] == 99999 ? -1 : dp[amount];
+     }
+}  
 
 //House Robber -- Done on Leetcode
 // Time Complexity :  : time - O(no of houses) 
