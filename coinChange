@@ -1,7 +1,9 @@
 // Time Complexity :
 // Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Jaspinder mentioned in the for loop as dp[0].length and I did it as coins.length and j <=amount. Seems to be working
+I have confusion with dp[0].length and dp.length; hence used the above. 
+
 
 class Solution {
 	public int coinChange(int[] coins, int amount) {
