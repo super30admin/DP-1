@@ -1,0 +1,21 @@
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+
+class Solution {
+    func rob(_ nums: [Int]) -> Int {
+        if (nums.count == 1)
+        {
+            return nums[0]
+        }
+        var now = 0
+        var last = 0
+        for i in 0..<nums.count
+        {
+            var temp = last
+            last = now
+            now = max(now,nums[i] + temp)
+        }
+        return now
+    }
+}
