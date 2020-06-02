@@ -10,6 +10,7 @@
 
 class Solution {
     public int coinChange(int[] coins, int amount) {
+        Arrays.sort(coins); 
         int[] dp = new int[amount +1]; //+1 because zero based
         Arrays.fill(dp, amount +1);
         dp[0] = 0; //Initialize with 0 no. of coins to make sum 0(fewest coin)
@@ -17,6 +18,8 @@ class Solution {
             for(int j = 0; j< coins.length; j++){ // Iterate through coins for amount
                 if(coins[j] <= i){ //Check if the coins is less or equal to the amount
                     dp[i] = Math.min(dp[i], 1 + dp[i-coins[j]]); //Best coins to make sum
+                }else{
+                    break; // No need to go through bigger coins so break
                 }
             }
         }
