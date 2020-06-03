@@ -33,6 +33,8 @@ class Solution {
 }
 
 // Approach taught in class
+// Time Complexity :O(n m) n-length of the array coins. m- array created with length amount+1
+// Space Complexity :O(n m) 
 /*
 class Solution {
     public int coinChange(int[] coins, int amount) {
