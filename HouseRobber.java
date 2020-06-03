@@ -1,7 +1,7 @@
 // Time Complexity :O(n) n-length of the array
 // Space Complexity :O(1) 
 // Did this code successfully run on Leetcode :yes 
-// Any problem you faced while coding this :-
+// Any problem you faced while coding this : gets confusing at few cases
 class Solution {
 public int rob(int[] nums) {
      int curr=0;

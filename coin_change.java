@@ -1,7 +1,7 @@
 // Time Complexity :O(n m) n-length of the array coins. m- array created with length amount+1
 // Space Complexity :O(m) 
 // Did this code successfully run on Leetcode :yes 
-// Any problem you faced while coding this :-
+// Any problem you faced while coding this : understanding the bottom up approach
 class Solution {
     public int coinChange(int[] coins, int amount) {
      int dp[]=new int[amount+1]; // to solve sub problems first and use it later in the array we create an array with length amount+1
