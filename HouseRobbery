@@ -1,0 +1,35 @@
+class Solution {
+    // Time Complexity : 
+// Space Complexity :  
+// Did this code successfully run on Leetcode : Timelimit exceeding
+// Any problem you faced while coding this : 
+    
+    
+    public int rob(int[] nums) {
+        
+        if(nums == null || nums.length == 0) return 0;
+        //recursive function to find the all possible robbery with maintaining the max money.
+        return maxMoney(nums, 0,0);
+    }
+    
+    private int maxMoney(int[] nums, int index, int max){
+        
+        //BASE CASE
+        
+        //when array is out of index, we can't do any robbery --> stopping the calls and return the max current value.
+        if(index > (nums.length-1)) return max;
+        
+        //MAIN lOGIC 
+        
+        //case where robbery is not done
+        //so the amount max will not change
+        //so next house can be in space of robbery--> incrementing index +1   
+        int case1 = maxMoney(nums,index+1,max);
+        //case where the house is robbed
+        //so that max amount gets summed with current index house money
+        //the next house can't be robbed now --. incremeting index +2
+        int case2 = maxMoney(nums,index+2, max+nums[index]);
+        //always maintaining the max value 
+        return Math.max(case1,case2);
+    }
+}
