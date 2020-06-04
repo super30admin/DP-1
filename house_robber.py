@@ -30,3 +30,35 @@ class Solution:
             prev1 = max(prev2+i,prev1)
             prev2 = temp
         return prev1
+
+        """
+        Recursive approach - 2^n
+        Idea -
+        Base case - index = len of the list
+        Initial configuration - i=0
+        Two cases - rob or don't rob at each call
+        if rob, add the value to the rob_amount, move the index to i+2
+        if not rob, move the index to i+1
+        
+        """
+        #self.rob_amount = 0
+        #rob_amt_map = {}
+        def rec_rob(index,nums,rob_amount):
+            # if index in rob_amt_map:
+            #     return rob_amt_map[index]
+
+            if index > len(nums)-1:
+                return rob_amount
+            
+            choose_rob_amt = rec_rob(index+2,nums,rob_amount+nums[index]) 
+            dont_choose_rob_amt = rec_rob(index+1,nums,rob_amount)
+            
+            # choose_rob_amt = rob_amount + rec_rob(index+2,nums,nums[index])
+            # dont_choose_rob_amt = rec_rob(index+1,nums,rob_amount)
+            
+            max_rob_amt = max(choose_rob_amt,dont_choose_rob_amt)
+            #rob_amt_map[index] = max_rob_amt
+            
+            return max_rob_amt
+            
+        return rec_rob(0,nums,0)
