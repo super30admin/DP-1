@@ -22,3 +22,5 @@ class Solution:
         if results>=9999:
             return -1
         return result
+#time complexity is O(nm)
+#space is again O(nm)
