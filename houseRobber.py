@@ -1,4 +1,4 @@
-# All analysis is for the solution on line 24 and beyond.
+# All analysis is for the solution on line 25 and beyond.
 # Time Complexity : O(n), where n is the length of nums array.
 # Space Complexity : O(n), where n is length of nums array.
 # Did this code successfully run on Leetcode : Yes!
@@ -6,7 +6,7 @@
 
 # Your code here along with comments explaining your approach
 class Solution(object):
-    # approach 1 greedy, Time limit exceeded
+    # approach 1 Brute Force/greedy, Time limit exceeded
     def robGreedy(self, nums):
         if nums == None or len(nums) == 0:
             return 0

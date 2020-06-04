@@ -6,7 +6,7 @@
 
 # Your code here along with comments explaining your approach
 class Solution(object):
-    # approach 1 greedy, Time limit exceeded.
+    # approach 1 Brute Force/greedy, Time limit exceeded.
     def coinChangeGreedy(self, coins, amount):
         if len(coins) == 0:
             return 0
