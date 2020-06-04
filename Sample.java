@@ -1,8 +1,8 @@
 //house-robber
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
 
 
 // Your code here along with comments explaining your approach
@@ -25,10 +25,10 @@ class Solution {
 }
 
 //coin-change
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : 2^n * k where n is lengthof coins array and k is the amount
+// Space Complexity : o(n) stack space
+// Did this code successfully run on Leetcode : No
+// Any problem you faced while coding this : Time limit exceeded due to recursion
 
 
 // Your code here along with comments explaining your approach
@@ -63,10 +63,10 @@ class Solution {
     }
 }
 
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(n*m)
+// Space Complexity : O(n*m)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
 
 
 // Your code here along with comments explaining your approach
