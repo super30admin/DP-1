@@ -9,20 +9,75 @@
 
 class Solution {
     public int rob(int[] nums) {
-        int prevMax=0; // to store the prev we got
-        int currMax=0; // to store the curr sum we are getting
-
-        for(int i=0;i<nums.length;i++)
+       
+        int prev_skip=0;
+        int prev_taken=0;
+        
+        for(int i=0; i<nums.length; i++)
         {
-            int temp = prevMax; // swap the two values so that the next value is added to the non-adjacent one
-            prevMax = currMax;
-            currMax = temp;
-            currMax = Math.max(currMax+nums[i], prevMax); // add the value to currmax and check the max value between curr and prev
-            
+            int temp = prev_skip; // storing prev value when not choosed
+            prev_skip = Math.max(prev_skip, prev_taken); // when not choosing current value we have to take max from the prev skip and take
+            prev_taken = temp+nums[i]; // when choosing add prev value when prev skipped  and add current value
         }
-        return currMax; 
+        return Math.max(prev_skip,prev_taken);
     }
 }
+
+//recursion 
+// Time Complexity : O(2^n)
+// Space Complexity : O(n) 
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+class Solution {
+    public int rob(int[] nums) {
+       
+        return helper(nums, 0, 0);
+        
+    }
+    
+    private int helper(int[] nums, int index, int currmax)
+    {
+        //base
+        if(index>nums.length-1)
+            return currmax;
+        
+        //logic
+        int case0 = helper(nums, index+1, currmax); // not choosing the value
+        int case1 = helper(nums, index+2, currmax+nums[index]); // choosing the value
+        
+        return Math.max(case0,case1);
+    }
+}
+
+//dp solution
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+class Solution {
+    public int rob(int[] nums) {
+       
+       int dp[][] = new int[nums.length+1][2];
+       
+        dp[0][0] = 0; // intialzing dummy row
+        dp[0][1] = 0;
+        
+        int n = dp.length;
+        for(int i=1;i<n;i++)
+        {
+            //not choose
+            dp[i][0] = Math.max(dp[i-1][0],dp[i-1][1]); // taking max between the two values as when not chossing the current value, we need to consider them max sum till now
+            //choose
+            dp[i][1] = dp[i-1][0] + nums[i-1]; //if choosing then take the value from not choosing the prveious value and add the value of choosing the current one
+        }
+        
+        
+        return Math.max(dp[n-1][0], dp[n-1][1]); // returning max from the last row which has two cases of choosing and not choosing the last value
+    }
+}
+
 
 //coin-change
 // Time Complexity : 2^n * k where n is lengthof coins array and k is the amount
