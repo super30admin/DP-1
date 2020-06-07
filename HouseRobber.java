@@ -1,5 +1,5 @@
 //In this problem the Optimal solution takes about O(n) time where n is the number of house and space is constant O(1)
-
+//Bruteforce time complexity would be O(n^2) and still the space complexity if O(1)
 class Solution {
   public int rob(int[] nums) {
     if(nums.length == 0)
