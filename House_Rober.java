@@ -31,7 +31,13 @@ public class House_Rober {
         dp[0][1] = nums[0];
 
         for(int i=1;i<nums.length;i++){
+            //  if we are not choosing the perticular house then set current house maximum
+            // to the maximum availabel till date ( before current house which we are not robbin)
             dp[i][0] = Math.max(dp[i-1][0],dp[i-1][1]);
+            // if we are robbing perticular house then we could not have robbed previous house. 
+            // and we have maximum robbed amount for previous house had it not been robbed.
+            // so we will add that amount with current house amount to get maximum robbed amout till this
+            // current house
             dp[i][1] = dp[i-1][0] + nums[i];
         }
         return dp[nums.length][1];
