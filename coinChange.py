@@ -36,7 +36,7 @@ class Solution(object):
         if len(coins) == 0:
             return 0
 
-        dpArray = [[float('inf')] * (amount + 1)] * (len(coins)+1)
+        dpArray = [[float('inf') for _ in range((amount + 1))] for _ in range(len(coins) + 1)]
         for i in range(len(coins)+1): dpArray[i][0] = 0
         m = len(dpArray)
         n = len(dpArray[0])
@@ -48,7 +48,7 @@ class Solution(object):
                 else:
                     dpArray[i][j] = min(dpArray[i-1][j], dpArray[i][j-coins[i-1]] + 1)
 
-        result = dpArray[m-1][n-1]
+        result = dpArray[-1][-1]
         if result == float('inf'): return -1
         else: return result
 
