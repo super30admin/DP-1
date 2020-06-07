@@ -8,18 +8,49 @@
     Is worked on leetcode : NO Time Limit Exceeded
 
 
-
-
-
-*/
-
-public class House_Rober {
-    /*
+_______________________________________________________________________________________________
         Dp solution 
         we are mainting Dp [][] array for mainting the amount maximum robbed till date.
         time complexity : O(N)
         Space Complexity :O(N*2) = O(N)
         is worked on leetcode : YES
+
+____________________________________________________________________________________________________
+        DP constant space solution
+        time complexity :O(N)
+        space complexity : O(1)
+        is worked on leetcode : YES
+
+
+________________________________________________________________________________________________
+    */
+    
+
+
+
+
+public class House_Rober {
+    public int rob_recrusive_bruteforce(int[] nums) {
+        if (nums == null || nums.length ==0 ) return 0; 
+        return helper(nums,0,0);
+    }
+    
+    public int helper(int[] nums, int amt, int index){
+        
+        if (index >= nums.length ) return amt;
+        
+//          when you dontchoose it
+        int case1 = helper(nums, amt, index+1);
+        // when you choose the hourse then next you cant choose adjacent house so update index by 2
+
+        int case2 =  helper(nums, amt +  nums[index], index +2);
+        
+        return Math.max(case1, case2);
+        
+    }
+    
+    /*
+    Dp solution with O(N) space 
     */
         
     public int rob_dp(int []nums){
@@ -40,25 +71,25 @@ public class House_Rober {
             // current house
             dp[i][1] = dp[i-1][0] + nums[i];
         }
-        return dp[nums.length][1];
-    }
-    public int rob_recrusive_bruteforce(int[] nums) {
-        if (nums == null || nums.length ==0 ) return 0; 
-        return helper(nums,0,0);
+        return Math.max(dp[nums.length-1][0], dp[nums.length-1][1]);
     }
     
-    public int helper(int[] nums, int amt, int index){
-        
-        if (index >= nums.length ) return amt;
-        
-//          when you dontchoose it
-        int case1 = helper(nums, amt, index+1);
-        // when you choose the hourse then next you cant choose adjacent house so update index by 2
+    // lets improve our previous dp linear space solution to constant space
 
-        int case2 =  helper(nums, amt +  nums[index], index +2);
-        
-        return Math.max(case1, case2);
-        
+    public int rob_constant_space(int nums[]){
+        if (nums == null || nums.length == 0 ){
+            return 0;
+        }
+        // skip to store the maximum robbed amount if we are not choosing the house
+        int skip = 0;
+        // take to store the maximum robbed amount if we are  choosing the house to rob
+        int take = nums[0];
+        int temp;
+        for(int i=1;i<nums.length;i++){
+            temp = skip;
+            skip  = Math.max(temp,take);
+            take = temp +  nums[i];
+        }
+        return Math.max(take,skip);
     }
-    
 }
