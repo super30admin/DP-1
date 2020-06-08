@@ -1,4 +1,4 @@
-// This Optimal Solution takes about O(nm + m) complexity where n is the number of columns and m is amount.
+// This Optimal Solution takes about O(nm + m) complexity where n is the number of coins + 1 and m is amount + 1.
 //The space complexity of this problem is O(nm)
 
 class Solution {
