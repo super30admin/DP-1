@@ -1,3 +1,10 @@
+/**
+Time complexity : O(n*m) n= no of elements in coins m = amount
+Space complexity : O(n) n = new dp array of n elements
+Did it run on Leetcode : yes
+ */
+
+
 class Solution {
     public int coinChange(int[] coins, int amount) {
         if(coins.length<1 || coins == null){
