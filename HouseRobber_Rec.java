@@ -1,6 +1,6 @@
 // Time Complexity : O(2^n) --> where is the length of array
 // Space Complexity : O(n)
-// Did this code successfully run on Leetcode : Yes
+// Did this code successfully run on Leetcode (198): Yes
 // Any problem you faced while coding this : No
 
 // Explaination: In this 'House Robber' problem, we are recursively iterating over each possibility to get the maximum amount of robbing the house. In each iteration we have 2 choices i.e. (1) chhose to rob the house and (2) not to rob the house. If we consider choice 1 then the amount will get increased by the particular stashed amount in the house and the index will get increase by 2 as no adjacent house can be robbed. And if we consider choice 2 then the amount will remain the same but the index is increased by 1. Going with this recurrsion approach, there will be multiple similar sub-cases that we will have to compute each and every time and so this is not a good approach to solve this kind of problems. Hence, its time complexity will be exponential.
