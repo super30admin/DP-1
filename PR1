@@ -1,0 +1,65 @@
+// Time Complexity : O(m*(2^n)) where m is the amount and n is the number of coins.
+// Space Complexity : O(m+n)- stack space where m is the amount and n is the number of coins.
+// Did this code successfully run on Leetcode : No
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach: Recursive approach. Traverse through all the valid paths and return the min of all the valid paths.
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        //edge case.
+        if(coins==null || coins.length==0) return 0;
+        return helper(coins,amount,0,0);
+    }
+    
+    public int helper(int[] coins,int amount,int index, int min){
+        //base
+        if(amount==0) return min;
+        if(amount<0 || index==coins.length) return -1;
+        //logic
+        //choose a coin
+        int case1 = helper(coins,amount-coins[index],index,min+1);
+        //don't choose a coin
+        int case2=helper(coins,amount,index+1,min);
+        if(case1==-1) return case2;
+        if(case2==-1) return case1;
+        return Math.min(case1,case2);
+        
+    }
+}
+// Time Complexity : O(m*n)- where m is the amount and n is the number of coins.
+// Space Complexity :O(m*n)- where m is the amount and n is the number of coins. - the table space
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes, Initially I had trouble understanding the dp approach.
+// Your code here along with comments explaining your approach: The approach is simple.We get the minimum at each point if we are choosing it from the column no-coin denomination or if we do not choose it we get it from the row above it.We then return the min of both these values.Dp approach. 
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        //edge
+        if(coins==null || coins.length==0) return 0; 
+        int[][] dp=new int[coins.length+1][amount+1];
+        for(int i=0;i<dp.length;i++){
+            dp[i][0]=0
+;        }
+        for(int i=1;i<dp[0].length;i++){
+             dp[0][i]=9999;
+        }
+        for(int i=1;i<dp.length;i++){
+            for(int j=1;j<dp[0].length;j++){
+                if(j<coins[i-1]){
+                   dp[i][j]=dp[i-1][j]; 
+                }
+                else{
+                    int c=coins[i-1];
+                    dp[i][j]=Math.min(dp[i-1][j],dp[i][j-c]+1);
+                }
+            }
+        }
+        
+        int result= dp[dp.length-1][dp[0].length-1];
+        if(result<999){
+            return result;
+        }
+        else{
+            return -1;
+        }
+    }
+}
