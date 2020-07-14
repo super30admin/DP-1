@@ -1,0 +1,68 @@
+
+// Time Complexity : O(n) - where n is the number of elements in the array
+// Space Complexity : O(n) 
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach: Using a dp approach we store the profit made at each house either by choosing it or not choosing it.
+class Solution {
+    public int rob(int[] nums) {
+        if(nums==null || nums.length==0) return 0;
+        int[][] dp=new int[nums.length][2];
+        dp[0][1]=nums[0];
+        for(int i=1;i<dp.length;i++){
+             dp[i][0]=Math.max(dp[i-1][0],dp[i-1][1]);
+             dp[i][1]=dp[i-1][0]+nums[i];
+        }
+        return Math.max(dp[dp.length-1][0],dp[dp.length-1][1]);
+    }
+    
+}
+// Time Complexity : O(n) where n is the number of elements in the array
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach: My approach is simple. We use the dp approach and always keep a track of the previous row choices only.
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums==null || nums.length==0) return 0;
+        int skip=0;int take=0;
+        for(int i=0;i<nums.length;i++){
+             int temp=skip;
+             skip=Math.max(take,skip);
+             take=temp+nums[i];
+        }
+        return Math.max(skip,take);
+    }
+    
+}
+// Time Complexity : O(2^n)
+// Space Complexity : O(n/2)->O(n)- every successful path will have atleast half the number of elements in the array.
+// Did this code successfully run on Leetcode : No. For large values, it gives a time limit exceeded error
+
+// Any problem you faced while coding this : Yes, it was a little difficult to visualize recursion, in the beginning.
+
+
+// Your code here along with comments explaining your approach: Explore all the paths and once we reach the last index+1 we return the amount and the max value of amount is given out.
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums==null || nums.length==0) return 0;
+         return helper(nums,0,0);
+    }
+    public int helper(int[] nums,int amount,int index){
+        //base
+        if(index>=nums.length) return amount;
+        //logic
+        //choose
+        int case1=helper(nums,amount+nums[index],index+2);
+        //don't choose
+        int case2=helper(nums,amount,index+1);
+        //return value
+        return Math.max(case1,case2);
+    }
+    
+}
+
