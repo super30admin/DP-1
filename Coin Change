@@ -28,12 +28,12 @@ class Solution:
             return currentnumber_ofcoins
         
         ### Case 1:Including the Current Coin
-        Incl_res=helperChange(coins , reamining_amount-coins[coin_index],
-                              coin_index--1,currentnumber_of_coins_used+1) 
+        Incl_res=self.helper(coins ,remaining_amount-coins[coin_index],
+                              coin_index-1,currentnumber_ofcoins_used+1) 
         
         ### case 2: Excluding the current Coin
-        Excl_res=self.helper(coins,reamining_amount,coin_index+1,
-                                         currentnumber_ofcoins_used
+        Excl_res=self.helper(coins,remaining_amount,coin_index+1,
+                                         currentnumber_ofcoins_used)
         
         if (Incl_res==-1):
             return Excl_res
@@ -41,5 +41,4 @@ class Solution:
             return Incl_res
         else:
             return min(Incl_res,Excl_res)
- 
             
