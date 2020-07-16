@@ -1,5 +1,5 @@
 /* Time complexity: O(Tn); where T is the target and n is the number of elements
-Space complexity: O(n)
+Space complexity: O(n*n)
 
 1. Using dynamic programming to solve the problem of using different denominations of coins to add upto a target.
 2. A matrix is used to store the different possible output for intermediate targte values.
