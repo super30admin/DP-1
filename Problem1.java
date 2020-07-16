@@ -12,7 +12,7 @@
 // Space complexity: O(T/M)
 //      T: Target Amount
 //      M: Minimum of array i.e. nums
-class BruteForce {
+class Problem1BruteForce {
 
     /** compute the fewest number of coins to make up the amount */
     public int coinChange(int[] coins, int amount) {
@@ -66,7 +66,7 @@ class BruteForce {
 // Space complexity: O(T*n)
 //      T: Target Amount
 //      n: number of coins
-class DP1 {
+class Problem1DP1 {
 
     /** find minimum coins to make up the amount*/
     public int coinChange(int[] coins, int amount) {
@@ -119,7 +119,7 @@ class DP1 {
 //      n: number of coins
 // Space complexity: O(T)
 //      T: Target Amount
-class Problem1 {
+class Problem1DP2 {
 
    /** find minimum coins to make up the amount*/
    public int coinChange(int[] coins, int amount) {
