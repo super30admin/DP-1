@@ -26,3 +26,19 @@ class Solution {
         return Math.max(dp[nums.length][0], dp[nums.length][1]);
     }
 }
+
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        int prev_0 = 0;
+        int prev_1 = nums[0];
+        int maxAmount = prev_1;
+        for(int i = 1; i < nums.length; i++){
+            int temp = prev_0;
+            prev_0 = prev_1;
+            prev_1 = Math.max(temp+nums[i], prev_1);
+        }
+        return prev_1;
+    }    
+}
