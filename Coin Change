@@ -1,0 +1,64 @@
+Approach 1 : Imagining a tree based structure by including & excluding the coins.In this Approach i just tried to see if i can 
+reach the sum by including the current coin
+Time Complexity : O(2^(T/min(Coins)) = O(2^n) .... T - Sum required  
+Space Complexity : It is a recursive call stack which is ntg but the biggest branch. O(T/min(Coins)) 
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        if amount==0:
+            return 1
+         Incl_res=0
+        
+        ### Including the Current Coin
+        for i in range(len(coins)):
+            Incl_res+=self.coinChange(coins , amount - coins[i])
+       
+        return Incl_res
+ 
+ Approach 2: Classroom Approach with recursive call imagining a tree strcuture
+ class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        return self.helper(coins,amount,0,0)
+        
+    def helper(self,coins:List[int],remaining_amount,
+              coin_index,currentnumber_ofcoins_used:int):  ## Recursion Function
+        
+        if (remaining_amount <0 )or (coin_index>len(coins)-1):
+            return -1
+        if remaining_amount==0: 
+            return currentnumber_ofcoins_used
+        
+        ### Case 1:Including the Current Coin
+        Incl_res=self.helper(coins ,remaining_amount-coins[coin_index],
+                              coin_index,currentnumber_ofcoins_used+1) 
+        
+        ### case 2: Excluding the current Coin
+        Excl_res=self.helper(coins,remaining_amount,coin_index+1,
+                                         currentnumber_ofcoins_used)
+        
+        if (Incl_res==-1):
+            return Excl_res
+        elif (Excl_res==-1):
+            return Incl_res
+        else:
+            return min(Incl_res,Excl_res)
+            
+            
+   Approach 3 : DP
+   Time Complexity :T - Target , n no of coins . O(T*n)
+   Space Coplexity : O(n)
+   
+   class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        ### Dp Matrix/1D Array of length Amount + 1
+        dp= [float('+inf') for i in range(amount+1)]
+        dp[0]=0
+        for coin in coins: ### Iterate through DP array everytime and update the values
+            for current_amount in range(1,amount+1):
+                if coin <= current_amount:
+                    dp[current_amount]=min(dp[current_amount] ,
+                                           1+dp[current_amount-coin])
+        if dp[amount] != float("inf") :
+            return dp[amount]
+        else:
+            return -1
+            
