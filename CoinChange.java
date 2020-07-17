@@ -1,47 +1,44 @@
-// Time Complexity : O(N^N), N being number of coins
-// Space Complexity : O(1), only constant value.
-// Did this code successfully run on Leetcode : No, reached TLE. Will submit the updated code after the class.
-// Any problem you faced while coding this : Could come up with recursive approach but not the one with dp.
+// Time Complexity : O(T*N), N is number of coins and T is Target Amount
+// Space Complexity : O(T*N)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach
-// I will need to find all combinations of coins that totals to "amount". After find one combination I
-// can count the coins, if the count is minimum that any other combinations of coins, that is the answer.
-// I can incrementing the count if it is valid amount, i.e subtracting the coin from  amount is not less than zero.
-// If the amount reaches zero, that means we have found one valid combination of coins.
-// If the amount goes below zero, we know that it is invalid combination of coins and these coins will not sum up to amount.
-// Then I skip that combination and continue to next combination.
+// The possible target values that can happen is from 0 to T amount. We can count the minimum coins
+// for any target value before T and using that subproblem I can compute minimum number of coins for T.
+// For calculating min number of coins for T, we observe that, it is minimum from the number of coins
+// if I don't consider a coin I and the number of coins to find (T-I) amount + 1 coin.
 
 public class CoinChange {
-    public int coinChange(int[] coins, int amount) {
+    public static void main(String[] args) {
+        System.out.println(coinChange(new int[]{1, 2, 5}, 11));
+    }
+
+    public static int coinChange(int[] coins, int amount) {
         if (amount == 0) return 0;
-        if (coins.length == 0) return 0;
+        int len = coins.length;
+        if (len == 0) return 0;
 
-        int[] result = new int[1];
-        int[] cointCount = new int[1];
-        result[0] = Integer.MAX_VALUE;
-        getCoinChange(coins, cointCount, 0, amount, result);
+        int[][] memo = new int[coins.length + 1][amount + 1];
+        for (int i = 1; i < memo[0].length; i++) {
+            memo[0][i] = Integer.MAX_VALUE - 1;
+        }
+        /*By default Oth column will have value 0, so no need to initialize*/
 
-        return result[0] == Integer.MAX_VALUE ? -1 : result[0];
-    }
-
-    public void getCoinChange(int[] coins, int[] cointCount, int index, int amount, int[] result) {
-        if (coins.length == index) return;
-
-        if (amount == 0) {
-            result[0] = Math.min(result[0], cointCount[0]);
-            return;
+        for (int i = 1; i <= memo.length - 1; i++) {
+            for (int j = 1; j <= memo[0].length - 1; j++) {
+                if (j < coins[i - 1]) {
+                    memo[i][j] = memo[i - 1][j];
+                } else {
+                    /*Take minimum of the previous element or take current_amount-current coin + 1*/
+                    memo[i][j] = Math.min(memo[i - 1][j], 1 + memo[i][j - coins[i - 1]]);
+                }
+            }
         }
 
-        for (int i = index; i < coins.length; i++) {
-            if (amount - coins[i] < 0)
-                continue;
-
-            cointCount[0] += 1;
-            getCoinChange(coins, cointCount, i, amount - coins[i], result);
-            cointCount[0] -= 1;
-
-        }
-
+        return memo[len][amount] + 1 == Integer.MAX_VALUE ? -1 : memo[len][amount];
     }
+
+
 }
