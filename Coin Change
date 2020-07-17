@@ -25,11 +25,11 @@ class Solution:
         if (remaining_amount <0 )or (coin_index>len(coins)-1):
             return -1
         if remaining_amount==0: 
-            return currentnumber_ofcoins
+            return currentnumber_ofcoins_used
         
         ### Case 1:Including the Current Coin
         Incl_res=self.helper(coins ,remaining_amount-coins[coin_index],
-                              coin_index-1,currentnumber_ofcoins_used+1) 
+                              coin_index,currentnumber_ofcoins_used+1) 
         
         ### case 2: Excluding the current Coin
         Excl_res=self.helper(coins,remaining_amount,coin_index+1,
