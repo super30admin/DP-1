@@ -93,10 +93,8 @@ class Solution:
         dp[0][1] = nums[0]
         
         for row in range(1, len(dp)):
-            for column in range(len(dp[0])):
-                
-                dp[row][0] = max(dp[row - 1][0], dp[row - 1][1])
-                dp[row][1] = nums[row] + dp[row - 1][0]
+            dp[row][0] = max(dp[row - 1][0], dp[row - 1][1])
+            dp[row][1] = nums[row] + dp[row - 1][0]
                 
         return max(dp[-1][0], dp[-1][1])
                 
