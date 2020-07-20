@@ -6,7 +6,7 @@
 # how many coins we need at least
 class Solution(object):
     #function to find the fewest amount
-    def coinChange(self, coins, amount):
+    def coinChange1(self, coins, amount):
         """
         :type coins: List[int]
         :type amount: int
@@ -19,4 +19,24 @@ class Solution(object):
                 if coins[j]<=i:
                     dp[i]=min(dp[i], dp[i-coins[j]]+1)
         return dp[amount] if dp[amount]<=amount else -1
-        
+    
+    #second function to get the fewest amount
+    def coinChange2(self, coins, amount):
+        return self.helper(coins, amount,0,0)
+    #helper recursive function for base solution
+    # Time = O(2^(n/min(coins)))
+    # Space = O(n) for recursive stack
+    def helper(self, coins, remaining, ind, currentcoins ):
+        if (remaining<0) or (ind > len(coins)-1):
+            return -1
+        if remaining==0:
+            return currentcoins
+        #dont take the coin
+        case1 = self.helper(coins, remaining, ind+1, currentcoins)
+        #take the coin
+        case2 = self.helper(coins, remaining - coins[ind], ind, currentcoins+1)
+        if case1==-1:
+            return case2
+        if case2==-1:
+            return case1
+        return min(case1, case2)
