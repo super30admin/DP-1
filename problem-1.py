@@ -1,15 +1,16 @@
 """
 Approach
 
-1. Fact : every number has a unique prime factorization, so we can map each alphabet a-z with a prime and find the product of primes represented by a strings.
-2. we will store this product as a key and the add the corresponding string to a list and add that list as value of the map
-3. This way each anagrams will have a unique product and they can be gropued in the map based on their product
+1. To find the minimum number of coin to reach the target, we can start with finding the minimum number of coins to to get the sum of 0,1, 2, 3 etc
+2. we can arrive at optimal solution by solving the sub-problems
+3. we create a Dp matrix with row header as coin denominations and column header as target sum from 0 to target amount
+4. at each step we either choose to use the new coin or we dont choose to use the coin, we take the minimum amount these value to arrive at the optimal solution
 
 """
 
 
-# Time Complexity : O(nk) where k is the avereage lenght of the strings and n is the no of input strings
-# Space Complexity : O(n)
+# Time Complexity : O(n*T) where n is the number of coins and T is the target amount 
+# Space Complexity : O(n*T) where n is the number of coins and T is the target amount
 # Did this code successfully run on Leetcode : yes	
 # Any problem you faced while coding this : No
 
@@ -17,16 +18,23 @@ Approach
 # Your code here along with comments explaining your approach
 
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        map = {}
-        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101]
-        for str in strs:
-            product = 1
-            for i in range(len(str)):
-                product = product *  primes[ord(str[i]) - ord('a')]
-            if product in map:
-                map[product].append(str)
-            else:
-                map[product] = []
-                map[product].append(str)
-        return map.values()
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        rows,columns = len(coins)+1, amount+1
+        dp = [[None for j in range(columns)] for i in range(rows) ]
+        
+        for i in range(rows):
+            dp[i][0]= 0
+        for j in range(1,columns,1):
+            dp[0][j]= 99999
+        for i in range(1, rows,1):
+            for j in range(1,columns,1):
+                if (j<coins[i-1]):
+                    dp[i][j]  = dp[i-1][j]
+                else:
+                    dp[i][j] = min(dp[i-1][j] ,1+dp[i][j-coins[i-1]])
+        output = dp[len(coins)][amount]
+        
+        if output>=99999:
+            return -1
+        else:
+            return output
