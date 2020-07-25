@@ -19,3 +19,22 @@ class Solution {
         return Math.max(dp[nums.length-1][0],dp[nums.length-1][1]);
     }
 }
+
+
+//Time complexity=O(N)
+//Space complexity=O(1)
+//We are taking variable to store values of previous choose and don't choose instead of creating the matrix to do the same.
+class Solution {
+    public int rob(int[] nums) {
+        if(nums.length==0)
+            return 0;
+        int nc=0,c=nums[0],prev=c;
+        for(int i=1;i<nums.length;i++)
+        {
+            c=nums[i]+nc;
+            nc=Math.max(prev,nc);
+            prev=c;
+        }
+        return Math.max(nc,c);
+    }
+}
