@@ -1,5 +1,10 @@
 class Solution:
     def rob(self, nums) -> int:
+        '''
+        time complexity = O(len(nums))
+        space complexity = O(len(nunms))
+        Working on LC = Yes
+        '''
         if len(nums) == 0:  # if no house is there to rob
             return 0
 
