@@ -1,7 +1,9 @@
-//// Time Complexity:
-//// Space Complexity:
-//// Did this code successfully run on Leetcode :
+//// Time Complexity: O(n^2) we are filling out a NxN array of amounts and coin denominations
+//// Space Complexity: O(n^2) we are creating a NxN array to hold answers
+//// Did this code successfully run on Leetcode : yes
 //// Any problem you faced while coding this :
+//  off-by-1 error when indexing into coin array
+//  catch returning infinity (answer not found basically)
 
 //// Your code here along with comments explaining your approach
 
