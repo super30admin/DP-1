@@ -1,20 +1,30 @@
 class CoinChange {
     public int coinChange(int[] coins, int amount) {
-        int count = 0;
-        int num = coins.length - 1;
-        Arrays.sort(coins);
+        int[][] dp = new int[coins.length+1][amount+1];
         
-        int temp = 0;
-        while(amount > 0){
-            temp = amount/coins[num];
-            if( temp > 0 ){
-                count += temp;
-                amount = amount%coins[num];
-            }
-            if(num == 0 && amount != 0)
-                return -1;
-            num--;
+       //Fill the first column with 0 since amount is 0 
+        for(int i = 0; i <= coins.length; i++){
+            dp[i][0] = 0;
         }
-        return count;
+        
+	// Filling the first row with infinity or Max-value since coin is 0
+        for(int i = 1; i <= amount; i++ ){
+            dp[0][i] = 99999;
+        }
+        
+	// Evaluating the matrix
+	// If less than coin denomination --> previous row values
+	// If not then Min( Upper cell, 1 + x steps backwards)
+        for(int i = 1; i <= coins.length; i++){
+            for(int j = 1; j <= amount; j++){
+                if(j < coins[i-1])
+                    dp[i][j] = dp[i-1][j];
+                else
+                    dp[i][j] = Math.min(dp[i-1][j], 1+dp[i][j-coins[i-1]]);
+            }
+        }
+        
+        return dp[coins.length][amount] >= 99999 ? -1 : dp[coins.length][amount];
+        
     }
 }
