@@ -1,5 +1,5 @@
 class coinChange {
-    public int coinChange(int[] coins, int amount) {
+    public int CoinChange(int[] coins, int amount) {
         int count = 0;
         int num = coins.length - 1;
         Arrays.sort(coins);
