@@ -1,5 +1,8 @@
 class CoinChange {
     public int coinChange(int[] coins, int amount) {
+        // Time Complexity : O(n^2) or O(nm)
+        //  Space Complexity : O(mn)
+
         int[][] dp = new int[coins.length+1][amount+1];
         
        //Fill the first column with 0 since amount is 0 
