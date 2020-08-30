@@ -1,5 +1,5 @@
 // Time Complexity : O(A * C) where A = Amount and C = no of coins
-// Space Complexity : O(A) where A = Amount 
+// Space Complexity : O(A * C * n) where A = Amount, C = coins, n = length of 2D array
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :
 
