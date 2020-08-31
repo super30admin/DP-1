@@ -18,7 +18,7 @@ You may assume that you have an infinite number of each kind of coin.
  */
 
 /*
- * Time Complexity: O (N^2) -> traversing through rows and columns in matrix
+ * Time Complexity: O (NxM) -> traversing through rows and columns in matrix
  * 
  * Space Complexity: O (NxM) -> N = No of rows, M = No of columns, not same
  * 
