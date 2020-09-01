@@ -1,5 +1,5 @@
 //T : O(M*N)
-//S : O(M*N)
+//S : O(M)
 class Solution {
 public:
     // Recursion solution
