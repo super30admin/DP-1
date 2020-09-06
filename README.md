@@ -8,11 +8,24 @@
 
 
 
-#### Repeatative Sub Problem.
+#### Repeatative Sub Problem. (Coin Change)
 
-![alt text](https://github.com/laxmikantbpandhare/Competitive_Coding_2/blob/master/images/repatative_sub_problem.jpeg)
+![alt text](https://github.com/laxmikantbpandhare/DP-1/blob/master/images/coin_repetated.jpg)
 
-#### Matrix Approach.
+#### Matrix Approach. (Coin Change)
 
-![alt text](https://github.com/laxmikantbpandhare/Competitive_Coding_2/blob/master/images/matrix_table.jpeg)
+![alt text](https://github.com/laxmikantbpandhare/DP-1/blob/master/images/coin_matrix.jpg)
+
+
+#### Repeatative Sub Problem. (House Robber)
+
+![alt text](https://github.com/laxmikantbpandhare/DP-1/blob/master/images/house_robber_repetated.jpg)
+
+#### Matrix Approach. (House Robber input 1)
+
+![alt text](https://github.com/laxmikantbpandhare/DP-1/blob/master/images/hose_problem_matrix1.jpg)
+
+#### Matrix Approach. (House Robber input 2)
+
+![alt text](https://github.com/laxmikantbpandhare/DP-1/blob/master/images/hose_problem_matrix2.jpg)
 
