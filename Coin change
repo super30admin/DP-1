@@ -1,0 +1,26 @@
+// time complexity: O(n^n)
+// space complexity: O(n)
+//brute force: I tried all possible combinations and found when sum == amount
+//whenever I find sum == amount, we keep a note of minimum number of coins which make us get that amount
+// we return the minimum number of coins found so far;
+class Solution {
+    int min = Integer.MAX_VALUE;
+    public int coinChange(int[]coins, int amount) {
+       helper(coins,amount, 0, 0);
+      return min == Integer.MAX_VALUE? -1  : min;
+    }
+    
+    public void helper(int[] coins,int amount, int index, int count){
+        if(amount < 0) return; // that path did get us the amount
+        
+        if(amount == 0){ // base -> we found the amount
+            min = Math.min(min, count);
+            return;
+        }
+        
+        for(int i = index; i < coins.length; i++){
+            // here we can take same element any number of times until amount > 0
+            helper(coins, amount-coins[i], i, count+1); // we want to resuse i
+        }
+    } 
+}
