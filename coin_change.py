@@ -5,15 +5,16 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
-        def c_change(coins,amount,count):
-            if amount==0:
-                return count
-            elif amount>0 and len(coins)==0:
-                return -1
-            elif amount>=coins[-1]:
-                return c_change(coins,amount-coins[-1],count+1)
-            else:
-                return c_change(coins[:-1],amount,count)
+        dp = [amount+1]*(amount+1)
+        dp[0]=0
+        
+        for amt in range(1,amount+1):
+            for coin in coins:
+                if amt>=coin:
+                    dp[amt] = min(dp[amt], dp[amt-coin]+1)
+                
+        if dp[amount]>amount:
+            return -1
+        else:
+            return dp[amount]
             
-        coins = sorted(coins) 
-        return c_change(coins,amount,0)
