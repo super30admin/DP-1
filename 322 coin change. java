@@ -1,0 +1,22 @@
+class Solution {// time of O(NK)total amount into no. of vals in array
+    // and space of O(amount) to create a array size of amount to find 
+    public int coinChange(int[] coins, int amount) {
+        //Base case 
+         if(amount == 0|| coins.length == 0)
+             return 0;
+        
+        // just for not having confusion with indexx
+        // array lenght to +1
+        int[] dp = new int[amount+1];
+        dp[0] = 0;
+        for(int amt = 1; amt<= amount; amt++){
+            dp[amt] = amount+1;
+            for(int coin:coins){
+                if(coin<= amt){
+                    dp[amt] = Math.min(1 + dp[amt-coin], dp[amt]);
+                }
+            }
+        }
+        return dp[amount]>amount ? -1: dp[amount];
+    }
+}
