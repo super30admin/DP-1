@@ -1,4 +1,4 @@
-# Time Complexity - O(n) where n = amount
+# Time Complexity - O(n) where n = # of houses
 # Space Complexity - O(n)
 # Did this run on Leetcode - Yes
 # Did you face any problems - No
