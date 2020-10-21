@@ -1,0 +1,18 @@
+# Time Complexity : O(n)
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+
+        prev_2 = 0
+        prev_1 = 0
+        cur = 0
+        
+        for i in range(len(nums)):
+            cur = max(nums[i] + prev_2, prev_1)
+            prev_2 = prev_1
+            prev_1 = cur
+            
+        return cur
