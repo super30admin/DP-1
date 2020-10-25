@@ -14,7 +14,7 @@ class Solution(object):
         #     case2=helper(nums,index+1,count)
         #     return max(case1,case2)
         # return helper(nums,0,0)
-
+    #space=O(n) time=2**n
         dp = [[0 for i in range(2)] for i in range(len(nums))]
         # dp[0][0]=0
         dp[0][1] = nums[0]
