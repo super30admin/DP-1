@@ -4,7 +4,7 @@
 // Any problem you faced while coding this : no
 
 
-// Your code here along with comments explaining your approach
+/* Your code here along with comments explaining your approach
 matrix dp N*M
 rows = coins [0,1,3,5]
 cols = amount [0...11]
@@ -12,6 +12,7 @@ dp[rows][cols] = number of coins for that cell
 first column all 0's, first row Infinity (99999)
 coins[i-1] because we are starting the matrix from [0,0] so matrix length should be [coins+1][amount+1]
 dp[row][col] = choose the coin and then get the rest of amount from previous calulation/ don't choose - pick previously calculated value
+*/
 
 class Solution {
     public int coinChange(int[] coins, int amount) {
