@@ -1,0 +1,44 @@
+// Time Complexity : O(MN)
+// Space Complexity : O(MN) 
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Termination condition when no solution exists. eg: [2] --> Amt = 3. How will be the matrix table?
+
+
+// Your code here along with comments explaining your approach :  Idea is to create a 2d matrix. If amount is less than coin value put above row result else add take min of previous row OR same row but previously computed value.
+SOLUTION:
+
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(coins==null || coins.length==0){
+            return -1;
+        }
+        
+        int[][] dp = new int[coins.length + 1][amount + 1];
+        int m = dp.length;
+        int n = dp[0].length;
+
+        for(int i = 1 ; i < n ; i++){
+            dp[0][i] = amount + 1;       //Cannot use Integer.MAX_VALUE as it will cause overflow
+        }
+
+        for(int i = 1 ; i < m ; i++){
+            for(int j = 1 ; j < n ; j++){
+                if(j < coins[i - 1]){
+                    dp[i][j] = dp[i-1][j];
+                }else{
+                    dp[i][j] = Math.min(dp[i-1][j], 1 + dp[i][j - coins[i-1]]);
+                }
+            }
+        }
+
+        // Understand Again
+        // IMP CONDITION if no possible soln. Eg: [2] --> 3
+        if(dp[m-1][n-1] == amount + 1){
+            return -1;
+        }
+        
+        return dp[m-1][n-1];
+        
+    }
+}
