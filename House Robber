@@ -1,0 +1,26 @@
+// Time Complexity : O(1)
+// Space Complexity : O(N=num of houses)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+    public int rob(int[] nums) {
+        
+        if(nums==null||nums.length==0)
+            return 0;
+        
+        int prevRob=0;  // the house at previous location
+        int currentRob=0;   // the house at current location 
+        
+        for (int n=0;n<nums.length;n++)        
+        {
+            int temp=prevRob;        // take a temp variable to store the value
+            prevRob=nums[n]+currentRob;
+            currentRob=Math.max(temp,currentRob); 
+        }
+        return Math.max(prevRob,currentRob);
+    }
+}
