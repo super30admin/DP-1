@@ -1,0 +1,27 @@
+class Solution {
+    public int rob(int[] nums) {
+        int [] dp = new int[nums.length]; 
+        if(nums.length<1){
+            return 0;
+        }
+         if(nums.length>0 && nums.length<2){
+            return nums[nums.length-1];
+        }
+        dp[0]=nums[0];
+        nums[1]=Math.max(nums[0],nums[1]);
+        for(int i=2;i<nums.length;i++){
+            nums[i]=Math.max(nums[i]+nums[i-2],nums[i-1]);
+        }
+        // for(int i=2;i<nums.length;i++){
+        //     dp[i]=Math.max(nums[i]+dp[i-2],dp[i-1]);
+        // }
+        // for(int i=0;i<dp.length;i++){
+        //     System.out.println(dp[i]);
+        // }
+        return nums[nums.length-1];
+            //Math.max(dp[dp.length-1],dp[dp.length-2]);
+    }
+}
+
+//time complexity - O(n)
+//space complexity- O(1)
