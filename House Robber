@@ -1,0 +1,18 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        #Time Complexity: O(nums) 
+        #Space Complexity: O(nums)
+        
+        if len(nums) == 0:
+            return 0
+        elif len(nums) == 1:
+            return nums[0]
+        
+        max_amount = [0] * len(nums)
+        max_amount[0] = nums[0]
+        max_amount[1] = max(nums[0], nums[1])
+        
+        for i in range(2, len(max_amount)):
+            max_amount[i] = max(max_amount[i - 2] + nums[i], max_amount[i - 1])
+        
+        return max_amount[-1]
