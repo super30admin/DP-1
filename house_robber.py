@@ -17,6 +17,6 @@ def house_reobber(nums):
     maxSum = nums[:]
     maxSum[1] = max(nums[0], nums[1])
     for i in range(2, len(nums)):
-        maxSum[i] = max(maxSum[i-1], maxSum[i-2] + maxSum[i], maxSum[i], )
+        maxSum[i] = max(maxSum[i-1], maxSum[i-2] + maxSum[i], maxSum[i])
         
     return maxSum[-1]
