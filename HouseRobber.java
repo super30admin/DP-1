@@ -1,5 +1,5 @@
 //TC: O(N) - N is the no. of elements in nums array
-//SC: O(1)
+//SC: O(N)
 // Did it run successfully on LeetCode? : Yes
 class Solution {
     public int rob(int[] nums) {

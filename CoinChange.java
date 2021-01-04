@@ -1,5 +1,5 @@
 //TC: O(coins*amount)
-//SC: O(1)
+//SC: O(coins+1 * amount+1)
 // Did it run successfully on LeetCode? : Yes
 class Solution {
     public int coinChange(int[] coins, int amount) {
