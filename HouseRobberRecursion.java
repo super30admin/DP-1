@@ -1,4 +1,4 @@
-// Time Complexity : 
+// Time Complexity : 2^n
 // Space Complexity : 
 // Did this code successfully run on Leetcode : No (Time Limit Exceeded Error)
 // Any problem you faced while coding this : No
@@ -29,3 +29,29 @@ public class HouseRobberRecursion {
         return Math.max(case1, case2);
     }
 }
+
+//Another recursive solution
+// class HouseRobberRecursion {
+//     public int rob(int[] nums) {
+//         if(nums == null || nums.length == 0) return 0;
+        
+//         if(nums.length == 1) return nums[0];
+        
+//         return calculate(nums, 0, 0);
+//     }
+    
+//     private int calculate(int[] nums, int money, int i){
+//         //base case
+//         if(i >= nums.length){
+//             return money;
+//         }
+        
+//         //choose
+//         int case1 = calculate(nums, money + nums[i], i+2);
+            
+//         //not choose
+//         int case2 = calculate(nums, money , i+1);
+                  
+//         return Math.max(case1, case2);
+//     }
+// }
