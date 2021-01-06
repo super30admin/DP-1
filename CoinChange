@@ -1,0 +1,25 @@
+/**
+* Time complexity would be O(2 ^ n) as its exponential
+* space complexity would be O(1) as we are not creating any space
+*
+*/
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(coins==null || coins.length ==0) return -1;
+        
+        return getMinCoins(coins , amount, 0 , 0);
+        
+    }
+    
+    public int getMinCoins(int[] coins, int amount, int coinsIndex, int minCoins){
+        if(amount==0) return minCoins;
+        if(amount < 0 || coinsIndex == coins.length) return -1;
+        
+        int case1=getMinCoins(coins, amount - coins[coinsIndex],coinsIndex, minCoins+1);
+        int case2=getMinCoins(coins, amount, coinsIndex +1,minCoins);
+        if(case1 == -1) return case2;
+        if(case2 == -1) return case1;
+        return Math.min(case1,case2);
+    }
+}
