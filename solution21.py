@@ -1,3 +1,5 @@
+#Time Complexity:O(n)
+#Space Complexity:O(2n)
 class Solution:
     def rob(self, nums: List[int]) -> int:
         if(len(nums)==0):
