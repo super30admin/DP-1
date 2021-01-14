@@ -1,0 +1,16 @@
+// time comp = O(n)
+// space comp = constant
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums.length==0) return 0;
+        int no_loot=0,loot=nums[0];
+        for(int i=1;i<nums.length;i++)
+        {
+            int temp=loot;
+            loot=no_loot+nums[i];
+            no_loot=Math.max(temp,no_loot);
+        }
+        return Math.max(loot,no_loot);
+    }
+}
