@@ -1,0 +1,55 @@
+/*
+Time Complexity- > O(n);
+
+46 out of 182 test cases passed.
+
+Approach: sorted the given array.
+
+Always pick the biggest denomination. and keep on adding the coins 
+add to the result.
+
+
+
+
+*/
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        
+        int [] newcoins = coins;
+        
+        
+        Arrays.sort(newcoins);
+        
+        HashSet<Integer> hm= new HashSet<Integer>();
+        
+        int amt=0;
+        int result=0;
+        int temp=0;
+        
+    //     for(int j=newcoins.length-1;j>=0;j--)
+         {
+   //         temp=0;amt=0;result=0; 
+        for(int i=newcoins.length-1;i>=0;i--)
+        {
+            int temp2=(amount-amt)/newcoins[i];
+            amt+=temp2*newcoins[i];
+            temp+=temp2;
+            System.out.println(newcoins[i]+" "+temp2+" "+temp);
+            
+            if(amt==amount)
+            {
+                return temp;
+            }
+            if(amt>amount)
+            {
+                break;
+            }
+        }
+         }
+
+        
+         return -1;
+        }
+       
+    }
