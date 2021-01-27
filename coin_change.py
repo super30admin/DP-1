@@ -15,7 +15,7 @@ class Solution(object):
         
         for a in range(1, amount + 1):
             for coin in coins:
-                if a - coin >= 0:
+                if a - coin >= 0: # If < 0, max coin value is less than amount
                     dp[a] = min(dp[a], 1 + dp[a - coin])
                     
         if dp[amount] != amount + 1:

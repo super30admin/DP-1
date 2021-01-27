@@ -2,7 +2,7 @@ class Solution(object):
     '''
     Recursive
     Time complexity: Exponential
-    '''
+    
     def rob(self, nums):
         """
         :type nums: List[int]
@@ -15,7 +15,6 @@ class Solution(object):
             return 0
         return max(self.robs(nums, i - 2) + nums[i], self.robs(nums, i - 1))
     
-    '''
     ** Top-down apprach **
     Time complexity: O(n)
     Space complexity: O(n)
@@ -59,3 +58,16 @@ class Solution(object):
             self.memo[i+1] = max(self.memo[i - 1] + nums[i], self.memo[i])
         return self.memo[len(nums)]
     '''
+    
+    '''
+    Using temp variable
+    Time complexity: O(n)
+    Space complexity: O(1)
+    '''
+    c = 0 #choose
+    dc = 0 #don't choose
+    for x in nums:
+        temp = dc
+        dc = max(c, dc)
+        c = x + temp
+    return max(c, dc)
