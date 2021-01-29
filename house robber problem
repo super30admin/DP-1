@@ -1,0 +1,21 @@
+Time complexity-O(n)
+space complexity-O(1)
+works in leet code- YES
+
+#followed the code demonstrated by the instructor in class. The code uses dynamic programming and selects better of two options from the given scanrios and returns the best option which is the maximum
+
+
+class Solution(object):
+    def rob(self, nums):
+        if( len(nums)==0) :
+            return 0
+        else:
+            c=0
+            dc=0
+            for i in nums:
+                temp=dc
+                dc=max(c,dc)
+                c=i+temp
+        return max(c,dc)
+       
+        
