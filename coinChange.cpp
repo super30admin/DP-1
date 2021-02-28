@@ -7,19 +7,26 @@
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
-    
-        vector<int> dp(amount + 1, INT_MAX);
-        dp[0] = 0;
-        for (int i = 1; i <= amount; i++) {
-            for (int j = 0; j < coins.size(); j++) {
-                if (coins[j] <= i) {
-                    int sub_res = dp[i - coins[j]];
-                    if(sub_res!= INT_MAX){
-                    dp[i] = min(dp[i], sub_res + 1);
-                    }
+
+        int rows = coins.size()+1;
+        int cols = amount+1;
+        int t[rows][cols];
+        
+        for(int i = 0; i < cols;i++)t[0][i] = INT_MAX-1;
+        for(int i = 0; i< rows;i++)t[i][0] = 0;
+
+        for(int i = 1; i < rows;i++){
+            for(int j = 0; j < cols;j++){
+                if(coins[i-1]<=j){
+                    t[i][j]= min(1+t[i][j-coins[i-1]],t[i-1][j]);
+                }
+                else{
+                    t[i][j] = t[i-1][j];
                 }
             }
         }
-        return dp[amount] == INT_MAX ? -1 : dp[amount];
+        return t[rows-1][cols-1]==INT_MAX-1 ? -1 : t[rows-1][cols-1];
     }
+        
+  
 };
