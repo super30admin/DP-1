@@ -10,7 +10,7 @@ class Solution {
         int skip = 0;
         // if only one house rob that house
         int take = nums[0];
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 1; i < nums.length; i++) {
             int temp = skip;
             // if house is skipped take the maximum of previous skip and taken
             skip = Math.max(skip, take);
