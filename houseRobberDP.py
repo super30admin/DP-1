@@ -14,6 +14,29 @@ class Solution:
 
 #  time complexity is O(n)
 #  DP Array is made and for each element we are checking if to choose or not choose.
+           
+# further optimization
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        
+        if not nums:
+            return 0
+        
+        skip=0
+        take = nums[0]
+        
+        for i in range(1,len(nums)):
+            temp = skip
+            skip = max(skip, take)
+            take = temp + nums[i]
+        
+        
+        return max(skip, take)
+    
+
+#  time complexity is O(n)
+#  space complexity is reduced as you dont need new array to store dp array 
             
             
         
