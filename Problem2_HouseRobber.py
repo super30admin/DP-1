@@ -38,14 +38,14 @@ S30 SlackID : RN32MAY2021
 #------------------
 # Space Complexity: 
 #------------------
-# O(1) - Need only variables reward for current, next_house, and after_next
+# O(1) - Need only reward variables for current house, next, and after next
 
 #-----------------------
 # Leet Code Performance: 
 #-----------------------
 # Ran Successfully?: Yes
 # Time             :  32 ms (59.16 %ile)
-# Space            :  14.2 MB (76.22 %ile)
+# Space            :  14.1 MB (92.00 %ile)
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
@@ -81,8 +81,6 @@ class Solution:
             # With reward current, rob_next, and rob_after_next, we can
             # implement the general case. 
 
-            # For len(nums) > 2, we loop from the end of the list
-            # because we want subproblems to get larger with each iteration
 
             # Starting at nums[num_houses - 2], we have 1 house left to rob.
             # i.e., in example : [1,2,(3),1] - we are at index 2
@@ -94,7 +92,6 @@ class Solution:
 
             # We choose to start from the end because the subproblem of 
             # choosing which house to rob, depends on the proceeding elements.
-
             # If we start at the end and know the max reward possible for
             # the rest of the problem and don't need to recompute
             for i in range(2, num_houses+1):
