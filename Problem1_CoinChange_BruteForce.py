@@ -53,6 +53,7 @@ S30 SlackID : RN32MAY2021
 # Space            :  14.1 MB (92.00 %ile)
 
 import sys
+INT_MAX_VALUE = sys.maxsize
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         return self.coinChangeRecursive(coins, amount)
@@ -69,7 +70,7 @@ class Solution:
         
         else:
             # Setting min_coins variable to max to allow for min() calculation
-            min_coins = sys.maxsize
+            min_coins = INT_MAX_VALUE
             
             #For every denomination of coins, we recursively calculate the
             # the minimum number of coins required to fill the remainder amount
@@ -85,7 +86,7 @@ class Solution:
                     # denomination at every step
                     min_coins = min(min_coins, count + 1)
 
-            if min_coins == sys.maxsize:
+            if min_coins == INT_MAX_VALUE:
                 return -1
             else:
                 return min_coins
