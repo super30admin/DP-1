@@ -5,7 +5,7 @@ S30 SlackID : RN32MAY2021
 =================================
 '''
 
-# 198. House Robber
+# 322. Coin Change
 # You are given an integer array coins representing coins of 
 # different denominations and an integer amount representing a total amount 
 # of money.
@@ -39,11 +39,12 @@ S30 SlackID : RN32MAY2021
 #-----------------
 # Time Complexity: 
 #-----------------
-# O(N): Need to iterate over input array once
+# O(S^N): S is amount and N is number of coins.
+#        
 #------------------
 # Space Complexity: 
 #------------------
-# O(1) - Need only reward variables for current house, next, and after next
+# O(N) - Max depth of recursion
 
 #-----------------------
 # Leet Code Performance: 

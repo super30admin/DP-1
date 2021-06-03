@@ -5,7 +5,7 @@ S30 SlackID : RN32MAY2021
 =================================
 '''
 
-# 198. House Robber
+# 322. Coin Change
 # You are given an integer array coins representing coins of 
 # different denominations and an integer amount representing a total amount 
 # of money.
