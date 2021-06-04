@@ -4,9 +4,11 @@
 // Any problem you faced while coding this : no
 
 /**
- * 1. Form a DP table as no target one dimensional will work
- * 2. First 2 houses values is calculated outside loop
- * 3. at each house check max(n-1,n-2+n) value.
+ * 1. Form a DP table with column header as not chosen 0 and chosen 1
+ * 2. First house fill with the nums array values
+ * 3. at each house not chosen than max(last house  of chosen,not chosen) .
+ * 4. at each house chosen ten last house not chosen+current house value.
+ * 5. end return max of chosen or not chosen
  */
 
 public class HouseRobber {
@@ -14,24 +16,19 @@ public class HouseRobber {
 	public int rob(int[] nums) {
 
 		int noOfHouses = nums.length;
-		int[] dp = new int[noOfHouses];
+		int[][] dp = new int[noOfHouses][2];
 
-		//only one house thats the solution
-		if (noOfHouses >= 1) {
-			dp[0] = nums[0];
+		dp[0][1]=nums[0];
+
+		for (int i = 1; i < noOfHouses; i++) {
+			
+			//not chose
+			dp[i][0] = Math.max(dp[i - 1][1], dp[i - 1][0]);
+			//chose
+			dp[i][1]=dp[i - 1][0]+nums[i];
 		}
 
-		//only 2 houses so max of it is the solution
-		if (noOfHouses >= 2) {
-			dp[1] = Math.max(nums[0], nums[1]);
-		}
-
-		//check current and previous alternate with previous one for max value
-		for (int i = 2; i < noOfHouses; i++) {
-			dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
-		}
-
-		return dp[noOfHouses - 1];
+		return Math.max(dp[noOfHouses - 1][1],dp[noOfHouses - 1][0]);
 
 	}
 
