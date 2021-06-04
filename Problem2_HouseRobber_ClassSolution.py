@@ -44,8 +44,8 @@ S30 SlackID : RN32MAY2021
 # Leet Code Performance: 
 #-----------------------
 # Ran Successfully?: Yes
-# Time             :  32 ms (59.16 %ile)
-# Space            :  14.1 MB (92.00 %ile)
+# Time             :  32 ms (59.57 %ile)
+# Space            :  14.1 MB (76.14 %ile)
 from typing import List
 class Solution:
     def rob(self, nums: List[int]) -> int:
@@ -53,18 +53,18 @@ class Solution:
             return 0
 
         else:
-            skip = 0 # Skip first house
-            take = nums[0] #  Take first house
+            skip_reward = 0 # Reward for skip_rewardping first house
+            rob_reward = nums[0] # Reward for Robbing first house
 
-            for i in range(len(nums)):
-                temp = skip # store previous skip
+            for i in range(1, len(nums)):
+                prev_skip_reward = skip_reward # store previous skip_reward
                 # 0 case
-                skip = max(skip, take) #Skip previous and take this
+                skip_reward = max(prev_skip_reward, rob_reward) #skip_reward previous and rob_reward this
 
                 # 1 case
-                take = temp + nums[i] # previous skip + current house
+                rob_reward = prev_skip_reward + nums[i] # previous skip_reward + current house
 
-            return max(skip, take)
+            return max(skip_reward, rob_reward)
 
 
 obj = Solution()
