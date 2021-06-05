@@ -59,7 +59,7 @@ class Solution:
             for i in range(1, len(nums)):
                 prev_skip_reward = skip_reward # store previous skip_reward
                 # 0 case
-                skip_reward = max(prev_skip_reward, rob_reward) #skip_reward previous and rob_reward this
+                skip_reward = max(skip_reward, rob_reward) #skip_reward previous and rob_reward this
 
                 # 1 case
                 rob_reward = prev_skip_reward + nums[i] # previous skip_reward + current house
