@@ -22,6 +22,7 @@ class Solution {
             }
         }
         int result = dp[dp.length - 1][dp[0].length - 1];
+        // if result is infinite (i.e not found)
         if (result > amount) {
             return -1;
         }
