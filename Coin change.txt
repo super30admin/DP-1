@@ -1,0 +1,33 @@
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(coins.length==0||coins==null){
+            return -1;
+        }
+     int[][] dp   =new int[coins.length+1][amount+1];
+     int minCoins=0;
+        dp[0][0]=0;
+    for(int i=0;i<dp.length;i++){
+        dp[i][0]=0;
+    }
+         for(int j=1;j<dp[0].length;j++){
+        dp[0][j]=amount+1;
+    }
+        for(int k=1;k<dp.length;k++){
+            for(int l=1;l<dp[0].length;l++){
+                if(coins[k-1]>l){
+                    dp[k][l]=dp[k-1][l];
+                }else {
+                    dp[k][l]=Math.min(dp[k-1][l],1+dp[k][l-coins[k-1]]);
+                }
+                
+            }
+        }
+         int res=dp[coins.length][amount];
+        if(res>amount){
+            return -1;
+        }
+        return res;
+    }
+}
+//Tc-O(n*m) n-length of coins array, m- amount
+//sc-O(n*m)
