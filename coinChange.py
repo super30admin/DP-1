@@ -15,7 +15,7 @@ class Solution:
         dp[0][0] = 0
         for j in range(1,cols):
             dp[0][j] = amount+1 #infinity types
-        
+           
         for i in range(1,rows):
             dp[i][0] = 0
             
