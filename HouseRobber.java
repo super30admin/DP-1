@@ -1,3 +1,6 @@
+//T.C. : O(n)
+//S.C. : O(1)
+
 public class HouseRobber {
     public int rob(int[] nums) {
         int skip=0;
