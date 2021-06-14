@@ -1,5 +1,8 @@
 //This code is DP approach
 
+//Time complexity : O(n)
+//Space complexity : O(1)
+
 class Solution {
 public:
     int rob(vector<int>& nums) {
