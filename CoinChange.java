@@ -9,7 +9,7 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
         int n = coins.length + 1; // number of available denominations
-        int m = amount + 1; //denomination of amount need to ne achieved
+        int m = amount + 1; //denomination of amount need to be achieved
         
         //creating an array of size m by n
         int[][] dp = new int[n][m];
