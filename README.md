@@ -4,3 +4,5 @@
 
 ## Problem2 (https://leetcode.com/problems/house-robber/)
 
+
+//couldn't solve problem-2.
