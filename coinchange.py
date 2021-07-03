@@ -1,3 +1,6 @@
+#https://leetcode.com/problems/coin-change/
+#time-o(n)
+#space-o(m*n) where m is amount and n is len(coins)
 import sys
 class Solution(object):
     def coinChange(self, coins, amount):

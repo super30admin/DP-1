@@ -1,3 +1,6 @@
+#https://leetcode.com/problems/house-robber/
+#time-o(n) where n is nums
+#space-o(1)
 class Solution(object):
     def rob(self, nums):
         """
