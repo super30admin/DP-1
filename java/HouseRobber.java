@@ -19,6 +19,65 @@
         1<=nums.length<=100
         0<=nums[i]<=400
 
+--------------------------------------- Approach 1 ----------------------------------------------
+// Time Complexity : O(N)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+        /* Used DP and 2 variables where we have options either to choose or skip and keep updating the maximum result accordingly.
+         */
+
+class Solution {
+
+    public int rob(int[] nums) {
+        if(nums == null || nums.length==0)
+            return 0;
+
+        int choose =nums[0], skip = 0;
+        for(int i=1; i<nums.length; i++){
+            int prevSkip = skip;
+            skip = Math.max(skip, choose);
+            choose = prevSkip + nums[i];
+        }
+        return Math.max(skip, choose);
+    }
+}
+
+--------------------------------------- Approach 2 ----------------------------------------------
+// Time Complexity : O(N)
+// Space Complexity : O(N) --> recursive stack
+// Did this code successfully run on Leetcode : Time Limit Exceeded
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+/* Used recursion to check the max of both choose and don't choose scenarios at every index
+* */
+
+class Solution {
+    int[] memo;
+    public int rob(int[] nums) {
+        if(nums == null || nums.length==0)
+            return 0;
+        return robFrom(nums, 0, 0);
+    }
+
+    private int robFrom(int[] nums, int index, int maxEarnings){
+        if(index>=nums.length)
+            return maxEarnings;
+        //choose
+        int choose = robFrom(nums, index+2, maxEarnings + nums[index]);
+        //dont choose
+        int dontChoose = robFrom(nums, index+1, maxEarnings);
+
+        return Math.max(choose, dontChoose);
+    }
+}
+
+----------------------------- Approach 3 ------------------------------------------------
 // Time Complexity : O(N)
 // Space Complexity : O(N)
 // Did this code successfully run on Leetcode : yes
