@@ -1,0 +1,37 @@
+// Time Complexity :
+// Space Complexity :
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Jaspinder mentioned in the for loop as dp[0].length and I did it as coins.length and j <=amount. Seems to be working
+I have confusion with dp[0].length and dp.length; hence used the above. 
+
+
+class Solution {
+	public int coinChange(int[] coins, int amount) {
+		if(coins == null || coins.length ==0) return -1;
+		int[][] dp = new int[coins.length+1][amount+1];
+		for(int i = 1; i < dp[0].length; i++)
+		{
+			dp[0][i] = 9999;
+		}
+
+		for(int i=1; i<= coins.length;i++)
+		{
+			for(int j=1; j<= amount; j++)
+			{
+				if(j < coins[i-1])
+				{
+					dp[i][j] = dp[i-1][j]; 
+				}
+				else{ 
+					dp[i][j] = Math.min(dp[i-1][j], 1 + dp[i][j- coins[i-1]]);
+				}
+			}
+		}
+
+		int result = dp[dp.length-1][dp[0].length -1];
+		if(result >= 9999) return -1;
+		else
+			return result;
+	}    
+
+}
