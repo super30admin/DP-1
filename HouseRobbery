@@ -1,0 +1,94 @@
+class Solution {
+        // Time Complexity : O(2 ^ Num of houses)
+// Space Complexity :  O(num of houses)  
+// Did this code successfully run on Leetcode : Timelimit exceeding
+// Any problem you faced while coding this : 
+    
+    
+    public int rob(int[] nums) {
+        
+        if(nums == null || nums.length == 0) return 0;
+        //recursive function to find the all possible robbery with maintaining the max money.
+        return maxMoney(nums, 0,0);
+    }
+    
+    private int maxMoney(int[] nums, int index, int max){
+        
+        //BASE CASE
+        
+        //when array is out of index, we can't do any robbery --> stopping the calls and return the max current value.
+        if(index > (nums.length-1)) return max;
+        
+        //MAIN lOGIC 
+        
+        //case where robbery is not done
+        //so the amount max will not change
+        //so next house can be in space of robbery--> incrementing index +1   
+        int case1 = maxMoney(nums,index+1,max);
+        //case where the house is robbed
+        //so that max amount gets summed with current index house money
+        //the next house can't be robbed now --. incremeting index +2
+        int case2 = maxMoney(nums,index+2, max+nums[index]);
+        //always maintaining the max value 
+        return Math.max(case1,case2);
+    }
+}
+
+
+
+class Solution {
+    // Time Complexity : O(Num of houses)
+// Space Complexity :  O(num of houses)    since columns are fixed(choose/not choose, not a contraint consider only rows)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :
+    
+    
+    public int rob(int[] nums) {
+        
+        if(nums == null || nums.length == 0) return 0;
+        //Column1 for case of not choosing particular index house
+        //Column2 for case of choosing particular index house
+        int[][] dp = new int[nums.length+1][2];
+        dp[0][0] = 0; dp[0][1] = 0;
+        for(int i = 1; i<=nums.length;i++){
+            //not choosing house
+            dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1]);
+            //choosing house
+            dp[i][1] = dp[i-1][0] + nums[i-1];
+        }
+        //Lastly, after visiting all houses, return max of choosing and not choosing last index house(it contains max till that house)
+        return Math.max(dp[nums.length][0], dp[nums.length][1]);
+    }
+}
+
+
+
+
+
+
+
+class Solution {
+    // Time Complexity : O(Num of houses)
+// Space Complexity :  O(1)    //idea is tht only rev row is needed to compute current row, so just use 2 variables and temp variable
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :
+    
+    
+    public int rob(int[] nums) {
+        
+        if(nums == null || nums.length == 0) return 0;
+        //skip for case of not choosing particular index house
+        //take for case of choosing particular index house
+        int skip = 0; int take =0;
+        //idea is that we don't need any other rows except before row, as it prev contans all the max value we need to compute current
+        for(int i = 0; i<nums.length;i++){
+            int temp = skip;
+            //not choosing house
+            skip = Math.max(skip, take);
+            //choosing house
+            take = temp + nums[i];
+        }
+        //Lastly, after visiting all houses, return max of choosing and not choosing last index house(it contains max till that house)
+        return Math.max(skip, take);
+    }
+}
