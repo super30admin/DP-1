@@ -1,4 +1,67 @@
 /*
+
+C++
+
+
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        
+        int dp[coins.size()+1][amount+1];
+        
+        
+        int m = coins.size()+1;
+        int n = amount+1;
+        // first col with 0
+        for(int i = 0; i < m;i++) {
+            dp[i][0] = 0;
+        }
+        
+        
+        // first row with. -1
+        for(int j = 1; j<n; j++) {
+            dp[0][j] = 9999;
+        }
+        
+        
+        for(int i =1; i< m;i++) {
+            
+            
+            
+            for(int j = 1; j <n; j++) {
+            
+               
+                
+                if(j < coins[i-1]){
+                    // not choose
+                    dp[i][j] = dp[i-1][j];
+                }else{
+                    // choose
+                    dp[i][j]= std::min(dp[i-1][j], 1  + dp[i][j-coins[i-1]]) ;
+                }
+              
+               
+            }
+        }
+        
+        
+       int res = dp[m-1][n-1];
+      
+        if(res >= 9999) {
+            return -1;
+        }
+        return res;
+        
+        
+
+        
+    }
+};
+
+*/
+
+/*
 Brute force recursive solution for
 
 we will looking into every possible combination of the coin change
