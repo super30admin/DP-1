@@ -27,7 +27,7 @@ class Solution(object):
         # """
         # Below soln gives time limit exceeded since exponential 
         # TC:O(2^n)
-        # SC:O(1)
+        # SC:O(n)
         # """
         
         # def coinChange(self, coins: List[int], amount: int) -> int:
