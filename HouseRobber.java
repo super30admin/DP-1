@@ -16,7 +16,7 @@
 
 
 
-class Solution {
+class Solutions {
     
     int maxMoney =0;
     public int rob(int[] nums) {
