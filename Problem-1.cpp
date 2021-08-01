@@ -1,9 +1,7 @@
 //Time Complexity = O(2^N).   EXPONENTIAL
-//Space Complexity = O(1)
+//Space Complexity = O(N)
 //Where N is the length of the vector coins.
 //Here time limit will exceed.
-
-//The space complexity will be O(log N) where log N is the hieght of the tree which will form when the 0-1 tree will be made.
 //The recursive stack memory is also counted towards the space complexity.
 class Solution {
 public:
