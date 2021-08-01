@@ -1,5 +1,5 @@
 //Time Complexity = O(2^N)
-//Space Complexity = O(1)
+//Space Complexity = O(N)
 //where N is the size of array nums.
 //Here time limit will exceed.
 class Solution {
