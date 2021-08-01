@@ -2,6 +2,9 @@
 //Space Complexity = O(1)
 //Where N is the length of the vector coins.
 //Here time limit will exceed.
+
+//The space complexity will be O(log N) where log N is the hieght of the tree which will form when the 0-1 tree will be made.
+//The recursive stack memory is also counted towards the space complexity.
 class Solution {
 public:
     int helper(vector<int> coins, int amount, int index, int mincoins)
