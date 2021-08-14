@@ -3,7 +3,7 @@
 # recursion depth
 
 def coinchange(coins, amount):
-    if not coins:return 0
+    if not coins: return 0
     return helper(coins, amount, idx=0)
 
 def helper(coins, amount, idx):
