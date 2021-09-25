@@ -1,5 +1,5 @@
 class Solution:
-    def coinChange(self, coins: List[int], amount: int) :
+    def coinChange(self, coins, amount) :
         # Created an 2D array. where rows -> coins and columns -> range(0, amount) 
         dp = [[0 for i in range(amount+1)] for j in range(len(coins)+1)]
         for i in range(1,len(dp[0])):   
@@ -17,9 +17,6 @@ class Solution:
         
         if amount < result:
             return -1
-        
         return result
            
-                return result
-       
-            
+      
