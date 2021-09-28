@@ -1,3 +1,10 @@
+# // Time Complexity :O(amount*number of coins)
+# // Space Complexity :O(amount)
+# // Did this code successfully run on Leetcode :
+# // Any problem you faced while coding this :
+
+
+# // Your code here along with comments explaining your approach
 from typing import List
 from functools import lru_cache
 import math
