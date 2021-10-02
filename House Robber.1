@@ -1,0 +1,27 @@
+//Approach 1 : with creating new dp matrix
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums==null || nums.length==0)
+            return 0;
+        
+        int row = nums.length;
+        int[][] dp= new int[row][2];
+        
+        dp[0][0]=nums[0];
+        dp[0][1]=0;
+        
+        for(int i=1;i<row;i++){ //here we can take row and column iteration and check j==0 then 1st part and else second line as per class discussion but this is more optimized
+            dp[i][0]=nums[i]+ dp[i-1][1];
+            dp[i][1]=Math.max(dp[i-1][0],dp[i-1][1]);
+        }
+       
+        return Math.max(dp[row-1][0],dp[row-1][1]);
+    }
+};
+
+//Time : O(n*2) ==> O(n) where n is the num of houses and 2 is constant
+//Space: O(n*2) ==> O(n) where n is the num of houses and 2 is constant
+
+//ran successfully on leetcode
+//Faced difficulty before the class after that it was much clear.
