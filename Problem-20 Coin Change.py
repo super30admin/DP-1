@@ -2,6 +2,7 @@
 # https://leetcode.com/problems/coin-change/
 
 # Brute Force
+# Time Complexiety: O(k^n) k is length of coins array
 class BF_Solution:
     def _helper(self,coins,amount,count,idx):
         if amount == 0:
