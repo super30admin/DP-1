@@ -1,12 +1,13 @@
-""" Time Complexity :
- Space Complexity :
- Did this code successfully run on Leetcode :
- Any problem you faced while coding this :
+""" 
+ Time Complexity : O(amount * len(coins))
+ Space Complexity : O(amount * len(coins))
+ Did this code successfully run on Leetcode : yes
+ Any problem you faced while coding this : No
 
 
  Your code here along with comments explaining your approach """
 
-def helper(coins, amount: int, count: int) -> int:
+"""def helper(coins, amount: int, count: int) -> int:
     # base case
     if amount == 0:
         return count
@@ -25,13 +26,28 @@ def helper(coins, amount: int, count: int) -> int:
     elif case2 <= 0:
         return case1
     else:
-        return min(case1,case2)
+        return min(case1,case2) """
 
 
 def coinChange(coins, amount) -> int:
-    return helper(coins, amount, 0)
+    #return helper(coins, amount, 0)
+    dp = [[0 for _ in range(amount + 1)] for _ in range(len(coins)+1)]
+    # filling the first row
+    for i in range(1, len(dp[0])):
+        dp[0][i] = amount + 1
+
+    for i in range(1, len(dp)):
+        for j in range(1, len(dp[0])):
+            if coins[i-1] > j:
+                dp[i][j] = dp[i-1][j]
+            else:
+                dp[i][j] = min(dp[i-1][j], 1 + dp[i][j - coins[i-1]])
+    
+    return dp[len(dp)-1][len(dp[0])-1]
 
 
 output = coinChange([1,2,5], 11)
 print(output)
+
+
 
