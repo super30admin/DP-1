@@ -5,7 +5,7 @@
  Any problem you faced while coding this : No
 
 
- Your code here along with comments explaining your approach   """
+ Your code here along with comments explaining your approach """
 
 def HouseRobber(nums) -> int:
     dp = [0, nums[0], nums[0]]
