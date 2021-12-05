@@ -1,0 +1,33 @@
+//Greedy Approch
+//LeetCode: No (Time Limit Exceeded)
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(coins.length==0 || coins==null)
+            return 0;
+        return helper(coins,amount,0,0);
+        
+        
+    }
+    private int helper(int [] coins,int amount,int index,int coinUsed)
+    {
+        //base
+        if(amount==0)
+            return coinUsed;
+        if(index==coins.length||amount<0)
+            return -1;
+        
+        //logic
+        //do not choose this coin || 0 coin
+        
+        int case1 = helper(coins,amount,index+1,coinUsed);
+        
+        //choose this coin|| 1 coin
+        int case2 = helper(coins,amount-coins[index],index,coinUsed+1);
+        
+        if(case1==-1)
+            return case2;
+        if(case2==-1)
+            return case1;
+        return Math.min(case1, case2);
+    }
+}
