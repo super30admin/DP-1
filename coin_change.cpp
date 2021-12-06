@@ -1,3 +1,6 @@
+#include <vector>
+
+using namespace std;
 //Time complexity : O (coins.length * amount)
 //Space complexity : O (coins.length * amount)
 //Leetcode : Yes
