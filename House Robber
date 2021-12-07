@@ -66,5 +66,19 @@ class Solution {
    
 }
     
-   
+ }
+ 
+ //DP Approch using 1 D array
+ class Solution {
+    public int rob(int[] nums) {
+       if(nums == null || nums.length == 0) return 0;
+       int[] dp = new int[2 * nums.length];
+       dp[1] = nums[0];
+       int index = 1;
+       for(int i = 2; i < 2 * nums.length; i = i + 2) {
+           dp[i] = Math.max(dp[i - 1], dp[i - 2]);
+           dp[i + 1] = dp[i - 2] + nums[index++];
+       }
+        return Math.max(dp[2 * nums.length - 1], dp[2 * nums.length - 2]);
+    }
 }
