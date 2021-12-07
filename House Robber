@@ -1,1 +1,70 @@
+//Exhaustive approach
+//Time:O(2^n)
+//Leetcode : Time Limit Exceeds.
+class Solution {
+    public int rob(int[] nums) {
+        if(nums.length==0 || nums==null)
+            return 0;
+        
+            return helper(nums,0,0); 
+    }
+    
+    private int helper(int [] nums,int index,int amountGained)
+    {
+        //Base
+        if(index>=nums.length)
+            return amountGained; // Return the total value robbed.
+        
+        //Logic
+        int case0 = helper(nums,index+1,amountGained); // For case 0: didn't choose the house so amount remains as it is and index increase by 1(i.e. move to next house)
+        int case1 = helper(nums,index+2,amountGained+nums[index]); // For case 1 : choose the house and amount equals to value of index and index increases by 2 (as robber can't robb the adjacent houses. 
+        return Math.max(case1,case0);
+    }
+}
 
+// DP approch 1 using Array
+// Time:O(n)
+//Space:O(n+2) =O(n) (+2 of the two columns used for representing whether to choose the House or not
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums.length==0 || nums==null)
+            return 0;
+        int max=0;
+        int [][] a = new int[nums.length][2];
+        a[0][1]=nums[0];
+        for(int i=1;i<nums.length;i++)
+        {
+           a[i][0]= Math.max(a[i-1][0],a[i-1][1]); // If not choosing the house then choose max value from above row as it doesn't matter whether value is from adjacent as we are not selecting the current house.
+           a[i][1]= a[i-1][0]+nums[i]; // If choosing the house then make sure the amount carry forward is not from adjacent house. It should be from cross index of above row.
+        }
+        return Math.max(a[nums.length-1][0],a[nums.length-1][1]); // Return the max value from last row.
+       
+    }
+    
+ // DP approch 2 using variables reprsenting choices 0 and 1.
+// Time:O(n)
+//Space:O(1)
+class Solution {
+    public int rob(int[] nums) {
+        if(nums.length==0 || nums==null)
+            return 0;
+        int max=0;
+        int skip=0, take=nums[0]; // skip represents when robber do not choose the house. 
+                                  // temp states that robber chooses the house.
+        
+        for(int i=1;i<nums.length;i++)
+        {
+            int temp =skip;
+            skip =Math.max(skip,take); // Max of both variables as it states we are not choosing the house.
+            take =temp +nums[i]; // If we choose house , then add current index value to earlier skip value.
+          
+        }
+        return Math.max(skip,take);
+    }
+    
+   
+}
+    
+   
+}
