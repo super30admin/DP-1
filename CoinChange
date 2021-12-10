@@ -1,0 +1,69 @@
+//Exhaustive Search
+//LeetCode: No (Time Limit Exceeded)
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(coins.length==0 || coins==null)
+            return 0;
+        return helper(coins,amount,0,0);
+    }
+    private int helper(int [] coins,int amount,int index,int coinUsed)
+    {
+        //base
+        if(amount==0)
+            return coinUsed;
+        if(index==coins.length||amount<0)
+            return -1;
+        
+        //logic
+        //do not choose this coin || 0 coin
+        
+        int case1 = helper(coins,amount,index+1,coinUsed);
+        
+        //choose this coin|| 1 coin
+        int case2 = helper(coins,amount-coins[index],index,coinUsed+1);
+        
+        if(case1==-1)
+            return case2;
+        if(case2==-1)
+            return case1;
+        return Math.min(case1, case2);
+    }
+}
+
+// DP 
+//Time :O(m*n)
+// Space:O(m*n)
+//LeetCode:Yes
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        
+        int [][] dp = new int [coins.length+1][amount+1];
+        
+        for(int j=0;j<amount+1;j++)
+        {
+          dp[0][j] = amount+1;// Infinite Value;
+        }
+        
+        for(int i=1;i<coins.length+1;i++)
+        {
+            for(int j=1;j<amount+1;j++)
+            {
+                if(j<coins[i-1]) // Assign row 0 with 1. As getting amount 0 by using coins is going to be 1 (i.e. By not choosing the coin).
+                {
+                    dp[i][j]=dp[i-1][j];
+                }
+                else
+                {
+                    dp[i][j] = Math.min(dp[i-1][j],1+dp[i][j-coins[i-1]]); // Min number of coins used in both of the path 0 or 1. For path 1, add 1 to value got from by taking the value from above column and subtracting the amount with the index on which we are focusing on.
+                }
+            }
+            
+        }
+        if(dp[coins.length][amount] > amount)
+        {
+            return -1; // [2]^1 in that case the amount can not be formed so in that case return -1;
+        }
+        return dp[coins.length][amount]; // return the last element of the last row.
+       
+    }
+}
