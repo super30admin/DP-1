@@ -13,8 +13,8 @@ Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
 Total amount you can rob = 1 + 3 = 4.
 
 
-// Time Complexity :
-// Space Complexity :
+// Time Complexity : ON
+// Space Complexity :O1
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
 
@@ -22,3 +22,23 @@ Total amount you can rob = 1 + 3 = 4.
 // Your code here along with comments explaining your approach
 
 """
+class Solution(object):
+    def rob(nums):
+
+        n = len(nums)
+        even = 0;
+        odd = 0;
+        i = 0
+        for  i  in n:
+            
+            if(i%2 == 0):
+                even += nums[i];
+                even = even > odd if even else odd;
+            
+            else:
+                odd += nums[i];
+                odd = even > odd if even else odd;
+            
+        
+        return even > odd if even else odd
+    
