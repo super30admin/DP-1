@@ -1,3 +1,10 @@
+'''
+T.C: O(n * m)
+n - total coins, m - amount
+S.C: O(n * m)
+
+Intuition:
+'''
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         if not amount or not coins:

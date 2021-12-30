@@ -1,3 +1,10 @@
+'''
+T.C: O(n)
+n - length of nums
+S.C: O(1)
+
+Intuition: 
+'''
 class Solution(object):
     def rob(self, nums):
         """
