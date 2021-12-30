@@ -3,7 +3,8 @@ T.C: O(n)
 n - length of nums
 S.C: O(1)
 
-Intuition: 
+Intuition: bottum up dp, start from last and ull be left with robbing 1st or 2nd house
+
 '''
 class Solution(object):
     def rob(self, nums):

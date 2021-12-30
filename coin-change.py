@@ -1,3 +1,12 @@
+'''
+T.C: O(n * m)
+n - total coins, m - amount
+S.C: O(n * m)
+
+Intuition: bottum-up, dp table - cols: range(amount) rows: range(coins)
+
+'''
+
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         if not amount or not coins:
@@ -19,3 +28,4 @@ class Solution:
                     dp[idx][jdx] = min(dp[idx][jdx - coins[idx]] + 1, dp[idx-1][jdx])
                     
         return dp[-1][-1] if dp[-1][-1] != float("INF") else -1
+    
