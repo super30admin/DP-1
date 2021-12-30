@@ -1,10 +1,3 @@
-'''
-T.C: O(n * m)
-n - total coins, m - amount
-S.C: O(n * m)
-
-Intuition:
-'''
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         if not amount or not coins:
@@ -23,6 +16,6 @@ class Solution:
                 elif jdx == coins[idx]:
                     dp[idx][jdx] = 1
                 else:
-                    dp[idx][jdx] = min(dp[idx][jdx - coins[idx]] + 1, dp[idx - 1][jdx - coins[idx]] + 1, dp[idx-1][jdx])
+                    dp[idx][jdx] = min(dp[idx][jdx - coins[idx]] + 1, dp[idx-1][jdx])
                     
         return dp[-1][-1] if dp[-1][-1] != float("INF") else -1
