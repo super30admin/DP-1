@@ -26,43 +26,9 @@ Explanation: 11 = 5 + 5 + 1
 
 """
 
-
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
 class Solution:
+
+
     def leastCoins(self, coins, amount):
         '''
         :type coins: list of int
@@ -99,31 +65,3 @@ class Solution:
 
         return -1 if dp[amount] > amount else dp[amount]
 
-
-"""
-
-Identify a recursive solution. Here the recurrence relation is:
-rec_coin_change(amount) = min coin ∈ coins(rec_coin_change(amount-c)) + 1 ,if amount >= c
-The recurrence should ultimately reduce to some base case. Here that is rec_coin_change(0) = 0. 
-This is half the work done, but this is also the most difficult part. There is no DP without recursion. 
-Jumping right into an iterative solution is seldom fruitful.
-
-Find the subproblems. Try your recursive function on some dummy input and see what subfunctions are being called, 
-whether any of them are called multiple times. We do not want to call the same function again and again.
-
-
-Find the memoization data structure. Find how you can store the solutions to the intermediate subproblems,
- generally in an array, so that you don't have to recompute them. Figure out how many cells you nedd in the 
- data structure to fit all the various subproblems. Sometimes you can get away with writing just the memoized solution,
-  that is recursion with a memory.
-
-Identify the dependencies. What other subproblem(s) does a subproblem depend upon? Draw a diagram of the aforementioned
- data structure with arrows pointing to an arbitrary subproblem from the subproblems it depends upon (A DAG basically).
-  https://i.imgur.com/5O1OCba.png
-
-Figure out an evaluation order. Table filling time! We want to fill the base cases first. 
-Then we fill the cells which depend on the base cases only, and then the cells depending on the previous cells, 
-and so on. We must fill the cells at the tail end of the arrows before we can fill the cells at the head of the arrows. 
-This is the iteration step. This is often confusing to me and the source of many bugs.
-
-"""
