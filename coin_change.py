@@ -22,6 +22,7 @@ def coin_change(coins, amount):
     # return amount if its not the original value
     if dp[amount] != amount + 1:
         return dp[amount]
+    return -1
 
 
 # Driver code
