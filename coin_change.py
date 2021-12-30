@@ -1,6 +1,6 @@
 """
-// Time Complexity : o(n)
-// Space Complexity : o(1)
+// Time Complexity : o(s*n) where s = amount, n = number of coins
+// Space Complexity : o(s), Extra space for memorization of table 
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No 
 """
