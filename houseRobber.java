@@ -1,3 +1,6 @@
+//Time complexity : O(nums.length)
+//Space Complexity : O(1)
+
 class Solution {
     public int rob(int[] nums) {
         int skip=0;
