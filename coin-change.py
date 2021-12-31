@@ -1,4 +1,4 @@
-# Time Complexity : n be the number of coins and m the amount : O(n *m)
+# Time Complexity : n be the number of coins and m the amount : O(n * m)
 # Space Complexity : O(m)
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : Yes
@@ -13,8 +13,6 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
-
-        # using the top down approach
 
         def helper(coins, amount, dp=dict()):
             if amount in dp:
