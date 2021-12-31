@@ -26,9 +26,6 @@ class Solution:
         if coins == [] or len(coins) < 1:
             return -1
 
-       # cols = amount + 1
-       # rows = len(coins) + 1
-
         dp = []
         
         for i in range(len(coins) + 1):
