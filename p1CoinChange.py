@@ -23,6 +23,10 @@ Explanation: 11 = 5 + 5 + 1
 
 // There are 2 approaches, top down and bottom up
 
+// Time Complexity : O(N*k) where k is number of coins, and N is value of money
+// Space Complexity :ON 
+// Did this code successfully run on Leetcode :
+// Any problem you faced while coding this :
 
 """
 
@@ -44,16 +48,16 @@ class Solution:
         will always be 0 coins no matter what the coins we are
         given are
         '''
-        dp[0] = 0
+        dp[0] = 0 #row[0] is filled as 0
 
         # Solve every subproblem from 1 to amount
-        for i in range(1, amount + 1):
-            # For each coin we are given
+        for i in range(1, amount + 1): #column i
+            # For each coin we are given row
             for j in range(0, len(coins)):
                 # If it is less than or equal to the sub problem amount
-                if coins[j] <= i:
+                if coins[j] <= i: #i is amount money
                     # Try it. See if it gives us a more optimal solution
-                    dp[i] = min(dp[i], dp[i - coins[j]] + 1)
+                    dp[i] = min(dp[i], dp[i - coins[j]] + 1) #coins changes the columns
 
         '''
         dp[amount] has our answer. If we do not have an answer then dp[amount]

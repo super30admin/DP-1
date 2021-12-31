@@ -17,9 +17,10 @@ Total amount you can rob = 1 + 3 = 4.
 
 
 // Time Complexity : ON
-// Space Complexity :O1
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Space Complexity :O(1) 
+
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
 
 
 // Your code here along with comments explaining your approach
@@ -29,25 +30,16 @@ class Solution(object):
 
 
     
-    def rob(nums):
+    def rob(self, nums: list[int]):
+        n = len(nums) 
+        rob1 = rob2 = 0
+        for i in nums:
+            temp = max(rob1 + i, rob2)
+            rob1 = rob2
+            rob2 = temp
+        return rob2
 
-        n = len(nums)
-        even = 0;
-        odd = 0;
-        i = 0
-        for  i  in n:
-            
-            if(i%2 == 0):
-                even += nums[i];
-                even = even > odd if even else odd;
-            
-            else:
-                odd += nums[i];
-                odd = even > odd if even else odd;
-            
-        
-        return even > odd if even else odd
-    
+
 
     """
 Find recursive relation
