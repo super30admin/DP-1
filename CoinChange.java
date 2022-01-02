@@ -90,3 +90,43 @@ class CoinChange
 
     }
 }
+
+// correct dp solution after discussed in class
+/*
+time complexity : O(n*m) where n is number of coins and m is the amount
+space complexity : O((n+1)*(m+1)) for the dp matrix
+*/
+class Solution
+{
+    public int coinChange(int[] coins, int amount)
+    {
+      int len = coins.length;
+
+      int[][] dp = new int[len+1][amount+1];
+
+      if(amount == 0) return 0;
+
+      for(int i = 1; i < amount+1; i++){
+          dp[0][i] = 12000000;// any random large number
+      }
+
+      for(int row = 1; row < len+1; row++)
+      {
+          for(int col = 1; col < amount+1; col++)
+          {
+              if(col < coins[row-1])
+                  dp[row][col] = dp[row-1][col];
+              else
+              {
+                  dp[row][col] = Math.min(dp[row-1][col]
+                                        ,dp[row][col - coins[row-1]] + 1);
+              }
+
+          }
+      }
+
+      return dp[len][amount] == 12000000
+                  ? -1
+                  : dp[len][amount];
+    }
+}
