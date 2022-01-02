@@ -1,0 +1,21 @@
+//TC: O(n)
+//SC:O(1)
+//Passed all testcases on Leetcode: Yes
+//Problem coding this: No
+class Solution {
+    public int rob(int[] nums) {
+        //nullcase
+        if (nums== null) return 0;
+        int skip = 0;
+        int take = nums[0];
+        int n=nums.length;
+        for (int i = 1; i<n;i++) {
+            int temp = skip;
+            //skip
+            skip = Math.max(skip,take);
+            //take
+            take = temp+nums[i]; //prev skip+current number
+        }
+        return Math.max(skip,take);
+    }
+}
