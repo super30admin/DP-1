@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        
+       int dp[amount+1];
+        memset(dp, 0, sizeof(dp));
+        for(int i=1;i<=amount;i++){
+            int mini = INT_MAX;
+            for(auto coin:coins){
+               if(i-coin>=0 && dp[i-coin] != -1)
+                   mini = min(mini, dp[i-coin]); 
+            }
+            // Set dp[i] to -1 if i (current amount) can not be reach by  coins array
+            dp[i] = mini== INT_MAX ? -1 : 1+mini;
+        }
+        return dp[amount];
+    }
+
+    
+};coin
