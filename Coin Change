@@ -1,0 +1,76 @@
+// Time Complexity : O(m * n)   --> Bottom up approach
+// Space Complexity : O(m * n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+Solution 1 - 
+Exhaustive case - exponential time complexity - time limited exceeded error
+
+    public int coinChange(int[] coins, int amount) {
+        return helper(amount, coins, 0, 0);
+    }
+    
+    public int helper(int amount, int [] coins, int index, int coinUsed)
+    {
+        // base condition
+        if(amount == 0) return coinUsed;
+        
+        if(amount < 0 || index >= coins.length) return -1;
+        
+        // coin choosed
+        int case1 = helper(amount - coins[index], coins, index, coinUsed + 1);
+        
+        // coin not choosed
+        int case2 = helper(amount, coins, index + 1, coinUsed);
+        
+        // when either of case1 or case2 is -1 return other one
+        if(case1 == -1) return case2;
+        
+        if(case2 == -1) return case1;
+        
+        // return min of coins
+        return Math.min(case1, case2);
+    }
+    
+    
+ Solution 2 - 
+ 
+ Bottom - up approach - TC - O(m * n) SC - O(m * n) - {m = no of rows, n = no of cols}
+ 
+ int [][] dp = new int[coins.length + 1][amount + 1];
+        
+        dp[0][0] = 0;
+        
+        for(int j = 1; j < dp[0].length; j++)
+        {
+            // set first row which will be 0th to infinity but to avoid integer overflow for infinity + 1 operation, 
+            // we do amount + 1 as all the other values of table will be les than amount
+            dp[0][j] = amount + 1;
+        }
+        
+        // fill other rows of table
+        for(int i = 1; i < coins.length + 1; i++)
+        {
+            for(int j = 1; j < amount + 1; j++)
+            {
+                // case 1 - j < row val/ coin val for row in table, copy upper row col value
+                if(j < coins[i - 1])
+                {
+                    dp[i][j] = dp[i - 1][j];
+                }
+                else
+                {
+                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - coins[i - 1]] + 1);
+                }
+            }
+        }
+        
+        int result = dp[dp.length - 1][dp[0].length - 1];
+        
+        if(result > amount)
+            return -1;
+        else
+            return result;
+    }
