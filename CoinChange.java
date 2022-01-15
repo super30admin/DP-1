@@ -29,8 +29,8 @@ class Solution {
 // Fill the matrix and the last value will give you the min number of coins used
 // While choosing the coins always go for bottom up approach. 
 
-// Time Complexity 
-// Space Complexity
+// Time Complexity O(m*n) 
+// Space Complexity O(m*n)
 
 class Solution {
     public int coinChange(int[] coins, int amount) {
