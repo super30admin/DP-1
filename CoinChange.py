@@ -13,13 +13,13 @@ Constraints:
 
 """
 
-# Time Complexity : O(m*n)
+# Time Complexity : O(m*n) m is number of coins, n is numbers of amount 
 # Space Complexity : O(m*n)
 # Did this code successfully run on leetcode : Yes
 # Any problem you faced while coding this : I could not solve this. I had to take lot of help but understood everything. I took online help. 
 
 
-
+from typing import List
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         
