@@ -5,6 +5,8 @@
 // Every index of dp denotes the number of coins we'll need to get that index as amount.
 // We check the min value of dp[i] or dp[i-coin] + 1 (1 is for the current coin). 
 
+import java.util.*;
+
 class CoinChange {
   public int coinChange(int[] coins, int amount) {
     if (coins == null || coins.length == 0) {
