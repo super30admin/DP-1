@@ -1,0 +1,52 @@
+//TC = O(n)
+SC(n)
+class Solution {
+    private int dp[][];
+    
+    public int coinChange(int[] coins, int amount) {
+        
+    dp = new int[coins.length][amount+1];  //coins.length = index
+        
+        int ans = coinChange(coins, 0, amount);
+        return ans== Integer.MAX_VALUE ? -1 : ans;
+    }
+     
+       private int coinChange(int[] coins, int index, int amount){
+        
+        //base conditions
+        if(amount == 0){
+            return 0;
+        }
+        
+        if(amount < 0 || index == coins.length ){
+            return Integer.MAX_VALUE;     //we can assume infinity
+        }
+        
+        
+    if(dp[index][amount] > 0){   //seen this earlier
+        return dp[index][amount];
+    }
+        else{
+            //not choosing
+            int nChooseAns = coinChange(coins, index+1, amount);
+            
+            //choosing
+            int chooseAns = coinChange(coins, index, amount - coins[index]);  //amount will deducted by chosen coin
+            
+            if(chooseAns != Integer.MAX_VALUE){
+                chooseAns += 1;       // because it is not equal it can give -infinity
+            }
+            
+             dp[index][amount] = Math.min(nChooseAns, chooseAns) ;  //choosing optiminal path i.e. minimal path
+                    
+            return dp[index][amount];
+
+
+}
+        
+    }
+
+    
+    
+    
+}
