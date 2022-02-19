@@ -1,7 +1,8 @@
-// Time Complexity:     O(amount/minimum_denomination)
-// Space Complexity:    O(2^(amount/minimum_denomination))
-// where n is length of given array
+//                              Top-down                            Bottom-Up
+// Time Complexity:     O(amount/minimum_denomination)               O(n*amount)
+// Space Complexity:    O(2^(amount/minimum_denomination))            O(1)
 // Yes, this code ran successfully
+// where n is length of given array
 // No, I didn't face any problem in this problem statement
 
 package src;
@@ -22,7 +23,7 @@ class CoinSolution
     int[][] dp;
     public int coinChange(int[] coins, int amount)
     {
-// ****************************** Another Approach ******************************
+// ***************************** Bottom-Up Approach *****************************
 //        long[] dp = new long[amount+1];
 //        Arrays.fill(dp, Integer.MAX_VALUE);
 //        dp[0] = 0;

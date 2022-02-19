@@ -1,5 +1,6 @@
-// Time Complexity:     O(n)
-// Space Complexity:    O(n)
+//                       Top-Down          Bottom-Up
+// Time Complexity:        O(n)              O(n)
+// Space Complexity:       O(n)              O(1)
 // where n is length of given array
 // Yes, this code ran successfully
 // No, I didn't face any problem in this problem statement
@@ -25,7 +26,7 @@ class RobberySolution {
         return ans;
 
 
-// ****************************** Another Approach ******************************
+// ***************************** Bottom-Up Approach *****************************
 //        final int n = nums.length;
 //        if (n == 0)
 //            return 0;
