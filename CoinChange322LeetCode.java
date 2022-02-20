@@ -10,13 +10,13 @@ public class CoinChange322LeetCode {
 
     public int coinChange(int[] coins, int amount) {
 
-        int[] prev = new int[amount+1];
+        int[] prev = new int[amount+1];             //creating previous array
 
         for(int i=1; i<=amount;i++){
-            prev[i] = Integer.MAX_VALUE;
+            prev[i] = Integer.MAX_VALUE;            //assigning prev array element to Integer.MAX_VALUE
         }
 
-        int[] current = new int[amount+1];
+        int[] current = new int[amount+1];          //creating current array
 
         for(int i=0; i<coins.length; i++){
 
@@ -24,28 +24,28 @@ public class CoinChange322LeetCode {
 
                 int select;
                 if(j-coins[i]<0){
-                    select = Integer.MAX_VALUE;
+                    select = Integer.MAX_VALUE;         //check for array index out of bound
                 }
                 else{
 
-                    if(current[j-coins[i]]==Integer.MAX_VALUE){
+                    if(current[j-coins[i]]==Integer.MAX_VALUE){     //check for array index out of bound
                         select = Integer.MAX_VALUE;
                     }
                     else{
-                        select = 1 + current[j-coins[i]];
+                        select = 1 + current[j-coins[i]];           //selecting the coins
                     }
                 }
 
                 //int select = (j-coins[i])<0 ? Integer.MAX_VALUE : (1 + current[j-coins[i]]);
-                int notSelect = prev[j];
+                int notSelect = prev[j];                            //not selecting the coin
 
-                current[j] = Math.min(select, notSelect);
+                current[j] = Math.min(select, notSelect);           //storing in the current array the minimum value between select and notSelect way
             }
             prev = current;
 
         }
 
-        return prev[amount] == Integer.MAX_VALUE ? -1 : prev[amount];
+        return prev[amount] == Integer.MAX_VALUE ? -1 : prev[amount];       //returning the last element of prev array
 
     }
 

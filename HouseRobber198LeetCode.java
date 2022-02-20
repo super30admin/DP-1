@@ -10,21 +10,21 @@ public class HouseRobber198LeetCode {
 
     public int rob(int[] nums) {
 
-        dp = new int[nums.length];
-        if(nums.length==1){
+        dp = new int[nums.length];                                              //creating the dp array
+        if(nums.length==1){                                                     //check if nums length is 1
             return nums[0];
         }
-        dp[0] = nums[0];
-        dp[1] = Math.max(nums[0], nums[1]);
+        dp[0] = nums[0];                                                    //assign dp[0] = nums[0]
+        dp[1] = Math.max(nums[0], nums[1]);                             //assign dp[1] = max of nums[0], nums[1]
         for(int i=2;i<nums.length;i++){
 
-            int choose = nums[i] + dp[i-2];
-            int notChoose = dp[i-1];
+            int choose = nums[i] + dp[i-2];                             //selecting the house for rob
+            int notChoose = dp[i-1];                                    //not selecting the house
             int maximumRobbary = Math.max(choose, notChoose);
-            dp[i] = maximumRobbary;
+            dp[i] = maximumRobbary;                                     //give dp[i] values to maximum between selecting and notSelecting ways
 
         }
-        return dp[nums.length-1];
+        return dp[nums.length-1];                                       //returning the last element of dp array
 
     }
 
