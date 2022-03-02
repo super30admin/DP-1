@@ -28,3 +28,22 @@ class Solution {
         return dp[index];
     }
 }
+
+//Bottom-up approach
+//Time and Space Complexity: O)(N)
+class Solution {
+    private int[] dp;
+    public int rob(int[] nums) {
+        dp = new int[nums.length+2];
+        
+        for(int i=nums.length-1; i>=0;i--){
+            int rob = nums[i] + dp[i+2];
+            int notrob = dp[i+1];
+            
+            dp[i] = Math.max(rob,notrob);
+        }
+        
+        return dp[0];
+        
+    }
+}
