@@ -1,3 +1,8 @@
+// Time Complexity : O(S*n) where S is amount and n is coin denominator
+// Space Complexity : O(S)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+
 /**
  * @param {number[]} coins
  * @param {number} amount
