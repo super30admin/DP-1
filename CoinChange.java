@@ -2,7 +2,12 @@ class CoinChange {
 
   /**
    * 
-   * Time Complexity: 
+   * Time Complexity: O(n)
+   * Space Complexity: O(n)
+   * 
+   * Any Problems solving this? No
+   * Were you able to solve it on leetcode? Yes
+   * 
    */
   public int coinChange(int[] coins, int amount) {
     int[] memo = new int[amount];

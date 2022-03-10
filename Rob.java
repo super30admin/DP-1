@@ -1,4 +1,12 @@
 public class Rob {
+  /**
+   * 
+   * Time Complexity: O(n)
+   * Space Complexity: O(n)
+   * 
+   * Any Problems solving this? No
+   * Were you able to solve it on leetcode? Yes
+   */
   public int rob(int[] nums) {
     int[] memo = new int[nums.length];
     
