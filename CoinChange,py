@@ -1,0 +1,32 @@
+# Time Complexity : O(amount*len(coins))
+# Space Complexity : O(amount)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
+
+# We will create a DP array of length amount plus one and initialize it with max value. This DP array will keep
+# track of the coins needed to make up every single amount from 0....amount
+# E.g if we want to know how many coins are needed to to make up 7 given that we already have a coin of value 4,
+# then we'll check the dp array to see how many coins are needed to make up 7-4=3 coins from dp[3] and then just
+# add 1(i.e current coin) to that amount.   
+
+from typing import List
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:        
+         # Every index and value here is the minimum amount of coins needed to sum to that index
+        dp=[float('inf')]*(amount+1) 
+        dp[0]=0 # So 0 is the minimum amount of coins needed to sum to zero
+        #index=current amount and value=minimum amount of coins needed to sum to that value
+        
+        for currAmount in range(1,amount+1):
+            for coin in coins:
+                if currAmount-coin>=0:
+                    dp[currAmount]=min(dp[currAmount],1+dp[currAmount-coin])
+                    # The plus one is for the current coin being checked
+        if dp[amount]!=float('inf'):
+            return dp[amount]
+        else:
+            return -1
+
+
+obj=Solution()
+obj.coinChange([1,2,5],11)
