@@ -1,5 +1,5 @@
-// Time Complexity : O(mxn) where m is the number of length of coins array, n is the amount
-// Space Complexity : O(mxn)
+// Time Complexity : O(n) where n is the length of nums array
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
