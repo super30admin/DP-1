@@ -13,6 +13,8 @@ class Solution {
             return -1;
         }
         
+        // We can also do this by maintaining a 2D array - [coins + 1][amount + 1]
+        // We would fill column 0 with 0 for all rows
         int dp[] = new int[amount + 1];
         Arrays.fill(dp, amount+1);
         dp[0] = 0;
