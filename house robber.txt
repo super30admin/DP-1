@@ -1,0 +1,25 @@
+// Time: O(n)
+// Space: O(n)
+// Difficulties: Few Syntax error and edge case of length == 1
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        
+        int len = nums.length;
+        
+        if(nums.length == 1) return nums[0];
+
+        
+        int max_robbed[] = new int[nums.length]; 
+        
+        max_robbed[0] = nums[0];
+        max_robbed[1] = Math.max(nums[0], nums[1]);
+        
+        for (int i = 2; i < nums.length; i++){
+            max_robbed[i] = Math.max(max_robbed[i-1] , max_robbed[i-2] + nums[i]);
+        }
+        
+        return max_robbed[nums.length-1];
+    }
+}
