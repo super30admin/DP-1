@@ -1,5 +1,7 @@
 public class CoinChange {
 
+    // Time complexity: O(m * n) - m = coins.length   n = amount
+    // Space complexity: O(m * n)
     public int coinChange(int[] coins, int amount) {
         if(coins == null || coins.length == 0 ) return 0;
 
