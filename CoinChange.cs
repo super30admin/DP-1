@@ -4,6 +4,10 @@ using System.Text;
 
 namespace DynamicProgramming
 {
+    /*
+    * T.C: O(M*N): where m is number of coin and n is amount
+    * S.C: O(N) 
+    */
     public class CoinChange
     {
         public int FindCoinChange(int[] coins, int amount)
