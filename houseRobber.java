@@ -1,32 +1,25 @@
 /**
 Problem: https://leetcode.com/problems/house-robber/
 TC: O(n)
-SC: O(n)
+SC: O(1)
 */
 class Solution {
     public int rob(int[] nums) {
-        int n = nums.length;
-        
-        if (n == 0) {
+        if (nums == null || nums.length == 0) {
             return 0;
         }
         
-        if (n == 1) {
-            return nums[0];
-        }
+        int n = nums.length;
+        int skip = 0;
+        int take = nums[0];
         
-        int dp[] = new int[n];
-        dp[0] = nums[0];
-        dp[1] = nums[1];
-
-        for(int i = 2; i < nums.length; ++i) {
-            if(i > 2) {
-                dp[i] = nums[i] + Math.max(dp[i-2], dp[i-3]);
-            } else {
-                dp[i] = dp[i-2] + nums[i];
-            }
+        for (int i = 1; i < n; ++i) {
+            // Case 1 : have not robbed house i
+            int tempSkip = skip;
+            skip = Math.max(skip, take);
+            // Case 2 : robbing house i
+            take = tempSkip + nums[i];
         }
-
-        return Math.max(dp[n-1], dp[n-2]);
+        return Math.max(skip, take);
     }
 }
