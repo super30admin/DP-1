@@ -9,7 +9,7 @@ class Solution {
         int totalProfit = Math.max(dp[n][0], dp[n][1]);
         
         System.out.print("Houses robbed: ");
-        for (int i = n; i >= 0; --i) {
+        for (int i = n; i >= 0 && totalProfit > 0; --i) {
             if (totalProfit == dp[i][1]) { // We robbed house i
                 totalProfit -= nums[i];
                 System.out.print((i + 1) + " ");
