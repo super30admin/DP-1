@@ -1,3 +1,8 @@
+
+
+
+// Your code here along with comments explaining your approach
+
 class Solution {
     public int rob(int[] nums) {
         if(nums == null || nums.length == 0) {
@@ -17,6 +22,5 @@ class Solution {
         int case1 = helper(nums, index + 2, score + nums[index]);
         return Math.max(case0, case1);
     }
-}public class house_robber_recrusive {
-    
 }
+    
