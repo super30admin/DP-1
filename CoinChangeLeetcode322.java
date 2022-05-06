@@ -19,11 +19,12 @@ public class CoinChangeLeetcode322 {
         }
 
         public int minCoinChange(int[] coins, int amount, int index) {
-            int count = 0;
+            //returning MAX-1 is necessary otherwise we end up getting some huge negative number which can result into wrong answers.
+
             if (index >= coins.length) {
                 return Integer.MAX_VALUE -1;
             }
-
+            //if amount == 0 that means we reached solution just return 0 because we are adding 1 already when we call.
             if (amount == 0) {
                 return 0;
             }
@@ -39,7 +40,7 @@ public class CoinChangeLeetcode322 {
 
     /* Solution 2 Recursion technique using memiozation */
     //Time Complexity: O(N*A) N is the no of coins where A is the amount
-    //Spcae complexity: O(N*A) No auxillary data structure. 
+    //Spcae complexity: O(N*A) No auxillary data structure.
     //Leetcode : Yes
 
 
@@ -60,10 +61,12 @@ public class CoinChangeLeetcode322 {
     }
 
     public int minCoinChange1(int[] coins, int amount, int index) {
-        int count = 0;
+        
+        //returning MAX-1 is necessary otherwise we end up getting some huge negative number which can result into wrong answers.
         if (index >= coins.length) {
             return Integer.MAX_VALUE -1;
         }
+        //if amount == 0 that means we reached solution just return 0 because we are adding 1 already when we call.
 
         if (amount == 0) {
             return 0;
