@@ -3,6 +3,10 @@ namespace Algorithms
 {
     public class Dp_CoinChange
     {
+        /// Time Complexity : O(N*amount) 
+        // Space Complexity :O(amount) 
+        // Did this code successfully run on Leetcode :Yes
+        // Any problem you faced while coding this :  No
         public int CoinChange(int[] coins, int amount)
         {
             int rows = coins.Length + 1;
