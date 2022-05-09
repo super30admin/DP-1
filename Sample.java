@@ -29,3 +29,23 @@ class Solution {
         return result;
     }
 }
+
+// Time Complexity : O(N)
+// Space Complexity :  O(1)
+// Did this code successfully run on Leetcode : Yes
+class Solution2 {
+    public int rob(int[] nums) {
+        int chosen = 0;
+        int notChosen = 0;
+        for(int i = 0; i < nums.length; i++){ 
+          //store chosen in a temp variable
+           int temp = chosen;
+           //add current element with not choosen
+           chosen = nums[i] + notChosen;
+           //store in notchoose the max of previous choose and not choosen
+           notChosen = Math.max(temp,notChosen);
+        }
+        
+        return Math.max(chosen, notChosen);
+    }   
+ }
