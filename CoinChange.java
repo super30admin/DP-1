@@ -2,6 +2,9 @@
  * Exhaustive approach
  * time: O(2^(m*n))
  * space: O(2^(m*n))
+ * 
+ * Did this code successfully run on Leetcode : Yes but Time Limit Exceeded
+ * Any problem you faced while coding this : No
  */
 class Approach1 {
     public int coinChange(int[] coins, int amount) {
@@ -33,8 +36,12 @@ class Approach1 {
  * DP approach
  * n = coins
  * m = amount
+ * 
  * time: O(m*n)
  * space: O(m*n) 
+ * 
+ * Did this code successfully run on Leetcode : Yes
+ * Any problem you faced while coding this : No
  */
 class Approach2 {
     public int coinChange(int[] coins, int amount) {

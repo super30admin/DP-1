@@ -1,5 +1,9 @@
 /**
  * time: 2^n 
+ * space: 2^n
+ * 
+ * Did this code successfully run on Leetcode : Yes but Time Limit Exceeded
+ * Any problem you faced while coding this : No
  */
 class Problem21 {
     public int rob(int[] nums) {
@@ -28,6 +32,9 @@ class Problem21 {
  * 
  * time: O(n)
  * space: O(n)
+ * 
+ * Did this code successfully run on Leetcode : Yes
+ * Any problem you faced while coding this : No
  */
 class Problem21Approach1 {
     public int rob(int[] nums) {
