@@ -1,0 +1,20 @@
+// Time Complexity : O(N*denom)
+// Space Complexity : O(N) N is used for creating an extra array for storing amounts from 0 to N
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this : Yes intitally I havent return the -1 if the amount cannot be generated
+
+
+// Your code here along with comments explaining your approach
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        #Creating an amounts array from 0 to amount
+        dp=[float("inf") for i in range(amount+1)]
+        dp[0]=0
+        #Iterating over coins array and generating sum array with minimum number of coins needed
+        for sum in range(amount+1):
+            for denom in coins:
+                #Updating amounts array with the least value to generate that sum
+                if denom<=sum:
+                    dp[sum]=min(dp[sum],1+dp[sum-denom])
+        #returning last element which is the amount for which we have to return the least no of coins
+        return dp[-1] if dp[-1]!=float("inf") else -1

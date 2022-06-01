@@ -1,0 +1,25 @@
+// Time Complexity :O(N)
+// Space Complexity :O(N) N stands for the number of houses
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :I was confused on how to build a dp array
+
+
+// Your code here along with comments explaining your approach
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if len(nums)==1:
+            #returning the only house with the amount
+            return nums[0]
+        x=len(nums)
+        #initializing the dp array with the length of the nums array
+        dp=[0]*x
+        if len(nums)==2:
+            #If there are two houses I am going the rob the one with the highest amount
+            return max(nums[0],nums[1])
+        dp[0]=nums[0]
+        dp[1]=max(nums[0],nums[1])
+        for amount in range(2,x):
+            #If the number of houses is greater than 2 then I am going to rob either the current house + max(2 houses before) or the max amount till the before house
+            dp[amount]=max(nums[amount]+dp[amount-2],dp[amount-1])
+        return dp[-1]
+        
