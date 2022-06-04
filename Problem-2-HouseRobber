@@ -1,0 +1,36 @@
+//using recursion
+class Solution {
+    public int rob(int[] nums) {
+        return helper(nums,0);
+    }
+    private int helper(int[] nums , int index)
+    {
+        if(index >= nums.length) return 0;
+        //steal
+        int case1 = nums[index] + helper(nums, index + 2);
+        int case2 = helper(nums, index + 1);
+        return Math.max(case1,case2);
+        
+    }
+}
+
+//using dp
+class Solution {
+    public int rob(int[] nums) {
+        return helper(nums);
+    }
+    private int helper(int[] nums)
+    {
+        int n = nums.length;
+        int iplus1 = 0;
+        int iplus2 = 0;
+        for(int i = 0 ; i < n  ; i++)
+        {
+           int currentData = nums[i] + iplus2;
+           currentData = Math.max(currentData , iplus1);
+           iplus2 = iplus1;
+           iplus1 = currentData;
+        }
+        return iplus1;
+    }
+}
