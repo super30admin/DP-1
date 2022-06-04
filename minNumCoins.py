@@ -1,5 +1,6 @@
  # Time Complexity : O(numCoins * Amount) 
- # Space Complexity: O(numCoins * Amount) 
+ # Space Complexity: O(numCoins * Amount)
+ 
 def coinChange(coins, amount):
         maxcoins=99999
         rows=[None]*(len(coins)+1)
