@@ -1,3 +1,5 @@
+#TC: O(n*m) where n is amount and m is number of coins
+#SC: O(n*m)
 class Solution(object):
     def coinChange(self, coins, amount):
         """
