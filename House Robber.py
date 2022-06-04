@@ -80,14 +80,5 @@ class Solution:
 # Obj=Solution()
 # print(Obj.rob([1,7,1,1,7]))
 
-#         n=len(nums)
-#         max=0
-#         for i in range(n-1,-1,-1):
-#             if nums[i-2]<nums[i-3]:
-#                 max= nums[i]+nums[i-3]
-#                 i=i-3
-#             max= nums[i]+nums[i-2]
-#             i=i-2
-#         return max
 
 
