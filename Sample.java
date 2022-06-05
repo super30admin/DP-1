@@ -71,3 +71,67 @@ class Solution {
         return Math.min(case1, case2);
     }
 }
+
+//****HOUSE ROBBER- RECURSIVE APPROACH****
+//Time complexity: o(2^n);
+//Space complexity: o(n);
+//Leetcode runnable: Y
+//Any doubts: N
+class Solution {
+    public int rob(int[] nums) {
+        //null case: 
+        if(nums.length==0 || nums==null) return 0;
+        
+        return helper(nums, 0, 0);
+        
+        
+    }
+    private int helper(int[] nums,int i,int amount)
+    {
+        //base
+        if(i>=nums.length)
+        {
+            return amount;
+        }
+        
+        //logic
+        //choose
+        int c1= helper(nums, i+2, amount+nums[i]);
+        //not to choose
+        int c2=helper(nums, i+1, amount);
+        
+        return Math.max(c1,c2);
+    }
+}
+
+//****HOUSE ROBBER- DP APPROACH****
+//Time complexity: o(n);
+//Space complexity: o(n);
+//Leetcode runnable: Y
+//Any doubts: N
+class Solution {
+    public int rob(int[] nums) {
+        //null case: 
+        if(nums.length==0 || nums==null) return 0;
+        
+        return helper(nums, 0, 0);
+        
+        
+    }
+    private int helper(int[] nums,int i,int amount)
+    {
+        //base
+        if(i>=nums.length)
+        {
+            return amount;
+        }
+        
+        //logic
+        //choose
+        int c1= helper(nums, i+2, amount+nums[i]);
+        //not to choose
+        int c2=helper(nums, i+1, amount);
+        
+        return Math.max(c1,c2);
+    }
+}
