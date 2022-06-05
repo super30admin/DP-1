@@ -25,11 +25,4 @@ Constraints:
 
 class Solution:
     def rob(self, nums):
-        sumOdd, sumEven = 0, 0
-        for i in range(len(nums)):
-            if i % 2 == 0:
-                sumEven += nums[i]
-            else:
-                sumOdd += nums[i]
-
-        return max(sumOdd, sumEven)
+        pass
