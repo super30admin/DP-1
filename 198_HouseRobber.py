@@ -1,4 +1,17 @@
 """
+Leetcode - https://leetcode.com/problems/house-robber (submitted)
+TC- O(N), SC - 0(1)
+Lecture- https://youtu.be/M5Gu3a1Ta4Q
+FAQ -
+What if you don't know the decision for each house you chose?
+Make 1-D array that has max reward for each house and also the index of which max you choose, then iterate through those
+index to find the path (choice path in this scenario) you took.
+
+Why do we go to pre and pre-previous if we don't choose them in our most profitable path?
+Pre and pre-precious will always account for if they included themselves or not, so even if they didn't include
+themselves, they still be able to tell ourselves the max reward up to that point.
+
+
 You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed,
 the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected
 and it will automatically contact the police if two adjacent houses were broken into on the same night.
@@ -22,7 +35,33 @@ Constraints:
 0 <= nums[i] <= 400
 """
 
+'''
+Idea - Dynamic programming
 
+Once we figure out repition in the exhausted tree (possible cases), we can start thinking of solution for the simplest
+problem in DP. 
+
+Consider our input is - [6, 9, 8, 1]
+
+Our bottom up DP will build up right to left, [1, 8, 9, 6], our simplest problem will be - maxReward([6]) = 6,
+and maxReward([6,9]) = max(6,9).
+Now, maxReward([6,9,8]) = max(maxReward([6,9]) = max(6,9), maxReward([6]) + 8), '8' is the cost for that house
+
+So generalizing it DP[i] = max(previous, pre-previous + cost).
+
+You can approach this by keep track of the whole 1-D DP array instead of just previous and pre-previous, but this is
+more optimized in space.
+'''
 class Solution:
     def rob(self, nums):
-        pass
+        if len(nums) == 1:
+            return nums[0]
+        prePrevious = nums[0]
+        previous = max(nums[0], nums[1])
+
+        for i in range(2, len(nums)):
+            curr = max(previous, prePrevious + nums[i])
+            prePrevious = previous
+            previous = curr
+
+        return previous
