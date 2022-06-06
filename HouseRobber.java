@@ -14,13 +14,13 @@ class Solution {
             return nums[0];
         }
         int n = nums.length;
-        int a = nums[0];
-        int b = Math.max(nums[0], nums[1]);
+        int prev = nums[0];
+        int curr = Math.max(nums[0], nums[1]);
         for(int i = 2; i < n; i++) {
-            int temp = a;
-            a = Math.max(b, a);
-            b = nums[i] + temp;
+            int temp = curr;
+            curr = Math.max(prev + nums[i], temp);
+            prev = temp;  
         }
-        return Math.max(b, a);
+        return curr;
     }
 }
