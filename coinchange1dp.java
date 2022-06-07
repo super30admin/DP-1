@@ -1,3 +1,8 @@
+// Time Complexity :O(m * n) m- no.of coins , n is amount
+// Space Complexity :O(1);
+// Did this code successfully run on Leetcode :y
+// Any problem you faced while coding this :N
+
 import java.lang.*;
 class Solution {
     public int coinChange(int[] coins, int amount) {
