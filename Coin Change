@@ -67,7 +67,7 @@ class Solution {
 -------------------------------------------------
 
 Solution 2- DP - Bottom up
-TC - O()
+TC - O(m * n) where m - coins.length, n = amount
 SC - O(m * n)
 
 class Solution {
