@@ -1,0 +1,105 @@
+You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+
+Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+
+You may assume that you have an infinite number of each kind of coin.
+
+ 
+
+Example 1:
+
+Input: coins = [1,2,5], amount = 11
+Output: 3
+Explanation: 11 = 5 + 5 + 1
+Example 2:
+
+Input: coins = [2], amount = 3
+Output: -1
+Example 3:
+
+Input: coins = [1], amount = 0
+Output: 0
+ 
+
+Constraints:
+
+1 <= coins.length <= 12
+1 <= coins[i] <= 231 - 1
+0 <= amount <= 104
+
+------------------------------------------------------------------
+
+Solution 1 - Exhaustive approach - (Time limit exceeded) 
+TC - O(2^(m + n)) where m - coins.length, n = amount
+SC - O(m + n)
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(coins == null || coins.length == 0)
+            return -1;
+        
+        return helper(coins, amount, 0, 0);
+    }
+    
+    public int helper(int[] coins, int amount, int index, int coinsUsed)
+    {
+        // base case
+        if(amount < 0 || index == coins.length)
+            return -1;
+        
+        if(amount == 0)
+            return coinsUsed;
+        
+        // choose
+        int case1 = helper(coins, amount - coins[index], index, coinsUsed + 1);
+        
+        // not choose
+        int case2 = helper(coins, amount, index + 1, coinsUsed);
+        
+        if(case1 == -1) return case2;
+        
+        if(case2 == -1) return case1;
+            
+        return Math.min(case1, case2);
+    }
+}
+
+-------------------------------------------------
+
+Solution 2- DP - Bottom up
+TC - O()
+SC - O(m * n)
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int[][] dp = new int[coins.length + 1][amount + 1];
+        
+        dp[0][0]= 0;
+        
+        // fill 1st row of dp
+        for(int i = 1; i < dp[0].length; i++)
+        {
+            dp[0][i] = amount + 1;      //instead of infinity, we can take amount + 1 as the number can never be greater than amount
+        }
+        
+        for(int i = 1; i < dp.length; i++)
+        {
+            for(int j = 0; j < dp[0].length; i++)
+            {
+                // if amount < coins array index
+                if(j < coins[i - 1])
+                {
+                    dp[i][j] = dp[i - 1][j];
+                }
+                else
+                {
+                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - coins[i - 1]] + 1);
+                }
+            }
+        }
+        
+        int result = dp[dp.length - 1][dp[0].length - 1];    
+        
+        return result > amount ? -1: result;
+    }
+}
