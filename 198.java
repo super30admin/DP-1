@@ -1,4 +1,5 @@
 //o(n)
+//
 class Solution {
     public int rob(int[] nums) {
         if (nums.length == 1) {
@@ -6,11 +7,11 @@ class Solution {
         } else if (nums.length == 2) {
             return Math.max(nums[0], nums[1]);
         }
-        
+        //
         int[] tab = new int[nums.length];
         tab[0] = nums[0];
         tab[1] = Math.max(nums[0], nums[1]);
-        
+        //
         int max = Math.max(tab[0], tab[1]);
         for (int i = 2; i < nums.length; i++) {
             tab[i] = Math.max(nums[i] + tab[i-2], tab[i-1]);
@@ -20,3 +21,4 @@ class Solution {
         return max;
     }
 }
+
