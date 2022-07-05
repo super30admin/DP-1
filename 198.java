@@ -1,29 +1,22 @@
+//o(n)
 class Solution {
-    public int deleteAndEarn(int[] nums) {
-        int n = nums.length;
-        int max = 0;
-        
-        for(int i = 0; i < n; i++){
-            max = Math.max(nums[i], max);
-        }
-        int size = max+1;
-        int[] arr = new int[size];
-        
-        for(int i = 0; i < n; i++){
-            arr[nums[i]]++;
+    public int rob(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        } else if (nums.length == 2) {
+            return Math.max(nums[0], nums[1]);
         }
         
-        int[] dp = new int[size+1];
+        int[] tab = new int[nums.length];
+        tab[0] = nums[0];
+        tab[1] = Math.max(nums[0], nums[1]);
         
-        for(int i = 0; i < size+1; i++){
-            dp[i] = -1;
+        int max = Math.max(tab[0], tab[1]);
+        for (int i = 2; i < nums.length; i++) {
+            tab[i] = Math.max(nums[i] + tab[i-2], tab[i-1]);
+            max = (max < tab[i])? tab[i] : max;
         }
         
-        return deleteAndEarn(size,arr, dp);
-    }
-    public int deleteAndEarn(int n, int[] nums, int[] dp){
-        if(n <= 0) return 0;
-        if(dp[n] != -1) return dp[n];
-        return dp[n] = Math.max(((n-1)*nums[n-1])+deleteAndEarn(n-2, nums,dp), deleteAndEarn(n-1, nums, dp));
+        return max;
     }
 }
