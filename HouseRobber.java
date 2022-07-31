@@ -33,7 +33,7 @@ class Solution {
 		if (n == 1)
 			return nums[0];
 
-		// int[] dp = new int[n];
+		// int[] dp = new int[n]; // Space Complexity : O(n) if we use linear array
 		// dp[0] = nums[0];
 		// dp[1] = Math.max(nums[0], nums[1]);
 		// Space can be optimized to eliminate the use of array by taking 2 variables
