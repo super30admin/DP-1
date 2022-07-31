@@ -7,7 +7,7 @@
 
 class Solution {
 	public int rob(int[] nums) {
-		// Recursive approach without storing preivous states
+		// Recursive approach without storing previous states
 //        if (nums == null || nums.length == 0) return 0;
 //        return helper(nums, 0, 0);
 //    }
