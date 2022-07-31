@@ -7,6 +7,7 @@
 
 class Solution {
 	public int coinChange(int[] coins, int amount) {
+		// Recursive approach without storing previous states
 //        if (coins == null || coins.length == 0) return 0;
 //        return helper(coins, amount, 0, 0);
 //    }
@@ -18,8 +19,10 @@ class Solution {
 //        if (i == coins.length || amount < 0) return -1;
 //        
 //        // logic
-//        // case 1 : choose
+//        // case 1, choose
 //        int case1 = helper(coins, amount - coins[i], i, numberOfCoins + 1);
+		
+		  // case 2, not choose
 //        int case2 = helper(coins, amount, i+1, numberOfCoins);
 //        
 //        if (case1 == -1) return case2;
