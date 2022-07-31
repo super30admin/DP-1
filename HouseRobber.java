@@ -13,7 +13,7 @@ class Solution {
 //    }
 //    
 //    private int helper(int[] nums, int i, int amount) {
-//        // base
+//        // base case
 //        if (i >= nums.length) return amount;
 //        
 //        // logic
