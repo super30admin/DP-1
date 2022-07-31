@@ -1,0 +1,29 @@
+// Time Complexity :O(N*M)
+// Space Complexity :O(N*M)
+// Did this code successfully run on Leetcode :YES
+// Any problem you faced while coding this :NO
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(coins==null|| coins.length==0) return 0;
+      int m=coins.length;
+        int n=amount;
+        int d[][]=new int[m+1][n+1];
+        d[0][0]=0;
+        for(int i=1;i<d[0].length;i++){
+            d[0][i]=amount+1;
+        }
+        for(int i=1;i<d.length;i++){
+            for(int j=1;j<d[0].length;j++){
+                if(j<coins[i-1]){
+                    d[i][j]=d[i-1][j];
+                }else{
+                    d[i][j]=Math.min(d[i-1][j],1+d[i][j-coins[i-1]]);
+                }
+            }
+        }
+            int res= d[m][n];
+            if(res> amount) return -1;
+            return res;
+        }
+         
+}
