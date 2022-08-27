@@ -1,6 +1,6 @@
 // Time complexity : O(m*n)
 
-// Space complexity : O(m*n)
+// Space complexity : O(n)
 
 // Approach: We used a bottom up dynamic programming approach to solve repeated sub problems using the exhaustive approach. We took a 2D array of the two contraints where the rows are the coins (we added a 0th row as a dummy row and a 0th column as a dummy column) and the columns are the amounts in increasing order from 0 to amount.
 
