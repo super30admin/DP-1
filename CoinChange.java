@@ -4,6 +4,8 @@
 
 // Approach: We used a bottom up dynamic programming approach to solve repeated sub problems using the exhaustive approach. We took a 2D array of the two contraints where the rows are the coins (we added a 0th row as a dummy row and a 0th column as a dummy column) and the columns are the amounts in increasing order from 0 to amount.
 
+// Here the 2D array stores the minimum number of coins to get to a certain amount using available coins. Each array value represents the minimum number of coins to get to that amount 
+
 // Steps to approach DP:
 // 1. Try Greedy approach - that is we only take the best choice at the moment. Just 1 path. This will fail for [2,5] and amount 6 as we will take 5 as the first count and will return false as the next coin we will take is 2. 5+2 is 7. But the coin combination is possible, 2,2,2 = 6.
 // 2. Try exhaustive approach. Here we use recursion to find all possible paths by choosing all different kinds of combinations of coins and then find out the minimum path. This works but will give time limit exceeded as it is an exponential time complexity solution as at every step, there are two choices whether to select the coin or not.

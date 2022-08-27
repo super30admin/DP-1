@@ -6,6 +6,8 @@
 
 // We can optimize space further by only using 1D array as we only need previous and current row.
 
+//Here the 1D array stores the minimum number of coins to get to a certain amount using available coins. Each array index represents an amount and the value at the index represents the minimum number of coins to get to that amount 
+
 // Steps to approach DP:
 // 1. Try Greedy approach - that is we only take the best choice at the moment. Just 1 path. This will fail for [2,5] and amount 6 as we will take 5 as the first count and will return false as the next coin we will take is 2. 5+2 is 7. But the coin combination is possible, 2,2,2 = 6.
 // 2. Try exhaustive approach. Here we use recursion to find all possible paths by choosing all different kinds of combinations of coins and then find out the minimum path. This works but will give time limit exceeded as it is an exponential time complexity solution as at every step, there are two choices whether to select the coin or not.
