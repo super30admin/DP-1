@@ -15,7 +15,7 @@ class Solution:
             
         for i in range(1,len(dp)):
             for j in range(1,len(dp[0])):
-                # if amount != i:
+            
                  if coins[i-1] > j:
                         # If denomiantion is greater than the amount do not choose so take from above
                         dp[i][j] = dp[i-1][j]
