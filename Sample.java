@@ -59,7 +59,7 @@ class Solution {
 
 // Your code here along with comments explaining your approach
 
-//Approach DP 1d array
+//Approach DP 1d array 
 
 class Solution {
     public int rob(int[] nums) {
@@ -83,7 +83,7 @@ class Solution {
     }
 }
 
-//Approach  using same array and 2 variables
+//Approach  using same array and 2 variables optimised approach
 
 class Solution {
     public int rob(int[] nums) {
