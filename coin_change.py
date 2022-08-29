@@ -15,10 +15,8 @@ class Solution:
         n=amount
         
         #Making the array of length plus 1 to accomodate the 0
-        dp=[0] * (n+1)
+        dp=[amount+1] * (n+1)
         
-        for i in range(1,len(dp)):
-            dp[i]=amount+1
         
         for i in range(1,m+1):
             for j in range(n+1):
