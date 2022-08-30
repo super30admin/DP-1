@@ -44,3 +44,26 @@ class Solution:
             dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
 
         return dp[n - 1]
+
+
+# Further optimization:
+
+# You are just going to use 2 values
+
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if nums is None or len(nums) == 0:
+            return 0
+
+        n = len(nums)
+        if n < 2:
+            return nums[0]
+        prev = nums[0]
+        curr = max(prev, nums[1])
+        for i in range(2, len(nums)):
+            temp = curr
+            curr = max(curr, nums[i] + prev)
+            prev = temp
+
+        return curr
