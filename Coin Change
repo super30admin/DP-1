@@ -1,0 +1,13 @@
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        c = [1 + amount] * (1 + amount)
+        c[0] = 0
+        for amount in range(1, len(c)):
+            for coin in coins:
+                if amount - coin >= 0:
+                    c[amount] = min(c[amount], 1 + c[amount - coin])
+        return c[amount] if c[amount] != 1 + amount else -1
+    
+# Time Complexity: O(mn)
+# Space Complexity: O(m)
+# Successfully implemented on Leetcode
