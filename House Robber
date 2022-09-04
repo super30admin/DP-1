@@ -1,0 +1,13 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        f = 0 
+        s = 0
+        for num in nums:
+            temp = max(num + f, s)
+            f = s
+            s = temp
+        return s
+
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+# Successfully implemented on Leetcode
