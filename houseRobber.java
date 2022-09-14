@@ -25,17 +25,18 @@ class Solution {
 		// return helper(nums, 0, 0);
 	}
 
-	// private int helper(int[] nums, int i, int sum) {
-	// // base
-	// if(i >= nums.length) return sum;
+	private int helper(int[] nums, int i, int sum) {
+		// base
+		if (i >= nums.length)
+			return sum;
 
-	// // logic
-	// // not choose
-	// int nc = helper(nums, i+1, sum);
+		// logic
+		// not choose
+		int nc = helper(nums, i + 1, sum);
 
-	// // choose
-	// int c = helper(nums, i+2, sum+nums[i]);
+		// choose
+		int c = helper(nums, i + 2, sum + nums[i]);
 
-	// return Math.max(c, nc);
-	// }
+		return Math.max(c, nc);
+	}
 }
