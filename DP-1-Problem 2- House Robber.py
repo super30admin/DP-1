@@ -1,6 +1,6 @@
 """
 
-S30 FAANMG Problem #21 {Easy}
+ FAANMG Problem #21 {Easy}
 
 198. House Robber
 

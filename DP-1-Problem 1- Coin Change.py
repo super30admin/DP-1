@@ -1,5 +1,5 @@
 """
-S30 FAANMG Problem #20 {Medium}
+ FAANMG Problem #20 {Medium}
 
 322. Coin Change
 
@@ -71,7 +71,7 @@ class Solution:
 
 
 """
-S30 FAANMG Problem #20 {Medium}
+ FAANMG Problem #20 {Medium}
 
 322. Coin Change
 
