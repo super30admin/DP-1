@@ -1,5 +1,5 @@
 // TC: O(mn)
-// SC: O(m + n)
+// SC: O(mn)
 class Solution {
     public int coinChange(int[] coins, int amount) {
         if (coins.length == 0 || coins == null) {
