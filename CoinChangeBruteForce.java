@@ -1,4 +1,4 @@
-// Brute force - exhaustive approach. Time complexity O(2^n)
+// Brute force - exhaustive approach. Time complexity O(2^n) As every coin has 2 options, whether to choose it or not
 
 class Solution {
     public int coinChange(int[] coins, int amount) {
