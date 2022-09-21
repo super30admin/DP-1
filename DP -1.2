@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int ans[nums.size()][2];
+            ans[0][0] = 0 ;
+            ans[0][1] = nums[0];
+        for(int i=1; i<nums.size();i++){
+            ans[i][0] = max(ans[i-1][0], ans[i-1][1]);
+            ans[i][1] = nums[i] + ans[i-1][0];
+        }
+        return max(ans[nums.size()-1][0],ans[nums.size()-1][1]);
+    }
+};

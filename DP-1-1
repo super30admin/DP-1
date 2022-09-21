@@ -1,0 +1,36 @@
+class Solution {
+public:
+     int coinChange(vector<int>& coins, int amount) {
+    
+        
+         int a = amount;
+         int c = coins.size();
+         int m[c+1][a+1]; 
+        
+         
+         
+         for(int i =0; i< c+1; i++){
+             m[i][0] = 0;
+         }
+         
+         for(int i =1; i< a+1; i++){
+             m[0][i] = a+1;
+         }
+         for(int i =1 ; i<c+1; i++){
+             for(int j =1; j < a+1; j++){
+                 if(j < coins[i-1]){
+                     m[i][j] = m[i-1][j];
+                   
+                 }
+                 else{
+                     m[i][j] = min( m[i-1][j] , 1 + m[i][j - coins[i-1]] );
+              
+                 }
+             }
+         }
+         if(m[c][a] > a){
+             return -1;
+         }
+         return m[c][a];
+    }
+};
