@@ -5,6 +5,11 @@
 
 public class CoinChangeSolution {
     public int coinChange(int[] coins, int amount) {
+
+        if(coins == null || coins.length == 0) {
+            return -1;
+        }
+
         int m = coins.length;
         int n = amount;
         int[][] dp = new int[m + 1][n + 1];
