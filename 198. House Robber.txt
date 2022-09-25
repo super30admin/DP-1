@@ -1,0 +1,38 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if nums==None or len(nums)==0:
+             return -1
+        #method-1 with recurssion, TC-O(2powerN)
+        def helper(nums,index,amt):
+            if (index>=len(nums)):
+                return amt
+            x=helper(nums,index+2,amt+nums[index])
+            y=helper(nums,index+1,amt)
+            return max(x,y)
+        return helper(nums,0,0)
+        
+        #method-2 TC-O(n) SC-O(n)
+        dp=[[0 for x in range(3)] for y in range(len(nums))]
+        n=len(nums)
+        for i in range(0,len(nums)):
+            dp[i][0]=nums[i]
+        dp[0][1]=0
+        dp[0][2]=nums[0]
+        for i in range(1,len(nums)):
+            dp[i][1]=max(dp[i-1][1],dp[i-1][2])
+            dp[i][2]=dp[i-1][1]+dp[i][0]
+        print(dp)
+        return max(dp[n-1][1],dp[n-1][2])
+        
+        
+        #method-3 TC-O(n) and SC-O(1)
+        
+        a=0
+        b=nums[0]
+        for i in range(1,len(nums)):
+            t=a
+            a=max(a,b)
+            b=t+nums[i]
+        return max(a,b)
+            
+            
