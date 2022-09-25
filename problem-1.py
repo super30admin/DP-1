@@ -1,4 +1,4 @@
-# // Time Complexity : O(m*n)
+# // Time Complexity : O(m*n) m = len(coins) , n = amount
 # // Space Complexity : O(m*n)
 # // Did this code successfully run on Leetcode : Yes
 # // Any problem you faced while coding this :
