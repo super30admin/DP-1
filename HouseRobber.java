@@ -39,8 +39,8 @@ public class HouseRobberDP1 {
         return dp[n-1];
 }
 }
-
-public class HouseRobberDP {
+// Optimized DP Solution using prev and curr pointers
+public class HouseRobberDP2 {
     public int rob(int[] nums) {
         // null check
         if(nums==null || nums.length==0) return 0;
