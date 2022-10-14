@@ -1,0 +1,46 @@
+#House Robber
+#tc: O(n)
+#sc: O(1)
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # 'dp' is used to store sub-problem results
+        dp={}
+        
+        def solve(i):
+            if i >= len(nums):
+                return 0
+            if i in dp:
+                return dp[i]    # memoization
+            else:
+                dp[i] = max(nums[i]+solve(i+2), solve(i+1))  
+            return dp[i]
+        
+        
+        return solve(0)
+#Coin Change
+#tc:O(n)
+#sc:O(1)
+class Solution:
+    def helper(self,ind,tar,nums,dp):
+        if ind==0:
+            if tar%nums[ind]==0:
+                return tar//nums[ind]
+            else: return 1e9
+        if dp[ind][tar]!=-1:
+            return dp[ind][tar]
+        notpick = self.helper(ind-1,tar,nums,dp)
+        pick = 1e9
+        if nums[ind]<=tar:
+            pick = 1+self.helper(ind,tar-nums[ind],nums,dp)
+        dp[ind][tar]=min(pick,notpick)
+        return dp[ind][tar]
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        n = len(coins)
+        dp = [[-1]*(amount+1) for i in range(n)]
+        ans = self.helper(n-1,amount,coins,dp)
+        if ans>= 1e9: return -1
+        else: return ans
