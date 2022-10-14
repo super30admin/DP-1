@@ -1,0 +1,20 @@
+class Solution {
+    int [] dp;
+    public int rob(int[] nums) {
+        dp = new int [nums.length];
+        Arrays.fill(dp,-1);
+        return rob(nums,0);
+        
+    }
+    private int rob(int[] money, int i){
+        if(i>=money.length){
+            return 0;
+        }
+        if(dp[i]==-1){
+            int r = money[i]+rob(money,i+2);
+            int nr = rob(money,i+1);
+            dp[i] = Math.max(r,nr);
+        }
+        return dp[i];
+    }
+}
