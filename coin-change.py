@@ -1,3 +1,5 @@
+#TC: O(n*target)
+#SC: O(n*target)
 class Solution:
     def coinChange(self, coins: List[int], target: int) -> int:
         n = len(coins)
