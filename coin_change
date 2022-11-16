@@ -1,0 +1,36 @@
+// Time Complexity : O(M * N) where M is the amount size and N is the number of coins
+// Space Complexity : O(M * N)
+// Did this code successfully run on leetcode : Yes
+// Any problems faced : No
+// Approach
+/*
+this works on the logic of recursive tree
+dynamic vector stores the number of coins required to sum up to ammount
+for every row, we'll be storing the minimum number of coins used by previous coins and by considering the current coin
+*/
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<vector<int>> v(coins.size() + 1, vector<int>(amount + 1, 0));
+        for(int j = 1; j < amount + 1; j++) {
+            v[0][j] = amount + 1;
+        }
+        for(int i = 0; i < (coins.size() + 1); i++) {
+            v[i][0] = 0;
+        }
+        for(int i = 1; i < (coins.size() + 1); i++) {
+            for(int j = 1; j < amount + 1; j++) {
+                if(j < coins[i - 1]) {
+                    v[i][j] = v[i - 1][j];
+                } else {
+                    v[i][j] = min((1 + v[i][j - coins[i - 1]]), v[i - 1][j]);
+                }
+            }
+        }
+        if(v[coins.size()][amount] == amount + 1) {
+            return -1;
+        }
+        return v[coins.size()][amount];
+    }
+};
