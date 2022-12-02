@@ -7,6 +7,8 @@ class Solution {
         int m= coins.length;
         int minCoins =0;
         int n= amount;
+        if (coins == null || coins.length == 0)
+            return -1;
         int[][] dp = new int[m+1][n+1];
         dp[0][0]=0;
         for(int j=1;j<=n;j++){
