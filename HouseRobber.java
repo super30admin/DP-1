@@ -4,6 +4,8 @@
 //https://leetcode.com/problems/house-robber
 class Solution {
     public int rob(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return 0;
         int arr[] = new int[nums.length+1];
         int total=0;
         int prevMax=0;
