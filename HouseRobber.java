@@ -7,7 +7,6 @@ class Solution {
         if (nums == null || nums.length == 0)
             return 0;
         int arr[] = new int[nums.length+1];
-        int total=0;
         int prevMax=0;
         arr[0]=0;
         for(int i=1;i<arr.length;i++){
