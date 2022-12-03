@@ -16,7 +16,8 @@ class Solution {
         return arr[nums.length];
     }
 }
-
+// Time Complexity : O(n)
+// Space Complexity : O(n)
 class Solution2 {
     public int rob(int[] nums) {
         if(nums==null || nums.length ==0 ) return -1;
@@ -28,5 +29,23 @@ class Solution2 {
             arr[i]= Math.max(arr[i-1],nums[i]+arr[i-2]);
         }
         return arr[nums.length-1];
+    }
+}
+
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+class Solution3 {
+    public int rob(int[] nums) {
+        if(nums==null || nums.length ==0 ) return -1;
+        if(nums.length ==1 ) return nums[0];
+        
+        int prevPrev = nums[0];
+        int prev = Math.max(prevPrev,nums[1]);
+        for(int i=2;i<nums.length;i++){
+            int temp = prev;
+            prev= Math.max(prev,nums[i]+prevPrev);
+            prevPrev = temp;
+        }
+        return prev;
     }
 }
