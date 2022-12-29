@@ -1,0 +1,29 @@
+// Time Complexity : o( n)
+// Space Complexity : o(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+/*
+*  At any house, can rob or cannot rob.
+*  Create a 1-D dp array.
+*  amount robbed At house i = maximum of
+*        1. robbing till i-2 house and i the house
+*        2. robbing till i-1 house
+* */
+
+
+
+class Solution {
+    public int rob(int[] nums) {
+        int []dp = new int[nums.length +2];
+        dp[0] = 0;
+        dp[1] = 0;
+        for(int i = 2; i< dp.length; i++){
+            int numsIndex = i-2;
+            dp[i] = Math.max(nums[numsIndex] + dp[i-2], dp[i-1]);
+        }
+        return dp[dp.length-1];
+    }
+}
