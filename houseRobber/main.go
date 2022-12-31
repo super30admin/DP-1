@@ -22,7 +22,6 @@ package main
 //     dfs(0,0)
 //     return max
 // }
-
 // time: o(n+1)
 // space: o(n+1)
 /*
@@ -37,6 +36,7 @@ package main
         - solve at a idx, by looking back 
         - solve the global problem by 
             - leveraging previously computed results!
+        - OR DRAW THE 0/1 decision tree from right side
     - for each idx i ( starting from idx 1 in nums array - since idx 0 does not have a previous house to compare to, so that answer will not change)
         - the answer for subproblem [2] will always be 2
         - therefore starting at idx 1
@@ -45,6 +45,11 @@ package main
             - where is the FINAL answer for immediate previous idx and previous-previous idx located? in the dp array
             - the nums array just gives us whats in store in that house, not the final answer for that house.
             - nums[i] + dp[i-2]
+            - if we draw the bottom up decision tree!
+                  [2,7, 9 ]
+                      0/ \1
+this is 1 step back [2,7] [2] = this subproblem is 2 steps back!
+                  
         2. not choose; which means we can pick the immediate previous FINAL answer ( dp[i-1] )
             - dp[i-1]
     - then its just a max(choose, notChoose)
