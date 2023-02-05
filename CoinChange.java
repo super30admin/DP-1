@@ -29,10 +29,14 @@ public class CoinChange {
 		dp[0][0] = 0;
 
 		for (int j = 1; j < dp[0].length; j++) {
+			// we are considering amount+1 as infinite as it will integer out of bound
+			// exception when we are try to add for Integer.Max
 			dp[0][j] = amount + 1;
 		}
 
+		// we already made i=0 row, dp[0][0] as 0 and remaining as infinite
 		for (int i = 1; i < dp.length; i++) {
+			// as j = 0 column is zero we are not prefilling it
 			for (int j = 1; j < dp[0].length; j++) {
 				if (j < coins[i - 1]) {
 					dp[i][j] = dp[i - 1][j];
