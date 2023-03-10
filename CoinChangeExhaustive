@@ -1,0 +1,38 @@
+//Exhaustive approach
+//time complexity: O(2^(n+m))
+//space complexity: O(n)
+
+class Solution {
+    
+    public int CoinChangeExhaustive(int[] coins, int amount) {
+        
+        //initiating minimum coin and idx with 0
+        return exhaustiveSearch(coins, amount, 0,0);
+
+    }
+
+    public int exhaustiveSearch(int coins[], int amount, int idx, int minCoin){
+
+        if(amount==0){
+            return minCoin;
+        }
+        if(amount<0 || idx==coins.length){
+            return-1;
+        }
+        //not choosing
+        int case1= exhaustiveSearch(coins, amount, idx+1, minCoin);
+
+        //choosing
+        int case2 = exhaustiveSearch(coins, amount-coins[idx], idx, minCoin+1);
+
+        if(case1==-1){
+            return case2;
+        }
+        if(case2==-1){
+            return case1;
+        }
+
+        return Math.min(case1, case2);
+    }
+    
+}
