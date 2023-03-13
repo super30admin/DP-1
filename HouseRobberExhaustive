@@ -1,0 +1,25 @@
+//time complexity: O(2^n)
+//space coplexity: O(n)
+
+class HouseRobberExhaustive {
+    public int rob(int[] nums) {
+        return helper(nums, 0, 0);
+    }
+
+    public int helper(int[] nums, int i, int count){
+        //base
+        if(i>=nums.length){
+            return count;
+        }
+
+    //logic
+    
+    //case1 : if we are not selecting house, increment index by 1
+    int case1= helper(nums, i+1, count);
+
+    //case2: if we are selecting a house then choose alternate house, increment index by 2
+    int case2 = helper(nums, i+2, count+nums[i]);
+
+    return Math.max(case1,case2);
+    }
+}
