@@ -1,4 +1,4 @@
-// Time Complexity : O(N) // M is number of coins, N is the target amount
+// Time Complexity : O(N) // N is the number of coins
 // Space Complexity : O(N) -- if array used else O(1) if 3 variables used
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Had to go through the pattern formation as discussed in the class
