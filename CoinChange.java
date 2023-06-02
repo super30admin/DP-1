@@ -45,3 +45,42 @@ else{
     }
 
 }
+
+// Time Complexity : 2^n [n is the length of the coins array]
+// Space Complexity : O(mn)
+// Did this code successfully run on Leetcode : No[Time limit exceeded]
+// Any problem you faced while coding this : No.
+
+
+// Your code here along with comments explaining your approach
+//Lets implement using exhaustive approach
+
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(coins== null || coins.length == 0) return -1;
+        return helper(coins,amount,0,0);
+        
+    }
+    private int helper(int[] coins, int amount, int index, int numberOfCoins){
+        //base
+        if(index == coins.length || amount < 0){
+            return -1;
+        }
+        if(amount == 0){
+            return numberOfCoins;
+        }
+        //logic
+        //zero case or do not chose
+        int case1 = helper(coins,amount,index+1,numberOfCoins);
+        //one case or chose case
+        int case2= helper(coins, amount-coins[index],index, numberOfCoins+1);
+        if(case1==-1){
+            return case2;
+        }
+        if(case2 == -1){
+            return case1;
+        }
+        return Math.min(case1,case2);
+    }
+}
