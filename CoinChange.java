@@ -37,6 +37,33 @@ class Solution {
     } else{
         return dp[coins.length][amount];
     }
+
+    /* For Exhaustive/Recursive Approach
+     * int temp = helper(coins,coins.length-1,amount,0);
+        if(temp>=999999){
+            return -1;
+        } else{
+            return temp;
+        }
+     */
     
 }
+
+/*  Exhaustive/Recursive approach
+ * private int helper(int[] coins,int idx,int amount,int count){
+        // base case
+        if(amount<0) return 999999;
+        if(idx<0 && amount>0) return 999999;
+        if(idx<0 && amount==0) return count;
+
+        // logic
+        // choose
+        int case1 = helper(coins,idx,amount-coins[idx],count+1);
+
+        // not choose
+        int case2 = helper(coins,idx-1,amount,count);
+        
+        return Math.min(case1,case2); 
+    }
+ */
 }
