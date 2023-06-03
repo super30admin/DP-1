@@ -1,0 +1,61 @@
+class Solution{
+    public int coinChange(int[] coins, int amount){
+        int [][] dp = new int[coins.length + 1][amount+1];
+        dp[0][0] = 0;
+        for(int j=1; j<= amount; j++){
+            dp[0][j] = 99999;
+        }
+        for(int i = 1; i <= coins.length; i++){
+            for(int j = 1; j <= amount; j++){
+                //till denom of coin > amount I have 0 case
+                if(coins[i - 1] > j) {
+                    dp[i][j] = dp[i-1][j];
+                } else{
+                    //0 and 1
+                    dp[i][j] = Math.min(dp[i-1][j], 1+dp[i][j - coins[i-1]]);
+                }
+            }
+        }
+        if(dp[coins.length][amount] >= 99999) return -1;
+        return dp[coins.length][amount];
+
+
+
+    }
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+/*class Solution {
+    public int coinChange(int[] coins, int amount) {
+        return helper(coins, 0, amount,0);
+    }
+    private int helper(int[] coins, int idx, int amount, int coinsUsed){
+        //base
+        if(amount == 0) {
+            return coinsUsed;
+        }
+        if(amount < 0 || idx == coins.length ) return -1;
+        //logic
+        //choose
+        int case1 = helper(coins, idx, amount - coins[idx], coinsUsed+1);
+
+
+        //not choose
+        int case2 = helper(coins, idx+1,amount, coinsUsed);
+        if(case2 == -1) return case1;
+        if(case1 == -1) return case2;
+        return Math.min(case1, case2);
+
+    }   
+}*/
