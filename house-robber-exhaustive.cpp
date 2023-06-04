@@ -27,4 +27,10 @@ public:
 
         return max(case1, case2);
     }
+    int main(){
+        vector<int> houses = {2, 3, 7, 3, 5, 10};
+        int robbing = rob(houses);
+        cout << robbing;
+        return 1;
+    }
 };
