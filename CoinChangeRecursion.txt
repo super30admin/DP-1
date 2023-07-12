@@ -1,0 +1,31 @@
+class Solution {
+    // time complexity O(S^n) where S is change amount
+    // space complexity O(n)
+    public int coinChange(int[] coins, int amount) {
+       return helper(coins, amount, 0, 0);
+    }
+
+    private int helper(int[] coins, int amount, int index, int count) {
+
+        // base
+        if (index == coins.length || amount < 0) {
+            return -1;
+        }
+        if (amount == 0) {
+            return count;
+        }
+    
+        //don't pick same coin
+        int r1 = helper(coins, amount, index+1, count);
+        // pick same coin
+        int r2 = helper(coins, amount - coins[index], index, count +1);
+
+        if (r1 == -1) {
+            return r2;
+        }
+        if (r2 == -1) {
+            return r1;
+        }
+        return Math.min(r1, r2);
+    }
+}
