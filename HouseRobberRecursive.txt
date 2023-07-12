@@ -1,0 +1,20 @@
+class Solution {
+    // time complexity - O(n)
+    // Space complexity - O(n)
+    public int rob(int[] nums) {
+       return helper(nums, 0, 0); 
+    }
+
+    private int helper(int[] nums, int index, int amount) {
+        // base case
+        if (index >= nums.length) {
+            return amount;
+        }
+        //rob house
+        int m1 = helper(nums, index+2, amount + nums[index]);
+        // do not rob house
+        int m2 = helper(nums, index+1, amount);
+
+        return Math.max(m1, m2);
+    }
+}

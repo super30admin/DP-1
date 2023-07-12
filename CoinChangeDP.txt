@@ -1,0 +1,30 @@
+class Solution {
+
+    // time complexity  - O(S*n) where S is coin change amount
+    // space complexity - O(S)
+    public int coinChange(int[] coins, int amount) {
+       // return helper(coins, amount, 0, 0);
+       int n = coins.length;
+       int m = amount;
+       int[] dp = new int[m+1];
+       // initialize 0th row
+       for(int i=1; i<=amount; i++) {
+           dp[i] = 99999;
+       }
+
+       for (int i=1; i<=n ; i++) {
+           for (int j=1; j<=amount; j++) {
+               // 0th case
+               if (j < coins[i-1]) {
+                   dp[j] = dp[j];
+               } else {
+                   dp[j] = Math.min(dp[j], dp[j- coins[i-1]] +1);
+               }
+           }
+       }
+       if (dp[m] >= 99999) {
+           return -1;
+       }
+       return dp[m];
+    }
+ }
