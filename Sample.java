@@ -66,4 +66,79 @@ class Solution {
                                                         //if not rob house:(means he robbed behind house)
         return nums[n-1]; //we store maximum robbings at each given index of array, so max robbings is last index element
     }
+    
+    //-------------------COIN CHANGE-------------------------------//
+    // Time Complexity : O(n^2)
+    // Space Complexity : O(1) (if we dont include array to be submitted as result)
+    // Did this code successfully run on Leetcode : yes
+    // Any problem you faced while coding this : //reduction in denomination to jth element. (we reduce with coins[j-1])
+
+    
+    //Exhaustive solution
+    // public int coinChange(int[] coins, int amount) {
+    //     //null
+    //     return helper(coins, 0, amount, 0);
+    // }
+
+    // private int helper(int [] coins, int i, int amount, int coinsUsed){
+    //     //base
+    //     if(amount==0)
+    //         return coinsUsed;
+    //     if(amount<0 || i==coins.length)
+    //         return -1;
+
+    //     //logic
+    //     //used coin
+    //     int case1= helper(coins, i, amount-coins[i], coinsUsed +1);
+
+    //     //unused coin
+    //     int case2= helper(coins, i+1, amount, coinsUsed);
+    //     if(case1 == -1) return case2;
+    //     if(case2 == -1) return case1;
+    //     return Math.min(case1, case2);
+    // }
+
+    // dp
+    // public int coinChange(int[] coins, int amount) {
+    //     int m=amount;
+    //     int n=coins.length;
+    //     int[][] dp=new int[n+1][m+1];
+    //     for(int j=1;j<=amount;j++){
+    //         dp[0][j]=amount+1;
+    //     }
+
+    //     for(int i=1;i<=n;i++){
+    //         for(int j=1;j<=m;j++){
+    //             //till amt is less than denomination zero
+    //             if(j<coins[i-1])
+    //                 dp[i][j]=dp[i-1][j];
+    //             else
+    //                 dp[i][j]= Math.min(dp[i-1][j],1 + dp[i][j-coins[i-1]]);
+    //         }
+    //     }
+    //     if(dp[n][m]>amount) return -1;
+    //     return dp[n][m];
+    // }
+    
+    //dp with space optimization
+    public int coinChange(int[] coins, int amount) {
+        int m=amount;
+        int n=coins.length;
+        int[] dp=new int[m+1];
+        for(int j=1;j<=amount;j++){
+            dp[j]=amount+1;
+        }
+
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=m;j++){
+                //till amt is less than denomination zero
+                if(j<coins[i-1])
+                    dp[j]=dp[j];
+                else // if equal to or more than- means we have another coin and will at the end reduce total coins
+                    dp[j]= Math.min(dp[j],1 + dp[j-coins[i-1]]);// take min of above element and 1+ element j - denomination of the coin.
+            }
+        }
+        if(dp[m]>amount) return -1;
+        return dp[m];//min coins are returned at the last index of matrix
+    }
 }
