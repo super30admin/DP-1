@@ -1,5 +1,5 @@
-// Time Complexity : O (n)  where m is number of rows, n is number of columns
-// Space Complexity : O (1) for skip and take variables
+// Time Complexity : O (max(maxNum, n)) time is max of the max number and the number of elements
+// Space Complexity : O (N) for new array with earnings from each element
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : No
 
@@ -26,7 +26,7 @@ class DeleteAndEarn{
     public static void main(String[] args) {
         int [] nums = {3, 4, 2};
         int result = deleteAndEarn(nums);
-        System.out.println(result);
+        // System.out.println(result);
 
         
     }
