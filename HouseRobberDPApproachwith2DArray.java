@@ -1,4 +1,4 @@
-class HouseRobberDPApproach{
+class HouseRobberDPApproachwith2DArray {
     //Using DP and maintaing 2D array to store the previous values.
     // TC will be O(N), as traversing only once.
     //SC will O(N), as array is of N*2 and ignoring 2.
@@ -18,7 +18,7 @@ class HouseRobberDPApproach{
     }
 
     public static void main(String[] args){
-        HouseRobberDPApproach obj= new HouseRobberDPApproach();
+        HouseRobberDPApproachwith2DArray obj= new HouseRobberDPApproachwith2DArray();
         int[] nums={1,2,3,1};
         System.out.println(obj.rob(nums));
     }
