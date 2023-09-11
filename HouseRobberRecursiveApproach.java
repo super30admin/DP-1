@@ -1,4 +1,4 @@
-class HouseRobber {
+class HouseRobberRecursiveApproach {
 //Recursive appraoch to check each and every possibility exhaustively.
     //TC is exponential and time limit will exceed and will not pass all test cases.
 
@@ -29,7 +29,7 @@ class HouseRobber {
 
 
     public static void main(String[] args){
-        HouseRobber obj=new HouseRobber();
+        HouseRobberRecursiveApproach obj=new HouseRobberRecursiveApproach();
         int[] nums={1,2,3,1};
         System.out.println(obj.rob(nums));
     }
