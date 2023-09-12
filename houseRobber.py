@@ -22,7 +22,7 @@ class Solution(object):
 # Space Complexity: O(1)
 
         n= len(nums)
-        dp = [[0 for x in range (2)] for x in range (n)]
+        dp = [[0 for x in range (n)]
         skip = 0 # skip the value
         take = nums[0] # take the value
 
