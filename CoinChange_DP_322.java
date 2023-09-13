@@ -20,7 +20,7 @@ package CoinChange_DP_322;
 //Time Complexity  :  O(m*n)
 //Space Complexity :  O(m*n)
 
-public class Solution {
+class Solution {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

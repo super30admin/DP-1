@@ -31,7 +31,7 @@ package HouseRobber_DP_198;
 //Space Complexity : O(m) + O(2) = O(m)
 
 
-public class Solution {
+class Solution {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -42,35 +42,24 @@ public class Solution {
 	}
 
 	public static int rob(int[] nums) {
-		
-		//base case
-		if(nums == null || nums.length <=0)
-		{
+
+		// base case
+		if (nums == null || nums.length == 0) {
 			return 0;
 		}
-		//logic
-		int dp[][] = new int[nums.length ][2];
-		
-			dp[0][0] =0;
-			dp[0][1] = nums[0];
-		
-		for(int i =1; i < nums.length ; i++)
-		{
-			for(int j = 0 ; j < dp[0].length;j++)
-			{
-				if(j ==0)
-				{
-					dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j+1]);
-				}else
-				{
-					dp[i][j] =  nums[i] + dp[i-1][j-1];
-				}
-			}
+		// using dynamic programming
+		// Logic
+		int n = nums.length;
+		int[][] dp = new int[n][2];
+		dp[0][0] = 0;
+		dp[0][1] = nums[0];
+
+		for (int i = 1; i < n; i++) {
+			dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1]);
+			dp[i][1] = dp[i - 1][0] + nums[i];
+
 		}
-		
-		
-		
-		return Math.max(dp[dp.length -1][0], dp[dp.length-1][1]);
+		return Math.max(dp[n - 1][0], dp[n - 1][1]);
 
 	}
 
