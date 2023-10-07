@@ -62,3 +62,64 @@ class Solution {
         
     }
 }
+
+// Problem2 (https://leetcode.com/problems/house-robber/)
+// Time Complexity : O(2 ^ n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : I didnt face any problem while coding this.
+
+class Solution {
+    public int rob(int[] nums) {
+        return helper(nums, 0, 0);
+    }
+
+    private int helper(int[] nums, int index, int totalAmount){
+        if(nums == null) return 0;
+        if(index >= nums.length) return totalAmount;
+        int case1 = helper(nums, index+1, totalAmount);
+        int case2 = helper(nums, index+2, totalAmount+nums[index]);
+        return Math.max(case1, case2);
+    }
+}
+
+
+// Problem2 (https://leetcode.com/problems/house-robber/)
+// Time Complexity : O(n)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : I didnt face any problem while coding this.
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        if(nums.length == 1) return nums[0];
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        for(int i=2; i<nums.length; i++){
+            dp[i] = Math.max(dp[i], nums[i] + dp[i-2]);
+        }
+        return dp[n-1];
+    }
+}
+// Problem2 (https://leetcode.com/problems/house-robber/)
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : I didnt face any problem while coding this.
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        if(nums.length == 1) return nums[0];
+        int prev = nums[0];
+        int curr = Math.max(prev, nums[1]);
+        for(int i=2; i<nums.length; i++){
+            int temp = curr;
+            curr = Math.max(curr, nums[i] + prev);
+            prev = temp;
+        }
+        return curr;
+    }
+}
