@@ -40,10 +40,14 @@ class Solution(object):
     # TC: O(mxn)
     # SC: O(mxn)
     def coinChange(self, coins, amount):
-        m = len(coins)
-        n = amount
+        m = len(coins)  # row
+        n = amount  # coln
 
-        dp = [(n+1) * [0]] * (m+1)  # create 2D matrix of m+1*n+1
+        # create 2D matrix of m+1*n+1
+        dp = []
+        for _ in range(m+1):  # TC O(m)
+            dp.append([0] * (n+1))
+
         # fill first row will dummy values
         dp[0][0] = 0
         for j in range(1, n+1):
@@ -58,8 +62,12 @@ class Solution(object):
                     # else - take min of (previous row same amt, element at (current i,j - denomination) + 1 )
                     dp[i][j] = min(dp[i-1][j], (dp[i][j-coins[i-1]]) + 1)
 
-        # if the last m*n block of mtrix is infinity, no solution possible return -1
+        # if the last m*n block of matrix is infinity, no solution possible return -1
         if dp[m][n] >= float('inf'):
             return -1
         else:
             return dp[m][n]  # else: return last block
+
+
+obj = Solution()
+print(obj.coinChange([1, 2, 5], 11))
