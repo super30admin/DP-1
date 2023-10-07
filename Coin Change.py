@@ -1,5 +1,5 @@
 # Exhaustive
-# TC: O(m+n) , m is amount, n is no of coins, Time limit exceede
+# TC: 2^O(m+n) , m is amount, n is no of coins, Time limit exceeded
 # SC: no of nodes in the tree, 2^(m+n)
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
