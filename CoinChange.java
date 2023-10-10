@@ -7,7 +7,7 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :
 
-
+//DP solution
 public class CoinChange {
 	public int coinChange(int[] coins, int amount) {
         int m = coins.length;
@@ -22,9 +22,11 @@ public class CoinChange {
         for(int i = 1; i <= m; i++){
             for(int j = 1; j <=n; j ++){
                 if(j < coins[i -1]){ // amount is less than the coin denomination
-                    dp[i][j] = dp[i-1][j];
+                	//previous row
+                	dp[i][j] = dp[i-1][j];
                 }
                 else{
+                	//Min of (previous row (same column) , (same row) curr. amt - denomination of the coin)
                     dp[i][j] = Math.min(dp[i-1][j], 1 + dp[i][j - coins[i - 1]]);
                 }
             }
