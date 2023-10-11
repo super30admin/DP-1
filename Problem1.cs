@@ -1,6 +1,6 @@
 public class Solution
     {
-        // Time Complexity : O(2^(m+n))
+        // Time Complexity : O(m * n) - where m is coins array length and n is the amount
         // Space Complexity : O(1)
         // Did this code successfully run on Leetcode : Yes
         // Any problem you faced while coding this : No
