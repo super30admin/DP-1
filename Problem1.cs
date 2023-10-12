@@ -1,7 +1,7 @@
 public class Solution
     {
         // Time Complexity : O(m * n) - where m is coins array length and n is the amount
-        // Space Complexity : O(1)
+        // Space Complexity : O(m * n) -- can be further optimized to O(n) by using an array
         // Did this code successfully run on Leetcode : Yes
         // Any problem you faced while coding this : No
 
