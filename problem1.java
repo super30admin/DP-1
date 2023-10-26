@@ -1,4 +1,7 @@
-//TC=(n^2)
+// Time Complexity :  No.of coins * Amount
+// Space Complexity :  No.of coins * Amount
+// Did this code successfully run on Leetcode :  Yes
+// Any problem you faced while coding this :  No
 
 class Solution {
     
