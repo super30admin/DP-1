@@ -97,3 +97,41 @@ class Solution {
 }
 
 
+
+//Bottom Up Approach- Tabulation
+// TC SC O(No.of coins * Amount)
+
+class Solution {
+    
+    public int coinChange(int[] coins, int amount) {
+        int n= coins.length+1;
+        int a=amount+1;
+        int[][] dp= new int[n][a];
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<a; j++){
+                //fill the first column with '0'
+                if(j==0){
+                    dp[i][j]=0;
+                }
+                //fill first row with infinity
+                else if(i==0){
+                    dp[i][j]=Integer.MAX_VALUE;
+                }
+                //for all the other elements
+                else{
+                    //when the amount is feasible with the current denomination check for both current and previous denomination
+                    if(j-coins[i-1]>=0 && dp[i][j-coins[i-1]]!=Integer.MAX_VALUE){
+                        dp[i][j]=Math.min(1+dp[i][j-coins[i-1]],dp[i-1][j]);
+                    }
+                    //if not feasible we will not check for current denomination instead direclty move to the previous denomination
+                    else{
+                        dp[i][j]=dp[i-1][j];
+                    }
+                }
+            }
+        }
+        //if feasible return otherwise return -1
+        return dp[coins.length][amount]==Integer.MAX_VALUE ? -1 : dp[coins.length][amount];
+    }
+}
