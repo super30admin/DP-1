@@ -1,3 +1,48 @@
+//Brute Force No Memoization
+
+// Height of the tree: (Amount/Minimum Denomination)
+// Time Complexity :  O(2^height)
+// Space Complexity :  O(height)
+// Did this code successfully run on Leetcode :  No
+// Any problem you faced while coding this :  No
+
+class BruteForce {
+
+    private int findSolution(int[] coins,int amount,int index){
+
+        if(amount==0){
+            return 0;
+        }
+        if(amount<0 || index==coins.length){
+            return Integer.MAX_VALUE;
+        }
+        
+        int nChosen= findSolution(coins,amount,index+1);
+
+        int chosen= findSolution(coins,amount-coins[index],index);
+        
+        if(chosen!=Integer.MAX_VALUE){
+            chosen++;
+        }
+        
+        return Math.min(chosen,nChosen);
+    }
+    
+    public int coinChange(int[] coins, int amount) {
+        
+        int ans= findSolution(coins,amount,0);
+
+        if(ans==Integer.MAX_VALUE){
+            return -1;
+        }
+
+        return ans;
+    }
+}
+
+
+// With Memoization using 2d array
+
 // Time Complexity :  No.of coins * Amount
 // Space Complexity :  No.of coins * Amount
 // Did this code successfully run on Leetcode :  Yes
