@@ -1,4 +1,4 @@
-// Time Complexity : DP : O(n), Recursion: O(2^(m+n))
+// Time Complexity : DP : O(m*n), Recursion: O(2^(m+n))
 // Space Complexity : DP : O(m*n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
