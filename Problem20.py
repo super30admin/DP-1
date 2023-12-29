@@ -1,6 +1,6 @@
 '''
 Time complexity: O(m x n) where m is number of coins and n is amount.
-Space complexity: O(m x n)
+Space complexity: O(n)
 '''
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
