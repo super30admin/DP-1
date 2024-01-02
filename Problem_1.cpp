@@ -1,6 +1,6 @@
 /*
  * Time Complexity : O(n*amount)
- * Space Complexity : O(1)
+ * Space Complexity : O(amount)
  * Did this code successfully run on Leetcode : Yes
  * Any problem you faced while coding this : No
 */
