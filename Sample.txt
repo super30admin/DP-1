@@ -1,0 +1,18 @@
+Problem: Minimum Coins Change
+Time Complexity : O(n^2)
+Space Complexity : O(1)
+Did this code successfully run on Leetcode : yes
+Any problem you faced while coding this : no
+
+Your code here along with comments explaining your approach:
+We recursively check which output gives us the min number of coins to get the target value then take the
+DP approach to build the matrix.
+
+Problem: House Robber Max profit
+Time Complexity :O(n^2)
+Space Complexity : O(1)
+Did this code successfully run on Leetcode : yes
+Any problem you faced while coding this : no
+
+Your code here along with comments explaining your approach:
+We recursively check which output gives us the max profit then take the DP approach to build the matrix.
