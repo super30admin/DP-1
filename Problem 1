@@ -1,0 +1,23 @@
+#The time complexity of the provided dynamic programming solution for the Coin Change problem is O(amount * len(coins)), where "amount" is the target amount and "len(coins)" is the number of coin denominations.
+
+class Solution(object):
+    def coinChange(self, coins, amount):
+        """
+        :type coins: List[int]
+        :type amount: int
+        :rtype: int
+        """
+        # Initialize an array to store the minimum number of coins for each amount
+        dp = [float('inf')] * (amount + 1)
+        
+        # Base case: 0 coins needed to make amount 0
+        dp[0] = 0
+        
+        # Iterate through each coin denomination
+        for coin in coins:
+            # Update dp array for each amount starting from the coin value
+            for i in range(coin, amount + 1):
+                dp[i] = min(dp[i], dp[i - coin] + 1)
+        
+        # If dp[amount] is still set to float('inf'), no combination was found
+        return dp[amount] if dp[amount] != float('inf') else -1
