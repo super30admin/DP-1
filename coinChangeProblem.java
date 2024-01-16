@@ -6,7 +6,7 @@
 // Your code here along with comments explaining your approach
 
 // Following tabulation approach
-// Using 2d matrix to store results of previous subproblem
+// Using 2d matrix to store results of previous subproblems
 public class coinChangeProblem {
     public int coinChange(int[] coins, int amount) {
         int m = coins.length;
