@@ -1,3 +1,10 @@
+// TC - O(2^N)
+// SC - O(2^N)
+
+// Constraints:
+// 1 <= nums.length <= 100
+// 0 <= nums[i] <= 400
+
 public class HouseRobberRecursion {
     class Solution {
         public int rob(int[] nums) {
