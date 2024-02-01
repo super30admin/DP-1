@@ -1,4 +1,4 @@
-// TC - O(2^(M+N)) => Number of Nodes per Node = 2 and Levels = (M-1) + N
+// TC - O(2^(M+N)) => Number of Nodes per Node = 2 and Levels = (M-1)Take + (N)Don't take
 // SC - O(2^(M+N))
 
 // Constraints:
