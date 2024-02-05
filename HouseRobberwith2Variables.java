@@ -6,7 +6,7 @@
 /*
 At every step of house, we have 2 choice, whether to rob the house or not to rob the house.
 Based on that it is maximum of that step of repeated subproblem to find out earning.
-Towards the end find maximum earning by picking last element.
+Towards the end find maximum earning by picking last element (Current).
 */
 
 public class HouseRobberwith2Variables {
