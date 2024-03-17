@@ -12,3 +12,6 @@ class Solution {
     return dp[n-1];
     }
 }
+
+//Time-Complexity: O(n)
+//Space-Complexity: O(n)
