@@ -45,8 +45,8 @@ class Solution {
 // Solution 2 => Memoization / Top-Down Approach
 
 /**
- * Time Complexity: O(m + n), where n = no. of coins and m  is amount.
- * Space Complexity: O(n + m), levels in a tree
+ * Time Complexity: O(m * n), where n = no. of coins and m  is amount. Since maximum combinations for coin amount is no. of coins * amount
+ * Space Complexity: O(n * m),  Since maximum combinations for coin amount is no. of coins * amount that we store in matrix
  */
 
 class Solution {
