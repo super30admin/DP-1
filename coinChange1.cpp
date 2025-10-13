@@ -37,19 +37,13 @@ public:
 
 class Solution {
 public:
-    void helper(vector<int> &dp)
-    {
-        dp[0] = 0;
-
-        for (int i = 1; i < dp.size(); i++) {
-            dp[i] = INT_MAX - 2;
-        }
-    }
-
     int coinChange(vector<int>& coins, int amount)
     {
         vector<int> dp(amount + 1);
-        helper(dp); 
+        
+        fill(dp.begin(), dp.end(), INT_MAX - 2);
+        dp[0] = 0;
+    
         for (int i = 1; i <= coins.size(); i++) {
             for (int j = coins[i - 1]; j <= amount; j++) {
                 dp[j] = min(dp[j], 1 + dp[j - coins[i - 1]]);
