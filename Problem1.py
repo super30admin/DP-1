@@ -34,6 +34,7 @@ class Solution:
         self.helper(coins, amount-coins[i], i, coinsUsed+1)
 
 # Solution 2
+# DP with tabulation using 2D matrix
 # TC: O(m*n)
 # SC: O(m*n)
 
