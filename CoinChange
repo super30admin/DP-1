@@ -1,0 +1,64 @@
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        //Recursive: 
+        //Time complexity o(2^m+n) where m is amount and n is number of coins
+        //space : m+n
+        if (coins == null || coins.length == 0)
+            return 0;
+       /* int minCoins= recursive(coins, amount, 0);
+        if(minCoins>= 99999) return -1;
+        return minCoins;*/
+
+        //DP: time m*n space: o(m*n)
+        return coinChangeWithDP(coins, amount);
+
+    }
+
+    public int coinChangeWithDP(int[] coins, int amount) {
+        int rows = coins.length + 1;
+        int cols = amount + 1;
+        int[][] dp = new int[rows][cols];
+
+        dp[0][0]=0;
+        //Fill first row with infinity.
+        for (int col = 1; col < cols; col++) {
+            dp[0][col] = 99999;
+        }
+
+        for (int row = 1; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                //If amount to make is  is less than denomination of coin
+                if (col < coins[row - 1]) {
+                    dp[row][col] = dp[row - 1][col];
+                } else {
+                    //dont choose current coin case: is value from above
+                    //choose current coin case: 1+ go back to the same row with denomination of coin steps back.
+                    //Math.min(dontChoose, 1+choose);
+                    int dontChooseCase = dp[row - 1][col];
+                    int chooseCase = 1 + dp[row][col - coins[row - 1]];
+                    dp[row][col] = Math.min(dontChooseCase, chooseCase);
+                }
+
+            }
+        }
+        if (dp[rows - 1][cols - 1] >= 99999)
+            return -1;
+        return dp[rows - 1][cols - 1];
+
+    }
+
+    private int recursive(int[] coins, int amount, int currIdx) {
+        //Base case 1. amount becomes 2.array goes out of bound 3. amount goes -ve  
+        //when amount becomes 0 I will be using 0 coins to make amount 0.
+        if (amount == 0)  return 0;
+        //when amount becomes negative or index goes outofBound there is no valid solution
+        if (amount < 0 || currIdx >= coins.length) return 99999;
+
+        // logic
+        int caseChoose = 1 + recursive(coins, amount - coins[currIdx], currIdx );
+        int caseNotChoose = recursive(coins, amount, currIdx + 1);
+        //choose minimum coins among them.
+        return Math.min(caseChoose, caseNotChoose);
+
+    }
+}
